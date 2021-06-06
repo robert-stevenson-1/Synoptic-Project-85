@@ -9,6 +9,9 @@
  *
  */
 
+// TODO: testing login process
+// TODO: No field reseting/clearing
+
 package WaterDistibution.Scenes;
 
 

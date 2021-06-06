@@ -19,5 +19,6 @@ public class DashBoardController {
    public static void btnLogoutClicked(ActionEvent event) {
       System.out.println("btnLogout clicked!");
       SceneManager.switchScene(SceneManager.getLoginScene());
+      //TODO: User is not logged out in RAM
    }
 }
