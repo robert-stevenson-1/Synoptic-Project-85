@@ -1,3 +1,14 @@
+/**
+ * Class: Main
+ * Author: Robert Stevenson
+ * Contributing Author(s):
+ *
+ * Date Created: 06/06/2021
+ *
+ * Description:
+ *
+ */
+
 package WaterDistibution;
 
 import javafx.application.Application;
@@ -11,13 +22,17 @@ public class Main extends Application {
         LoginScene loginScene = new LoginScene();
         Scene scene = new Scene(loginScene);
 
-        stage.setTitle("Water Distribution");
-        stage.setScene(scene);
-        stage.setMinHeight(200);
-        stage.setHeight(400);
-        stage.setMinWidth(200);
-        stage.setWidth(400);
+        //binding for the login scene to scale to the program window
+        loginScene.prefHeightProperty().bind(stage.heightProperty());
+        loginScene.prefWidthProperty().bind(stage.widthProperty());
 
+        stage.setTitle("Water Distribution Utility Software");
+        stage.setScene(scene);
+        stage.sizeToScene();
+        stage.setMinHeight(300);
+        stage.setHeight(300);
+        stage.setMinWidth(410);
+        stage.setWidth(410);
         stage.show();
     }
 
