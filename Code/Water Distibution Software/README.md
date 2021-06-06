@@ -3,3 +3,7 @@
 
 
 vm options needs: --module-path lib/javafx-sdk-15.0.1/lib --add-modules=javafx.controls
+
+Login details:
+Username: tester
+Password: Password_123
