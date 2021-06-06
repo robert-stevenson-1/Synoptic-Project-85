@@ -1,5 +1,5 @@
 /**
- * Class: DashboardController
+ * Class: CreateAccountController
  * Author: Robert Stevenson
  * Contributing Author(s):
  *
@@ -7,11 +7,10 @@
  *
  * Description:
  *
- *
  */
 
-package WaterDistibution;
+package WaterDistibution.Controllers;
 
-public class DashBoardController {
+public class CreateAccountController {
 
 }

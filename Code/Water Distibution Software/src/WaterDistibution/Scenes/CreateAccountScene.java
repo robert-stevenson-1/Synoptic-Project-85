@@ -1,5 +1,5 @@
 /**
- * Class: DashboardScene
+ * Class: CreateAccountScene
  * Author: Robert Stevenson
  * Contributing Author(s):
  *
@@ -8,10 +8,10 @@
  * Description:
  *
  */
-package WaterDistibution;
+package WaterDistibution.Scenes;
 
 import javafx.scene.layout.Pane;
 
-public class DashboardScene extends Pane {
+public class CreateAccountScene extends Pane {
 
 }

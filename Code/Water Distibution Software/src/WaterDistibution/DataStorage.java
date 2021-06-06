@@ -15,9 +15,10 @@ import java.util.Hashtable;
 
 public class DataStorage implements Serializable {
 
-   private Hashtable<String, String> Users = new Hashtable<String, String>();
+   private Hashtable<String, User> Users = new Hashtable<String, User>();
+   private User CurrentUser = new User();
 
-   public Hashtable<String, String> getUsers() {
+   public Hashtable<String, User> getUsers() {
       return Users;
    }
 

@@ -9,9 +9,10 @@
  *
  */
 
-package WaterDistibution;
+package WaterDistibution.Scenes;
 
 
+import WaterDistibution.Controllers.LoginController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -39,7 +40,7 @@ public class LoginScene extends Pane {
 
    //setup the login windows layout
    private void setupLayout() {
-      //set grid line visble (debugging only)
+      //set grid line visible (debugging only)
       grid.setGridLinesVisible(true);
 
       //set the parent primary Box that contains the components of the scene
