@@ -41,7 +41,7 @@ public class LoginScene extends Pane {
    //setup the login windows layout
    private void setupLayout() {
       //set grid line visible (debugging only)
-      grid.setGridLinesVisible(true);
+      //grid.setGridLinesVisible(true);
 
       //set the parent primary Box that contains the components of the scene
       this.getChildren().add(primaryBox);
@@ -114,4 +114,10 @@ public class LoginScene extends Pane {
 
    }
 
+   public String getUsernameValue(){
+      return txtUsername.getText();
+   }
+   public String getPasswordValue(){
+      return txtPassword.getText();
+   }
 }
