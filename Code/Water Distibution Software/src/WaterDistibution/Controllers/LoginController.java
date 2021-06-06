@@ -22,8 +22,9 @@ public class LoginController {
       System.out.println("btnLogin clicked!");
       //use the scene manager to change the scene of the program
       if (validateInput()) {
-         if (attemptLogin())
-         SceneManager.switchScene(SceneManager.getDashboardScene());
+         if (attemptLogin()) {
+            SceneManager.switchScene(SceneManager.getDashboardScene());
+         }
       }
    }
    private static boolean validateInput(){
@@ -71,7 +72,7 @@ public class LoginController {
       return false;
    }
 
-   private boolean attemptLogin(){
+   private static boolean attemptLogin(){
 
       //get the login field values to check
       String usernameValue = SceneManager.getLoginScene().getUsernameValue();

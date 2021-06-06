@@ -14,16 +14,17 @@ import WaterDistibution.Exceptions.InvalidPasswordException;
 import WaterDistibution.Exceptions.NoSuchUsernameExists;
 import WaterDistibution.Model.User;
 
-import java.io.Serializable;
+import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
+import java.util.HashMap;
 import java.util.Hashtable;
 
 public abstract class DataStorage implements Serializable {
 
-   private static Hashtable<String, User> users = new Hashtable<String, User>();
+   private static HashMap<String, User> users = new HashMap<>();
    //user is currently logged into the system
    private static User CurrentUser = new User();
 
@@ -43,26 +44,74 @@ public abstract class DataStorage implements Serializable {
       return users.containsKey(username);
    }
 
+   //gets a user that is saved in the system
    public static User getUser(String username, String password) throws NoSuchUsernameExists, InvalidPasswordException {
       //check if a user with that username exists
       if (userExists(username)){
          //user found, check to see if the password entered is correct
          User user = users.get(username);
-         if(hashPassword(user.getPassword()) == hashPassword(password)){
+         if(user.getPassword().equals(hashPassword(password, user.getSalt()))){
             //password matches return the user
             return user;
          }else {
-            return throw new InvalidPasswordException();
+            throw new InvalidPasswordException();
          }
       }else{
-         return throw new NoSuchUsernameExists();
+         throw new NoSuchUsernameExists();
       }
    }
 
+   //get the current logged in user
+   public static User getCurrentUser() {
+      return CurrentUser;
+   }
 
    //-----------
    //--UTILITY--
    //-----------
+
+   public static void loadData(){
+      loadUsers();
+   }
+
+   /**
+    * Saves the programs users into a serializable file.
+    * @return return true on success, false on failure to save.
+    */
+   public static boolean saveUsers(){
+      try{
+         //output file location
+         FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir")+"/data/users.ser");
+         //write the user hashmap
+         ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+         objOut.writeObject(users);
+         objOut.close();
+         return true;
+      } catch (IOException e){
+         e.printStackTrace();
+         System.out.println("Failed to serialize users");
+         return false;
+      }
+   }
+
+   public static boolean loadUsers(){
+      try {
+         FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir")+"/data/users.ser");
+         ObjectInputStream in = new ObjectInputStream(fileIn);
+         users = (HashMap<String, User>) in.readObject();
+         in.close();
+         fileIn.close();
+         return true;
+      } catch (IOException e) {
+         e.printStackTrace();
+         System.out.println("Failed to load users");
+         return false;
+      } catch (ClassNotFoundException e) {
+         System.out.println("Class HashMap<String,User> users not found");
+         e.printStackTrace();
+         return false;
+      }
+   }
 
    /**
     * Hash Passwords for security when saving login account information
@@ -74,7 +123,7 @@ public abstract class DataStorage implements Serializable {
     * @param rawPassword the raw unencrypted password that is to be hashed
     * @return return a hashed and encrypted version of the 'rawPassword'
     */
-   private static String hashPassword(String rawPassword){
+   public static String hashPassword(String rawPassword, byte[] salt){
 
       String hashPassword = null;
 
@@ -83,7 +132,7 @@ public abstract class DataStorage implements Serializable {
          MessageDigest messageDigest = MessageDigest.getInstance("SHA-512");
 
          //add salt to the password bytes to digest
-         messageDigest.update(getSalt());
+         messageDigest.update(salt);
 
          //get the decimal formatted hash's bytes
          byte[] hashBytes = messageDigest.digest(rawPassword.getBytes());
@@ -97,7 +146,7 @@ public abstract class DataStorage implements Serializable {
          //get a completed hashed password in HEX
          hashPassword = stringBuilder.toString();
 
-      } catch (NoSuchAlgorithmException | NoSuchProviderException e) {
+      } catch (NoSuchAlgorithmException e) {
          e.printStackTrace();
       }
 
@@ -105,7 +154,7 @@ public abstract class DataStorage implements Serializable {
       return hashPassword;
    }
 
-   private byte[] getSalt() throws NoSuchAlgorithmException, NoSuchProviderException {
+   public static byte[] getSalt() throws NoSuchAlgorithmException, NoSuchProviderException {
       // 'SHA1PRNG' is the pseudo-random number generation algorithm  based on the
       // SHA-1 message digest algorithm and supplied by the provider 'SUN'
       SecureRandom secRand = SecureRandom.getInstance("SHA1PRNG", "SUN");
@@ -119,5 +168,24 @@ public abstract class DataStorage implements Serializable {
       return salt;
    }
 
+   public static void main(String[] args) {
+      User user = new User("tester", "Password_123", "Johnny", "Test");
+
+      System.out.println("(On load) Users: " + DataStorage.users);
+      DataStorage.users.put(user.getUsername(), user);
+
+      System.out.println("(Saving users)");
+      DataStorage.saveUsers();
+
+      System.out.println("(After Save) Users: " + DataStorage.users);
+
+      DataStorage.users = new HashMap<String, User>();
+
+      System.out.println("(Cleared Hashmap) Users: " + DataStorage.users);
+
+      DataStorage.loadUsers();
+      System.out.println("(loaded in serialised users) Users: " + DataStorage.users);
+
+   }
 
 }

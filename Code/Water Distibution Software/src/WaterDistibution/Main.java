@@ -33,6 +33,9 @@ public class Main extends Application {
         stage.setHeight(300);
         stage.setMinWidth(410);
         stage.setWidth(410);
+
+        DataStorage.loadData();
+
         stage.show();
     }
 
