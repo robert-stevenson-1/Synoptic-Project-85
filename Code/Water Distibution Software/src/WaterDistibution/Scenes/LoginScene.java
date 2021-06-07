@@ -26,6 +26,9 @@ import javafx.scene.text.TextAlignment;
 
 public class LoginScene extends Pane {
 
+   private static final double PREF_WIDTH = 640;
+   private static final double PREF_HEIGHT = 480;
+
    private VBox primaryBox = new VBox();
    private HBox hBoxBtnBar = new HBox();
    private GridPane grid = new GridPane();
@@ -46,12 +49,18 @@ public class LoginScene extends Pane {
       //set grid line visible (debugging only)
       //grid.setGridLinesVisible(true);
 
-      //set the parent primary Box that contains the components of the scene
-      this.getChildren().add(primaryBox);
+      //set the login screen size
+      this.setPrefWidth(PREF_WIDTH);
+      this.setPrefHeight(PREF_HEIGHT);
+      this.setWidth(PREF_WIDTH);
+      this.setHeight(PREF_WIDTH);
 
       //bind the scaling of the primary parent node component to the Login scenes current dimensions
       primaryBox.prefHeightProperty().bind(this.heightProperty());
       primaryBox.prefWidthProperty().bind(this.widthProperty());
+
+      //set the parent primary Box that contains the components of the scene
+      this.getChildren().add(primaryBox);
 
       //bind the scaling of the grid to the primary parent node component
       grid.prefWidthProperty().bind(primaryBox.widthProperty());

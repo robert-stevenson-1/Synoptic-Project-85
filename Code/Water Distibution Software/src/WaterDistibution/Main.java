@@ -19,20 +19,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        LoginScene loginScene = new LoginScene();
-        //Scene scene = new Scene(loginScene);
-
-        //binding for the login scene to scale to the program window
-        loginScene.prefHeightProperty().bind(stage.heightProperty());
-        loginScene.prefWidthProperty().bind(stage.widthProperty());
 
         stage.setTitle("Water Distribution Utility Software");
         stage.setScene(SceneManager.getCurrentScene());
         stage.sizeToScene();
         stage.setMinHeight(300);
-        stage.setHeight(300);
         stage.setMinWidth(410);
-        stage.setWidth(410);
 
         DataStorage.loadData();
 

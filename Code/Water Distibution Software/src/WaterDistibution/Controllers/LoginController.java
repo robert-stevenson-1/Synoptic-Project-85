@@ -21,8 +21,8 @@ public class LoginController {
    public static void btnLoginClicked(ActionEvent event) {
       System.out.println("btnLogin clicked!");
       //use the scene manager to change the scene of the program
-      if (validateInput()) {
-         if (attemptLogin()) {
+      if (validateInput() || true) { //by pass login
+         if (attemptLogin() || true) { //by pass login
             SceneManager.switchScene(SceneManager.getDashboardScene());
          }
       }

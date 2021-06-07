@@ -120,13 +120,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -150,7 +152,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622969144098</updated>
-      <workItem from="1622969145321" duration="35774000" />
+      <workItem from="1622969145321" duration="35990000" />
+      <workItem from="1623072067100" duration="6374000" />
     </task>
     <servers />
   </component>
@@ -158,15 +161,6 @@
     <option name="version" value="3" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/WaterDistibution/DataStorage.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="hashPassword(password, user.getSalt())" language="JAVA" />
