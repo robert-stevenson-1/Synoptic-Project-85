@@ -18,6 +18,9 @@ import javafx.scene.layout.VBox;
 
 public class DashboardScene extends Pane {
 
+   private static final double PREF_WIDTH = 1280;
+   private static final double PREF_HEIGHT = 720;
+
    private VBox primaryBox = new VBox();
    private final Button btnLogout = new Button("Logout");
 
@@ -28,6 +31,14 @@ public class DashboardScene extends Pane {
    }
 
    private void setupLayout() {
+
+      //set the dashboards window size
+      this.setMinWidth(1024);
+      this.setMinHeight(576);
+      this.setPrefWidth(PREF_WIDTH);
+      this.setPrefHeight(PREF_HEIGHT);
+      this.setWidth(PREF_WIDTH);
+      this.setHeight(PREF_WIDTH);
 
       //set the parent primary Box that contains the components of the scene
       this.getChildren().add(primaryBox);

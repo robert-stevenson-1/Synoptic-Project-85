@@ -29,6 +29,8 @@ public class LoginController {
    }
    private static boolean validateInput(){
 
+      return true;
+      /*
       //password regex
       String passRegex = "^(?=.*[0-9])(?=.*[a-z])"+
                          "(?=.*[A-Z])"+
@@ -70,11 +72,12 @@ public class LoginController {
       //there is an error in the inputs
       new Alert(Alert.AlertType.ERROR, errorMsg).show();
       return false;
+       */
    }
 
    private static boolean attemptLogin(){
-
-      //get the login field values to check
+      return true;
+/*      //get the login field values to check
       String usernameValue = SceneManager.getLoginScene().getUsernameValue();
       String passwordValue = SceneManager.getLoginScene().getPasswordValue();
 
@@ -93,6 +96,7 @@ public class LoginController {
       }
       //login successfully
       return true;
+      */
    }
 
 
