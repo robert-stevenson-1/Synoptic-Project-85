@@ -21,16 +21,14 @@ public class LoginController {
    public static void btnLoginClicked(ActionEvent event) {
       System.out.println("btnLogin clicked!");
       //use the scene manager to change the scene of the program
-      if (validateInput()) {
-         if (attemptLogin()) {
+      if (validateInput() || true) { //by pass login
+         if (attemptLogin() || true) { //by pass login
             SceneManager.switchScene(SceneManager.getDashboardScene());
          }
       }
    }
    private static boolean validateInput(){
 
-      return true;
-      /*
       //password regex
       String passRegex = "^(?=.*[0-9])(?=.*[a-z])"+
                          "(?=.*[A-Z])"+
@@ -72,12 +70,11 @@ public class LoginController {
       //there is an error in the inputs
       new Alert(Alert.AlertType.ERROR, errorMsg).show();
       return false;
-       */
    }
 
    private static boolean attemptLogin(){
-      return true;
-/*      //get the login field values to check
+
+      //get the login field values to check
       String usernameValue = SceneManager.getLoginScene().getUsernameValue();
       String passwordValue = SceneManager.getLoginScene().getPasswordValue();
 
@@ -96,7 +93,6 @@ public class LoginController {
       }
       //login successfully
       return true;
-      */
    }
 
 
