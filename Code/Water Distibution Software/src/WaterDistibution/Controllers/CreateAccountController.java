@@ -1,6 +1,6 @@
 /**
  * Class: CreateAccountController
- * Author: Robert Stevenson
+ * Author:
  * Contributing Author(s):
  *
  * Date Created: 06/06/2021

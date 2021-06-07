@@ -37,7 +37,7 @@ public class LoginScene extends Pane {
    private Label lblPassword = new Label("Password: ");
    private TextField txtUsername = new TextField();
    private TextField txtPassword = new TextField();
-   private final Button btnLogin = new Button("Login");
+   private Button btnLogin = new Button("Login");
 
    public LoginScene() {
       setupLayout();
