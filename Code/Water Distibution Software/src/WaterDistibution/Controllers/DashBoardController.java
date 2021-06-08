@@ -21,6 +21,10 @@ public class DashBoardController {
       SceneManager.switchScene(SceneManager.getLoginScene());
       //TODO: User is not logged out in RAM
    }
+   public static void btnScheduleClicked(ActionEvent event) {
+      System.out.println("btnSchedule clicked!");
+      SceneManager.switchDashboardView(SceneManager.getDashboardSchedule());
+   }
 
    public static void btnViewUsageClicked(ActionEvent event) {
       System.out.println("btnViewUsage clicked!");

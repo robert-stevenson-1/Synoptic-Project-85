@@ -11,6 +11,7 @@
 package WaterDistibution;
 
 import WaterDistibution.Scenes.DashboardScene;
+import WaterDistibution.Scenes.DashboardView.Schedule.ViewSchedule;
 import WaterDistibution.Scenes.DashboardView.ViewOverview;
 import WaterDistibution.Scenes.DashboardView.ViewWaterUsage;
 import WaterDistibution.Scenes.LoginScene;
@@ -21,6 +22,7 @@ import javafx.scene.layout.Pane;
 public abstract class SceneManager {
 
    private static final ViewOverview DASHBOARD_OVERVIEW = new ViewOverview();
+   private static final ViewSchedule DASHBOARD_SCHEDULE = new ViewSchedule();
    private static final ViewWaterUsage DASHBOARD_VIEW_WATER_USAGE = new ViewWaterUsage();
 
    private static final LoginScene LOGIN_SCENE = new LoginScene();
@@ -47,6 +49,10 @@ public abstract class SceneManager {
 
    public static ViewWaterUsage getDashboardViewWaterUsage() {
       return DASHBOARD_VIEW_WATER_USAGE;
+   }
+
+   public static ViewSchedule getDashboardSchedule() {
+      return DASHBOARD_SCHEDULE;
    }
 
    public static void switchScene(Parent scene){

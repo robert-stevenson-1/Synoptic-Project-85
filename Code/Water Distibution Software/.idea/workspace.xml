@@ -10,6 +10,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -152,7 +153,7 @@
       <updated>1622969144098</updated>
       <workItem from="1622969145321" duration="35990000" />
       <workItem from="1623072067100" duration="6374000" />
-      <workItem from="1623145574999" duration="20782000" />
+      <workItem from="1623145574999" duration="30379000" />
     </task>
     <servers />
   </component>
@@ -160,11 +161,29 @@
     <option name="version" value="3" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/Schedule/ViewSchedule.java</url>
+          <line>70</line>
+          <properties class="WaterDistibution.Scenes.DashboardView.Schedule.ViewSchedule" method="setupEvents">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="hashPassword(password, user.getSalt())" language="JAVA" />
         <watch expression="vBoxSidePanel.getWidth()" language="JAVA" />
         <watch expression="SceneManager.getDashboardOverview()" />
+        <watch expression="grid.getChildren()" language="JAVA" />
+        <watch expression="tiles" />
+        <watch expression="tiles" language="JAVA" />
+        <watch expression="((ScheduleTile)grid.getChildren().get(2)).getWidth()" language="JAVA" />
+        <watch expression="((ScheduleTile)grid.getChildren().get(2)).getHeight()" language="JAVA" />
+        <watch expression="((ScheduleTile)grid.getChildren().get(2))" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
