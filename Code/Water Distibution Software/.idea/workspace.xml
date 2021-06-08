@@ -94,7 +94,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.41734862" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="DataStorage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -120,15 +120,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -154,6 +152,7 @@
       <updated>1622969144098</updated>
       <workItem from="1622969145321" duration="35990000" />
       <workItem from="1623072067100" duration="6374000" />
+      <workItem from="1623145574999" duration="16413000" />
     </task>
     <servers />
   </component>
@@ -164,6 +163,8 @@
     <watches-manager>
       <configuration name="Application">
         <watch expression="hashPassword(password, user.getSalt())" language="JAVA" />
+        <watch expression="vBoxSidePanel.getWidth()" language="JAVA" />
+        <watch expression="SceneManager.getDashboardOverview()" />
       </configuration>
     </watches-manager>
   </component>

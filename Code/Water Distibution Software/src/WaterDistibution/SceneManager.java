@@ -11,12 +11,17 @@
 package WaterDistibution;
 
 import WaterDistibution.Scenes.DashboardScene;
+import WaterDistibution.Scenes.DashboardView.ViewOverview;
+import WaterDistibution.Scenes.DashboardView.ViewWaterUsage;
 import WaterDistibution.Scenes.LoginScene;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
 public abstract class SceneManager {
+
+   private static final ViewOverview DASHBOARD_OVERVIEW = new ViewOverview();
+   private static final ViewWaterUsage DASHBOARD_VIEW_WATER_USAGE = new ViewWaterUsage();
 
    private static final LoginScene LOGIN_SCENE = new LoginScene();
    private static final DashboardScene DASHBOARD_SCENE = new DashboardScene();
@@ -32,8 +37,16 @@ public abstract class SceneManager {
       return LOGIN_SCENE;
    }
 
+   public static ViewOverview getDashboardOverview() {
+      return DASHBOARD_OVERVIEW;
+   }
+
    public static DashboardScene getDashboardScene() {
       return DASHBOARD_SCENE;
+   }
+
+   public static ViewWaterUsage getDashboardViewWaterUsage() {
+      return DASHBOARD_VIEW_WATER_USAGE;
    }
 
    public static void switchScene(Parent scene){
@@ -44,5 +57,10 @@ public abstract class SceneManager {
       currentScene.getWindow().centerOnScreen();
 
       System.out.println(currentScene.getWidth()  + " " + currentScene.getHeight());
+   }
+
+   public static void switchDashboardView(Pane view){
+      DASHBOARD_SCENE.getViewport().getChildren().clear();
+      DASHBOARD_SCENE.setViewportView(view);
    }
 }

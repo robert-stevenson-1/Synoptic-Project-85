@@ -16,6 +16,7 @@ package WaterDistibution.Scenes;
 
 
 import WaterDistibution.Controllers.LoginController;
+import WaterDistibution.ThemeConfig;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -67,6 +68,7 @@ public class LoginScene extends Pane {
 
       //setup the primary container box
       primaryBox.setAlignment(Pos.CENTER);
+      primaryBox.setStyle(ThemeConfig.PANEL_COLOUR_1);
 
       //setup the grid used to UI component alignment and positioning
       grid.setAlignment(Pos.CENTER);
@@ -100,6 +102,7 @@ public class LoginScene extends Pane {
       //setup the Login button
       btnLogin.setAlignment(Pos.CENTER);
       btnLogin.setMinSize(100,60);
+      btnLogin.setStyle(ThemeConfig.BUTTON_THEME + ThemeConfig.BORDER_COLOUR);
 
       //setup the HBox that will serve as the button bar on the window
       hBoxBtnBar.setAlignment(Pos.TOP_CENTER);
