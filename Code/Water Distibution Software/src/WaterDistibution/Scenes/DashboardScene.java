@@ -50,12 +50,14 @@ public class DashboardScene extends Pane {
 
    private void setupLayout() {
       //set the dashboards window size
-      this.setMinWidth(1024);
-      this.setMinHeight(576);
+      this.setMinWidth(960);
+      this.setMinHeight(540);
       this.setPrefWidth(PREF_WIDTH);
       this.setPrefHeight(PREF_HEIGHT);
       this.setWidth(PREF_WIDTH);
       this.setHeight(PREF_WIDTH);
+      this.setMaxWidth(1920);
+      this.setMaxHeight(1080);
 
       //set the parent primary Box that contains the components of the scene
       this.getChildren().add(primaryBox);
@@ -150,7 +152,6 @@ public class DashboardScene extends Pane {
 
       //setup dashboards view
       paneDashboardView.setStyle(ThemeConfig.PANEL_COLOUR_2);
-
 
       //add the UI components to the primary container box of the dashboard page
       primaryBox.setTop(hBoxHeader);

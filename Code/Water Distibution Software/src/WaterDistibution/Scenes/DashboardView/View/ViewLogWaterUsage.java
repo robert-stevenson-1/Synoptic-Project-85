@@ -16,22 +16,27 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
-public class ViewLogWaterUsage extends Pane {
+public class ViewLogWaterUsage extends StackPane {
 
    private BorderPane primaryBox = new BorderPane();
    private GridPane grid = new GridPane();
+   private HBox hBoxNamePreviewLayout = new HBox();
    private Label lblNamePreview = new Label("Log Name:");
    private TextField txtLogNamePreview = new TextField();
+   private HBox hBoxAreaLayout = new HBox();
    private Label lblArea = new Label("Distributed Area:");
    private ComboBox cmbArea = new ComboBox();
+   private HBox hBoxDateLayout = new HBox();
    private Label lblDate = new Label("Date:");
    private DatePicker datePickerLogDate = new DatePicker();
+   private HBox hBoxTimeLayout = new HBox();
    private Label lblTime = new Label("Time:");
    private TextField txtTimeInput = new TextField();
    private HBox hBoxUsageLayout = new HBox();
    private Label lblUsage = new Label("Water Usage:");
    private Label lblUsageUnit = new Label("L");
    private TextField txtUsage = new TextField();
+   private HBox hBoxSubmitLayout = new HBox();
    private Button btnSubmit = new Button("Submit Water Usage Log");
 
    public ViewLogWaterUsage() {
@@ -42,53 +47,101 @@ public class ViewLogWaterUsage extends Pane {
    private void setupLayout() {
       //set the parent primary Box that contains the components of the view
       this.getChildren().add(primaryBox);
+      //this.setPadding(new Insets(75));
+      /*      this.setPadding(new Insets(
+              (this.getHeight()*0.5),
+              (this.getWidth()*0.5),
+              (this.getWidth()*0.5),
+              (this.getHeight()*0.5)));*/
 
       //setup the primary containing box
       primaryBox.prefHeightProperty().bind(this.heightProperty());
       primaryBox.prefWidthProperty().bind(this.widthProperty());
-      primaryBox.setPadding(new Insets(15));
+      BorderPane.setAlignment(primaryBox, Pos.CENTER);
 
+      //setup name preview
+      GridPane.setFillHeight(hBoxNamePreviewLayout, true);
+      hBoxNamePreviewLayout.setAlignment(Pos.CENTER);
+      txtLogNamePreview.setEditable(false);
+      txtLogNamePreview.minWidthProperty().bind(hBoxNamePreviewLayout.prefWidthProperty());
+      txtLogNamePreview.minHeightProperty().bind(hBoxNamePreviewLayout.prefHeightProperty());
 
-      //bind the scaling of the grid to the primary parent node component
-      grid.prefHeightProperty().bind(primaryBox.heightProperty());
-      grid.prefWidthProperty().bind(primaryBox.widthProperty());
-      grid.maxHeightProperty().bind(primaryBox.maxHeightProperty());
-      grid.maxWidthProperty().bind(primaryBox.maxHeightProperty());
+      //setup Area selection
+      GridPane.setFillHeight(hBoxAreaLayout, true);
+      hBoxAreaLayout.setAlignment(Pos.CENTER);
+
+      //setup Date
+      GridPane.setFillHeight(hBoxDateLayout, true);
+      hBoxDateLayout.setAlignment(Pos.CENTER);
+
+      //setup Time
+      GridPane.setFillHeight(hBoxTimeLayout, true);
+      hBoxTimeLayout.setAlignment(Pos.CENTER);
+
+      //Setup usage
+      GridPane.setFillHeight(hBoxUsageLayout, true);
+      hBoxUsageLayout.setAlignment(Pos.CENTER);
 
       //setup the grid used to UI component alignment and positioning
       //set grid line visible (debugging only)
       ColumnConstraints cc = new ColumnConstraints();
       cc.setHgrow(Priority.ALWAYS);
       cc.setFillWidth(true);
+      cc.setMinWidth(250);
+      cc.setMaxWidth(400);
       RowConstraints rc = new RowConstraints();
       rc.setVgrow(Priority.ALWAYS);
       rc.setFillHeight(true);
-      grid.getColumnConstraints().addAll(cc,cc,cc, cc);
-      grid.getRowConstraints().addAll(rc,rc,rc,rc);
-      grid.setGridLinesVisible(true);
+      rc.setMinHeight(50);
+      rc.setMaxHeight(100);
+      grid.getColumnConstraints().addAll(cc,cc);
+      grid.getRowConstraints().addAll(rc,rc);
       grid.setAlignment(Pos.CENTER);
       grid.setVgap(10);
       grid.setHgap(10);
+      grid.setGridLinesVisible(true);
+
+      //bind the scaling of the grid to the primary parent node component
+      grid.minHeightProperty().bind(primaryBox.minHeightProperty());
+      grid.minWidthProperty().bind(primaryBox.minWidthProperty());
+      grid.prefHeightProperty().bind(primaryBox.heightProperty());
+      grid.prefWidthProperty().bind(primaryBox.widthProperty());
+      grid.maxHeightProperty().bind(primaryBox.maxHeightProperty());
+      grid.maxWidthProperty().bind(primaryBox.maxHeightProperty());
+
+      //setup Submit button
+      GridPane.setFillHeight(hBoxSubmitLayout, true);
+      hBoxSubmitLayout.setPadding(new Insets(15));
+      hBoxSubmitLayout.setAlignment(Pos.CENTER);
 
       //add the UI components to the primary container
       // box of the view
       primaryBox.setCenter(grid);
 
+      hBoxNamePreviewLayout.getChildren().add(lblNamePreview);
+      hBoxNamePreviewLayout.getChildren().add(txtLogNamePreview);
+
+      hBoxAreaLayout.getChildren().add(lblArea);
+      hBoxAreaLayout.getChildren().add(cmbArea);
+
+      hBoxDateLayout.getChildren().add(lblDate);
+      hBoxDateLayout.getChildren().add(datePickerLogDate);
+
+      hBoxTimeLayout.getChildren().add(lblTime);
+      hBoxTimeLayout.getChildren().add(txtTimeInput);
+
+      hBoxUsageLayout.getChildren().add(lblUsage);
       hBoxUsageLayout.getChildren().add(txtUsage);
       hBoxUsageLayout.getChildren().add(lblUsageUnit);
 
-      grid.add(lblNamePreview,0,0);
-      grid.add(txtLogNamePreview,1,0);
-      grid.add(lblArea,2,0);
-      grid.add(cmbArea,3,0);
-      grid.add(lblDate,0,1);
-      grid.add(datePickerLogDate,1,1);
-      grid.add(lblTime,2,1);
-      grid.add(txtTimeInput,3,1);
-      grid.add(lblUsage,0,2);
-      grid.add(hBoxUsageLayout,1,2);
-      grid.add(btnSubmit,1,3);
+      hBoxSubmitLayout.getChildren().add(btnSubmit);
 
+      grid.add(hBoxNamePreviewLayout,0,0);
+      grid.add(hBoxAreaLayout,1,0);
+      grid.add(hBoxDateLayout,0,1);
+      grid.add(hBoxTimeLayout,1,1);
+      grid.add(hBoxUsageLayout,0,2);
+      grid.add(hBoxSubmitLayout,1,3);
    }
 
    private void setupEvents() {

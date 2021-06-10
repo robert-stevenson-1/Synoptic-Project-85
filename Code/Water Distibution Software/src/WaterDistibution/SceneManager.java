@@ -19,6 +19,7 @@ import WaterDistibution.Scenes.LoginScene;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public abstract class SceneManager {
 
@@ -63,6 +64,10 @@ public abstract class SceneManager {
 
    public static void switchScene(Parent scene){
       currentScene.setRoot(scene);
+      ((Stage)currentScene.getWindow()).setMinWidth(((Pane)scene).getMinWidth());
+      ((Stage)currentScene.getWindow()).setMinHeight(((Pane)scene).getMinHeight());
+      ((Stage)currentScene.getWindow()).setMaxWidth(((Pane)scene).getMaxWidth());
+      ((Stage)currentScene.getWindow()).setMaxHeight(((Pane)scene).getMaxHeight());
       currentScene.getWindow().setWidth(((Pane)scene).getPrefWidth());
       currentScene.getWindow().setHeight(((Pane)scene).getPrefHeight());
       currentScene.getWindow().sizeToScene();
