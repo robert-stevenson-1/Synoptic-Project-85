@@ -1,4 +1,4 @@
-package WaterDistibution.Scenes.DashboardView;
+package WaterDistibution.Scenes.DashboardView.View;
 
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;

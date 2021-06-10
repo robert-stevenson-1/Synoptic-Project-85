@@ -11,9 +11,10 @@
 package WaterDistibution;
 
 import WaterDistibution.Scenes.DashboardScene;
-import WaterDistibution.Scenes.DashboardView.Schedule.ViewSchedule;
-import WaterDistibution.Scenes.DashboardView.ViewOverview;
-import WaterDistibution.Scenes.DashboardView.ViewWaterUsage;
+import WaterDistibution.Scenes.DashboardView.View.Schedule.ViewSchedule;
+import WaterDistibution.Scenes.DashboardView.View.ViewLogWaterUsage;
+import WaterDistibution.Scenes.DashboardView.View.ViewOverview;
+import WaterDistibution.Scenes.DashboardView.View.ViewViewWaterUsage;
 import WaterDistibution.Scenes.LoginScene;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,7 +24,8 @@ public abstract class SceneManager {
 
    private static final ViewOverview DASHBOARD_OVERVIEW = new ViewOverview();
    private static final ViewSchedule DASHBOARD_SCHEDULE = new ViewSchedule();
-   private static final ViewWaterUsage DASHBOARD_VIEW_WATER_USAGE = new ViewWaterUsage();
+   private static final ViewViewWaterUsage DASHBOARD_VIEW_VIEW_WATER_USAGE = new ViewViewWaterUsage();
+   private static final ViewLogWaterUsage DASHBOARD_VIEW_LOG_WATER_USAGE = new ViewLogWaterUsage();
 
    private static final LoginScene LOGIN_SCENE = new LoginScene();
    private static final DashboardScene DASHBOARD_SCENE = new DashboardScene();
@@ -47,8 +49,12 @@ public abstract class SceneManager {
       return DASHBOARD_SCENE;
    }
 
-   public static ViewWaterUsage getDashboardViewWaterUsage() {
-      return DASHBOARD_VIEW_WATER_USAGE;
+   public static ViewLogWaterUsage getDashboardViewLogWaterUsage() {
+      return DASHBOARD_VIEW_LOG_WATER_USAGE;
+   }
+
+   public static ViewViewWaterUsage getDashboardViewViewWaterUsage() {
+      return DASHBOARD_VIEW_VIEW_WATER_USAGE;
    }
 
    public static ViewSchedule getDashboardSchedule() {

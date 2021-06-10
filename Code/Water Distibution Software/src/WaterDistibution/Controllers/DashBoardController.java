@@ -26,9 +26,14 @@ public class DashBoardController {
       SceneManager.switchDashboardView(SceneManager.getDashboardSchedule());
    }
 
+   public static void btnLogUsageClicked(ActionEvent event) {
+      System.out.println("btnLogUsage clicked!");
+      SceneManager.switchDashboardView(SceneManager.getDashboardViewLogWaterUsage());
+   }
+
    public static void btnViewUsageClicked(ActionEvent event) {
       System.out.println("btnViewUsage clicked!");
-      SceneManager.switchDashboardView(SceneManager.getDashboardViewWaterUsage());
+      SceneManager.switchDashboardView(SceneManager.getDashboardViewViewWaterUsage());
    }
 
    public static void btnOverviewClicked(ActionEvent event) {

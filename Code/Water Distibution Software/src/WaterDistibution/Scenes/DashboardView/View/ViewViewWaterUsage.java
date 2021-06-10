@@ -1,10 +1,10 @@
-package WaterDistibution.Scenes.DashboardView;
+package WaterDistibution.Scenes.DashboardView.View;
 
 import javafx.scene.layout.Pane;
 
-public class ViewWaterUsage extends Pane {
+public class ViewViewWaterUsage extends Pane {
 
-   public ViewWaterUsage() {
+   public ViewViewWaterUsage() {
       setupLayout();
       setupEvents();
    }

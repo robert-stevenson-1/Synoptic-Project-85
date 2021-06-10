@@ -172,6 +172,7 @@ public class DashboardScene extends Pane {
    private void setupEvents() {
       btnOverview.setOnAction(DashBoardController::btnOverviewClicked);
       btnSchedule.setOnAction(DashBoardController::btnScheduleClicked);
+      btnLogUsage.setOnAction(DashBoardController::btnLogUsageClicked);
       btnViewUsage.setOnAction(DashBoardController::btnViewUsageClicked);
       btnLogout.setOnAction(DashBoardController::btnLogoutClicked);
    }

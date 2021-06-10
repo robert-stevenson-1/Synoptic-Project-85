@@ -1,17 +1,24 @@
-package WaterDistibution.Scenes.DashboardView.Schedule;
+/**
+ * Class: ScheduleTile
+ * Author: Robert Stevenson
+ * Contributing Author(s):
+ *
+ * Date Created: 09/06/2021
+ *
+ * Description:
+ *
+ */
+package WaterDistibution.Scenes.DashboardView.View.Schedule;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
