@@ -14,4 +14,19 @@ import javafx.scene.layout.Pane;
 
 public class CreateAccountScene extends Pane {
 
+
+   public CreateAccountScene() {
+      setupLayout();
+      setupEvents();
+   }
+
+   private void setupLayout() {
+
+   }
+
+   private void setupEvents() {
+      
+   }
+
+
 }
