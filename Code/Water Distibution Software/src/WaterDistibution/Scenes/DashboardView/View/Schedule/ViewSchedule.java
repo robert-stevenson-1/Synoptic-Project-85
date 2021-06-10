@@ -23,14 +23,10 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 
-public class ViewSchedule extends Pane {
+public class ViewSchedule extends Pane{
 
    private static final double GRID_X_GAP = 10;
    private static final double GRID_Y_GAP = 10;
-
-//   //calendar variable to get the systems date and time
-//   // information used for setting up the schedule display
-//   private Calendar calendar = Calendar.getInstance();
 
    private Month curMonth = Month.of(LocalDate.now().getMonthValue());
    private ArrayList<ScheduleTile> tiles = new ArrayList<>();

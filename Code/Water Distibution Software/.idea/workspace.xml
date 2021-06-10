@@ -12,6 +12,7 @@
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -121,6 +122,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.DataStorage" />
@@ -156,25 +168,40 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/Schedule/ViewSchedule.java</url>
-          <line>89</line>
+          <line>85</line>
           <properties class="WaterDistibution.Scenes.DashboardView.View.Schedule.ViewSchedule">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/Controller/ViewLogWaterUsageController.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/ViewLogWaterUsage.java</url>
+          <line>128</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/ViewLogWaterUsage.java</url>
+          <line>130</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/WaterDistibution/DataStorage.java</url>
+          <line>107</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="hashPassword(password, user.getSalt())" language="JAVA" />
-        <watch expression="vBoxSidePanel.getWidth()" language="JAVA" />
-        <watch expression="SceneManager.getDashboardOverview()" />
         <watch expression="grid.getChildren()" language="JAVA" />
-        <watch expression="tiles" />
-        <watch expression="tiles" language="JAVA" />
-        <watch expression="((ScheduleTile)grid.getChildren().get(2)).getWidth()" language="JAVA" />
-        <watch expression="((ScheduleTile)grid.getChildren().get(2)).getHeight()" language="JAVA" />
-        <watch expression="((ScheduleTile)grid.getChildren().get(2))" language="JAVA" />
+        <watch expression="SceneManager.getDashboardViewLogWaterUsage().getCmbArea()" language="JAVA" />
+        <watch expression="DataStorage.getDistributionAreas()" language="JAVA" />
+        <watch expression="DataStorage.getWaterUsageLogs()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
