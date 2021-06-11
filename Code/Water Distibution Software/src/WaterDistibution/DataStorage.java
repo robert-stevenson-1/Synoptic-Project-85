@@ -12,6 +12,7 @@ package WaterDistibution;
 
 import WaterDistibution.Exceptions.InvalidPasswordException;
 import WaterDistibution.Exceptions.NoSuchUsernameExists;
+import WaterDistibution.Model.LogUsage;
 import WaterDistibution.Model.User;
 
 import java.io.*;
@@ -19,6 +20,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
 
@@ -28,6 +30,12 @@ public abstract class DataStorage implements Serializable {
    //user is currently logged into the system
    private static User CurrentUser = new User();
 
+   //Water usage logs
+   private static ArrayList<LogUsage> waterUsageLogs = new ArrayList<>();
+
+   //Distribution areas
+   private static ArrayList<String> distributionAreas = new ArrayList<>();
+
    //-------------
    //---SETTERS---
    //-------------
@@ -36,9 +44,22 @@ public abstract class DataStorage implements Serializable {
       CurrentUser = currentUser;
    }
 
+   public static void addWaterUsageLogs(LogUsage waterUsageLog) {
+      DataStorage.waterUsageLogs.add(waterUsageLog);
+   }
+
+   public static void addDistributionArea(String distributionArea) {
+      DataStorage.distributionAreas.add(distributionArea);
+   }
+
    //-------------
    //---GETTERS---
    //-------------
+
+
+   public static ArrayList<String> getDistributionAreas() {
+      return distributionAreas;
+   }
 
    public static boolean userExists(String username){
       return users.containsKey(username);
@@ -61,6 +82,10 @@ public abstract class DataStorage implements Serializable {
       }
    }
 
+   public static ArrayList<LogUsage> getWaterUsageLogs() {
+      return waterUsageLogs;
+   }
+
    //get the current logged in user
    public static User getCurrentUser() {
       return CurrentUser;
@@ -70,8 +95,17 @@ public abstract class DataStorage implements Serializable {
    //--UTILITY--
    //-----------
 
+   public static void saveData(){
+      saveUsers();
+      saveWaterUsageLogs();
+      saveDistributionAreas();
+   }
+
    public static void loadData(){
+
       loadUsers();
+      loadWaterUsageLogs();
+      loadDistributionAreas();
    }
 
    /**
@@ -94,6 +128,39 @@ public abstract class DataStorage implements Serializable {
       }
    }
 
+   public static boolean saveWaterUsageLogs(){
+      try{
+         //output file location
+         FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir")+"/data/WaterUsageLogs.ser");
+         //write the user hashmap
+         ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+         objOut.writeObject(waterUsageLogs);
+         objOut.close();
+         return true;
+      } catch (IOException e){
+         e.printStackTrace();
+         System.out.println("Failed to serialize WaterUsageLogs");
+         return false;
+      }
+   }
+
+   public static boolean saveDistributionAreas(){
+      try{
+         //output file location
+         FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir")+"/data/DistributionAreas.ser");
+         //write the user hashmap
+         ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+         objOut.writeObject(distributionAreas);
+         objOut.close();
+         return true;
+      } catch (IOException e){
+         e.printStackTrace();
+         System.out.println("Failed to serialize DistributionAreas");
+         return false;
+      }
+   }
+
+
    public static boolean loadUsers(){
       try {
          FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir")+"/data/users.ser");
@@ -108,6 +175,44 @@ public abstract class DataStorage implements Serializable {
          return false;
       } catch (ClassNotFoundException e) {
          System.out.println("Class HashMap<String,User> users not found");
+         e.printStackTrace();
+         return false;
+      }
+   }
+
+   public static boolean loadWaterUsageLogs(){
+      try {
+         FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir")+"/data/WaterUsageLogs.ser");
+         ObjectInputStream in = new ObjectInputStream(fileIn);
+         waterUsageLogs = (ArrayList<LogUsage>) in.readObject();
+         in.close();
+         fileIn.close();
+         return true;
+      } catch (IOException e) {
+         e.printStackTrace();
+         System.out.println("Failed to load WaterUsageLogs");
+         return false;
+      } catch (ClassNotFoundException e) {
+         System.out.println("Class ArrayList<LogUsage> waterUsageLogs not found");
+         e.printStackTrace();
+         return false;
+      }
+   }
+
+   public static boolean loadDistributionAreas(){
+      try {
+         FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir")+"/data/DistributionAreas.ser");
+         ObjectInputStream in = new ObjectInputStream(fileIn);
+         distributionAreas = (ArrayList<String>) in.readObject();
+         in.close();
+         fileIn.close();
+         return true;
+      } catch (IOException e) {
+         e.printStackTrace();
+         System.out.println("Failed to load DistributionAreas");
+         return false;
+      } catch (ClassNotFoundException e) {
+         System.out.println("Class ArrayList<String> distributionAreas not found");
          e.printStackTrace();
          return false;
       }

@@ -13,12 +13,16 @@ package WaterDistibution;
 
 import WaterDistibution.Scenes.LoginScene;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+
+        DataStorage.loadData();
 
         stage.setTitle("Water Distribution Utility Software");
         stage.setScene(SceneManager.getCurrentScene());
@@ -26,7 +30,12 @@ public class Main extends Application {
         stage.setMinHeight(300);
         stage.setMinWidth(410);
 
-        DataStorage.loadData();
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                DataStorage.saveData();
+            }
+        });
 
         stage.show();
     }

@@ -10,6 +10,8 @@
  */
 package WaterDistibution.Scenes.DashboardView.View;
 
+import WaterDistibution.DataStorage;
+import WaterDistibution.Scenes.DashboardView.Controller.ViewLogWaterUsageController;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -31,7 +33,8 @@ public class ViewLogWaterUsage extends StackPane {
    private DatePicker datePickerLogDate = new DatePicker();
    private HBox hBoxTimeLayout = new HBox();
    private Label lblTime = new Label("Time:");
-   private TextField txtTimeInput = new TextField();
+   private TextField txtTimeHour = new TextField();
+   private TextField txtTimeMinute = new TextField();
    private HBox hBoxUsageLayout = new HBox();
    private Label lblUsage = new Label("Water Usage:");
    private Label lblUsageUnit = new Label("L");
@@ -123,12 +126,16 @@ public class ViewLogWaterUsage extends StackPane {
 
       hBoxAreaLayout.getChildren().add(lblArea);
       hBoxAreaLayout.getChildren().add(cmbArea);
+      cmbArea.getItems().addAll(DataStorage.getDistributionAreas());
 
       hBoxDateLayout.getChildren().add(lblDate);
       hBoxDateLayout.getChildren().add(datePickerLogDate);
 
       hBoxTimeLayout.getChildren().add(lblTime);
-      hBoxTimeLayout.getChildren().add(txtTimeInput);
+      hBoxTimeLayout.getChildren().add(txtTimeHour);
+      hBoxTimeLayout.getChildren().add(new Label(" : "));
+      hBoxTimeLayout.getChildren().add(txtTimeMinute);
+
 
       hBoxUsageLayout.getChildren().add(lblUsage);
       hBoxUsageLayout.getChildren().add(txtUsage);
@@ -145,5 +152,26 @@ public class ViewLogWaterUsage extends StackPane {
    }
 
    private void setupEvents() {
+      btnSubmit.setOnAction(ViewLogWaterUsageController::btnSubmitClicked);
+   }
+
+   public ComboBox getCmbArea() {
+      return cmbArea;
+   }
+
+   public DatePicker getDatePickerLogDate() {
+      return datePickerLogDate;
+   }
+
+   public TextField getTxtTimeHour() {
+      return txtTimeHour;
+   }
+
+   public TextField getTxtTimeMinute() {
+      return txtTimeMinute;
+   }
+
+   public TextField getTxtUsage() {
+      return txtUsage;
    }
 }

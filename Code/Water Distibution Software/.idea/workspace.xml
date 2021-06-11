@@ -11,6 +11,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -121,6 +122,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.DataStorage" />
@@ -145,6 +159,7 @@
       <workItem from="1623145574999" duration="30572000" />
       <workItem from="1623233090362" duration="12125000" />
       <workItem from="1623310414356" duration="597000" />
+      <workItem from="1623405051288" duration="8471000" />
     </task>
     <servers />
   </component>
@@ -156,7 +171,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/Schedule/ViewSchedule.java</url>
-          <line>89</line>
+          <line>88</line>
           <properties class="WaterDistibution.Scenes.DashboardView.View.Schedule.ViewSchedule">
             <option name="EMULATED" value="true" />
           </properties>
@@ -166,15 +181,10 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="hashPassword(password, user.getSalt())" language="JAVA" />
-        <watch expression="vBoxSidePanel.getWidth()" language="JAVA" />
-        <watch expression="SceneManager.getDashboardOverview()" />
         <watch expression="grid.getChildren()" language="JAVA" />
-        <watch expression="tiles" />
-        <watch expression="tiles" language="JAVA" />
-        <watch expression="((ScheduleTile)grid.getChildren().get(2)).getWidth()" language="JAVA" />
-        <watch expression="((ScheduleTile)grid.getChildren().get(2)).getHeight()" language="JAVA" />
-        <watch expression="((ScheduleTile)grid.getChildren().get(2))" language="JAVA" />
+        <watch expression="SceneManager.getDashboardViewLogWaterUsage().getCmbArea()" language="JAVA" />
+        <watch expression="DataStorage.getDistributionAreas()" language="JAVA" />
+        <watch expression="DataStorage.getWaterUsageLogs()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
