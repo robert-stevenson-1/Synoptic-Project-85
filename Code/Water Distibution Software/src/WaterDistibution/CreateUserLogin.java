@@ -23,9 +23,14 @@ public class CreateUserLogin extends Pane{
     private VBox primaryBox = new VBox();
     private HBox hBoxBtnBar = new HBox();
     private GridPane grid = new GridPane();
-    private Label lblTitle = new Label("Create Account");
+    private Label lblTitle = new Label("Water Distribution: Create Account");
     private Label lblFirstName = new Label("First Name");
     private Label lblLastName = new Label ("Last Name");
+    private Label lblDOB = new Label("Date of Birth");
+    private Label lblGender = new Label("Gender");
+    private Label lblEmail = new Label("Email Address");
+    private Label lblAddress = new Label("Address");
+
 
 }
 
