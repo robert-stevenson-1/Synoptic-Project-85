@@ -12,10 +12,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 import java.awt.geom.Area;
+import java.time.LocalDate;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
+import java.util.*;
 
 public class ViewViewWaterUsage extends Pane implements Update {
 
@@ -30,10 +29,10 @@ public class ViewViewWaterUsage extends Pane implements Update {
    private CategoryAxis xAxis = new CategoryAxis();
    private NumberAxis yAxis = new NumberAxis();
    private LineChart<String, Number> graph = new LineChart<>(xAxis, yAxis);
-   private XYChart.Series series  = new XYChart.Series();
+   private XYChart.Series series  = new XYChart.Series<String, Number>();
 
-   private String strMonth = "Month";
-   private String strArea = "Area";
+   private int intMonth = LocalDate.now().getMonthValue();
+   private String strMonth = Month.of(intMonth).toString();
 
    public ViewViewWaterUsage() {
       setupLayout();
@@ -51,11 +50,13 @@ public class ViewViewWaterUsage extends Pane implements Update {
       header.setPadding(new Insets(5));
 
       //setup the line chart (graph)
-      graph.setTitle("Water usage, " + strArea + ", " + strMonth);
+
+      graph.setTitle("Water usage, " + strMonth);
+      graph.prefHeightProperty().bind(primaryBox.heightProperty());
+      graph.prefWidthProperty().bind(primaryBox.widthProperty());
 
       //setup graph data
-      loadGraphData(DataStorage.getWaterUsageLogs());
-      graph.getData().add(series);
+      loadGraphData(DataStorage.getWaterUsageLogs(), strMonth);
 
       //add the UI components to the view
       primaryBox.setTop(header);
@@ -77,10 +78,15 @@ public class ViewViewWaterUsage extends Pane implements Update {
 
    }
 
-   private void loadGraphData(ArrayList<LogUsage> data){
+   private void loadGraphData(ArrayList<LogUsage> data, String month){
       data.sort(Comparator.comparing(LogUsage::getDate));
       for (LogUsage l: data) {
-         series.getData().add(new XYChart.Data<>(l.getDate(), l.getWaterUsaged()));
+         System.out.println("Log month: " + l.getDate().getMonth().getValue() +
+                 "String Month value: "+Month.valueOf(month).getValue());
+         if (l.getDate().getMonth().getValue() == Month.valueOf(month).getValue()){
+            series.getData().add(new XYChart.Data<>(l.getDate().toString(), l.getWaterUsaged()));
+         }
       }
+      graph.getData().add(series);
    }
 }
