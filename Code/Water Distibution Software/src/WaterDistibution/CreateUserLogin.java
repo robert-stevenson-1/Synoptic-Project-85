@@ -14,6 +14,7 @@ import WaterDistibution.ThemeConfig;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 
 public class CreateUserLogin extends Pane{
@@ -30,7 +31,13 @@ public class CreateUserLogin extends Pane{
     private Label lblGender = new Label("Gender");
     private Label lblEmail = new Label("Email Address");
     private Label lblAddress = new Label("Address");
-
+    private TextField firstName = new TextField();
+    private TextField lastName = new TextField();
+    private TextField DOB = new TextField();
+    private TextField Gender = new TextField();
+    private TextField Email = new TextField();
+    private TextField Address = new TextField();
+    private Button butSubmit = new Button ("Submit");
 
 }
 
