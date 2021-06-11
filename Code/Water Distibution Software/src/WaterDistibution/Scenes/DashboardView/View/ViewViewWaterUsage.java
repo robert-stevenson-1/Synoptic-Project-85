@@ -1,7 +1,18 @@
+/**
+ * Class: ViewViewWaterUsage
+ * Author: Robert Stevenson
+ * Contributing Author(s):
+ *
+ * Date Created: 10/06/2021
+ *
+ * Description:
+ *
+ */
 package WaterDistibution.Scenes.DashboardView.View;
 
 import WaterDistibution.DataStorage;
 import WaterDistibution.Model.LogUsage;
+import WaterDistibution.Scenes.DashboardView.Controller.ViewViewWaterUsageController;
 import WaterDistibution.Update;
 import javafx.geometry.Insets;
 import javafx.scene.chart.*;
@@ -50,7 +61,7 @@ public class ViewViewWaterUsage extends Pane implements Update {
       header.setPadding(new Insets(5));
 
       //setup the line chart (graph)
-
+      graph.setAnimated(false);
       graph.setTitle("Water usage, " + strMonth);
       graph.prefHeightProperty().bind(primaryBox.heightProperty());
       graph.prefWidthProperty().bind(primaryBox.widthProperty());
@@ -69,21 +80,52 @@ public class ViewViewWaterUsage extends Pane implements Update {
    }
 
    private void setupEvents() {
-
+      btnPrevMonth.setOnAction(ViewViewWaterUsageController::btnPrevMonthClicked);
+      btnNextMonth.setOnAction(ViewViewWaterUsageController::btnNextMonthClicked);
    }
-
 
    @Override
    public void update() {
+      graph.setTitle("Water usage, " + strMonth);
+      loadGraphData(DataStorage.getWaterUsageLogs(), strMonth);
+   }
 
+   public void incrementMonth(){
+      //increase month
+      intMonth++;
+      //check to see if month is put out of bounds
+      if (intMonth>12){
+         intMonth = 1;
+      }
+      //get month string value
+      strMonth = Month.of(intMonth).toString();
+   }
+
+   public void decrementMonth(){
+      //decrease month
+      intMonth--;
+      //check to see if month is put out of bounds
+      if (intMonth<1){
+         intMonth = 12;
+      }
+      //get month string value
+      strMonth = Month.of(intMonth).toString();
    }
 
    private void loadGraphData(ArrayList<LogUsage> data, String month){
+      //reset graph
+      graph.getData().clear();
+      //reset graph data series
+      series.getData().clear();
+      series.setName("Example Series");
+
       data.sort(Comparator.comparing(LogUsage::getDate));
       for (LogUsage l: data) {
          System.out.println("Log month: " + l.getDate().getMonth().getValue() +
                  "String Month value: "+Month.valueOf(month).getValue());
+         //only load logs for the month selected to view
          if (l.getDate().getMonth().getValue() == Month.valueOf(month).getValue()){
+            //add the log to the graph series
             series.getData().add(new XYChart.Data<>(l.getDate().toString(), l.getWaterUsaged()));
          }
       }
