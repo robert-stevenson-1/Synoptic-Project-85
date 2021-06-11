@@ -23,6 +23,8 @@ public class Schedule {
     private int month;
     private int year;
 
+    //Constructor attempts to find a serialised file with the correct username, month and year. If one is not available
+    // it creates a new task list
     public Schedule(String username, int month, int year){
         this.username=username;
         this.month=month;
@@ -44,6 +46,7 @@ public class Schedule {
         }
     }
 
+    //Saves the ArrayList so it can be accessed again by any new Schedule object on the next run
     public void saveSchedule(){
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(System.getProperty("user.dir")+
@@ -68,8 +71,23 @@ public class Schedule {
         schedule.add(task);
     }
 
+    //Remove task functions
     public void removeTask(Task task){
         schedule.remove(task);
+    }
+
+    //Gets a list of tasks corresponding in values to the ones passed in
+    public ArrayList<Task> getTasks(int day, int hour){
+        ArrayList<Task> tasksToReturn = new ArrayList<>();
+        for(int i=0;i<schedule.size();i++){
+            if(schedule.get(i).getDay()==day && (hour==-1 || schedule.get(i).getHour()==hour)){
+                tasksToReturn.add(schedule.get(i));
+            }
+        }
+        return tasksToReturn;
+    }
+    public ArrayList<Task> getTasks(int day){
+        return getTasks(day,-1);
     }
 
     public String toString(){

@@ -35,6 +35,20 @@ public class Task implements Serializable {
         this.isComplete=isComplete;
     }
 
+    //Accessor methods
+    public int getDay(){return day;}
+    public int getHour(){return hour;}
+    public int getMinute(){return minute;}
+    public JobType getJobType(){return jobType;}
+    public boolean getIsLogged(){return isLogged;}
+    public boolean getIsComplete(){return isComplete;}
+    public void setDay(int day){this.day=day;}
+    public void setHour(int hour){this.hour=hour;}
+    public void setMinute(int minute){this.minute = minute;}
+    public void setJobType(JobType jobType){this.jobType = jobType;}
+    public void setIsLogged(boolean isLogged){this.isLogged = isLogged;}
+    public void setIsComplete(boolean isComplete){this.isComplete = isComplete;}
+
     public String toString(){
         return day+"\t"+hour+"\t"+minute+"\t"+jobType+"\t"+isLogged+"\t"+isComplete+"\n";
     }
