@@ -166,15 +166,11 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="hashPassword(password, user.getSalt())" language="JAVA" />
-        <watch expression="vBoxSidePanel.getWidth()" language="JAVA" />
-        <watch expression="SceneManager.getDashboardOverview()" />
         <watch expression="grid.getChildren()" language="JAVA" />
-        <watch expression="tiles" />
-        <watch expression="tiles" language="JAVA" />
-        <watch expression="((ScheduleTile)grid.getChildren().get(2)).getWidth()" language="JAVA" />
-        <watch expression="((ScheduleTile)grid.getChildren().get(2)).getHeight()" language="JAVA" />
-        <watch expression="((ScheduleTile)grid.getChildren().get(2))" language="JAVA" />
+        <watch expression="SceneManager.getDashboardViewLogWaterUsage().getCmbArea()" language="JAVA" />
+        <watch expression="DataStorage.getDistributionAreas()" language="JAVA" />
+        <watch expression="DataStorage.getWaterUsageLogs()" language="JAVA" />
+        <watch expression="schedule" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
