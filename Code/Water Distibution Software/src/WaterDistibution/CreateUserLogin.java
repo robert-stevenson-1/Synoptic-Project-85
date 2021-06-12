@@ -51,6 +51,7 @@ public class CreateUserLogin extends Pane{
         this.setHeight(PREF_HEIGHT);
         this.setWidth(PREF_WIDTH);
 
+
     }
 
 }
