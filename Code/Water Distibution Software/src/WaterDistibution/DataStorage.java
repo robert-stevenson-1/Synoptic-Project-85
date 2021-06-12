@@ -219,15 +219,16 @@ public abstract class DataStorage implements Serializable {
       }
    }
 
-   public static void loadSchedule(Schedule schedule, int month, int year){
+   public static Schedule loadSchedule(int month, int year){
       try{
-         schedule = new Schedule();
+         Schedule schedule;
          FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir")+
                  "/data/users/"+currentUser.getUsername()+"/Schedule_"+currentUser.getUsername()+"_"+month+"_"+year+".ser");
          ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
          schedule = (Schedule) objectInputStream.readObject();
          objectInputStream.close();
          fileInputStream.close();
+         return schedule;
       }
       //if this schedule hasn't been made before
       catch(FileNotFoundException e){
@@ -236,6 +237,7 @@ public abstract class DataStorage implements Serializable {
       } catch (IOException | ClassNotFoundException e) {
          e.printStackTrace();
       }
+      return null;
    }
 
    /**

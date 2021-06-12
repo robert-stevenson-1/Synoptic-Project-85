@@ -116,7 +116,7 @@ public class ViewSchedule extends Pane implements Update {
          DataStorage.saveSchedule(schedule);
       }
       //load the schedule for the user for the current month and year
-      DataStorage.loadSchedule(schedule, intMonth, intYear);
+      schedule = DataStorage.loadSchedule(intMonth, intYear);
       //if no schedule is loaded the create a blank schedule
       if (schedule == null){
          try {
@@ -171,11 +171,6 @@ public class ViewSchedule extends Pane implements Update {
       int day = 1;
       int row = 0;
 
-/*      grid.add(new ScheduleTile(1),0,0);
-      grid.add(new ScheduleTile(2),0,1);
-      grid.add(new ScheduleTile(3),1,0);
-      grid.add(new ScheduleTile(4),1,1);*/
-
       //loop for however many days are in the current month
       while (day <= month.length(LocalDate.now().isLeapYear())){
          //every 7 days (a week) is one row
@@ -183,8 +178,6 @@ public class ViewSchedule extends Pane implements Update {
             //get the schedule data and display the tasks in the tile
             ScheduleTile tile = new ScheduleTile(day);
             tile.addTasks(schedule.getTasks(day));
-            //random example data:
-            //ScheduleTile tile = new ScheduleTile(day);
             tiles.add(tile);
             grid.add(tile,i, row);
             day++;

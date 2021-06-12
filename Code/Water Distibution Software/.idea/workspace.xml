@@ -169,9 +169,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/Schedule/ViewSchedule.java</url>
-          <line>111</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/Controller/ViewScheduleController.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
