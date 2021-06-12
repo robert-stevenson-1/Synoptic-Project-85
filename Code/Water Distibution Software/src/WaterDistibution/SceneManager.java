@@ -73,11 +73,18 @@ public abstract class SceneManager {
       currentScene.getWindow().sizeToScene();
       currentScene.getWindow().centerOnScreen();
 
+      if (currentScene instanceof Update){
+         ((Update) currentScene).update();
+      }
+
       System.out.println(currentScene.getWidth()  + " " + currentScene.getHeight());
    }
 
    public static void switchDashboardView(Pane view){
       DASHBOARD_SCENE.getViewport().getChildren().clear();
       DASHBOARD_SCENE.setViewportView(view);
+      if (view instanceof Update){
+         ((Update) view).update();
+      }
    }
 }

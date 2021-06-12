@@ -14,6 +14,7 @@ import WaterDistibution.Exceptions.InvalidPasswordException;
 import WaterDistibution.Exceptions.NoSuchUsernameExists;
 import WaterDistibution.Model.LogUsage;
 import WaterDistibution.Model.User;
+import WaterDistibution.ScheduleStorage.Schedule;
 
 import java.io.*;
 import java.security.MessageDigest;
@@ -22,13 +23,12 @@ import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Hashtable;
 
 public abstract class DataStorage implements Serializable {
 
    private static HashMap<String, User> users = new HashMap<>();
    //user is currently logged into the system
-   private static User CurrentUser = new User();
+   private static User currentUser = new User();
 
    //Water usage logs
    private static ArrayList<LogUsage> waterUsageLogs = new ArrayList<>();
@@ -41,7 +41,7 @@ public abstract class DataStorage implements Serializable {
    //-------------
 
    public static void setCurrentUser(User currentUser) {
-      CurrentUser = currentUser;
+      DataStorage.currentUser = currentUser;
    }
 
    public static void addWaterUsageLogs(LogUsage waterUsageLog) {
@@ -88,7 +88,7 @@ public abstract class DataStorage implements Serializable {
 
    //get the current logged in user
    public static User getCurrentUser() {
-      return CurrentUser;
+      return currentUser;
    }
 
    //-----------
@@ -110,9 +110,8 @@ public abstract class DataStorage implements Serializable {
 
    /**
     * Saves the programs users into a serializable file.
-    * @return return true on success, false on failure to save.
     */
-   public static boolean saveUsers(){
+   public static void saveUsers(){
       try{
          //output file location
          FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir")+"/data/users.ser");
@@ -120,15 +119,13 @@ public abstract class DataStorage implements Serializable {
          ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
          objOut.writeObject(users);
          objOut.close();
-         return true;
       } catch (IOException e){
          e.printStackTrace();
          System.out.println("Failed to serialize users");
-         return false;
       }
    }
 
-   public static boolean saveWaterUsageLogs(){
+   public static void saveWaterUsageLogs(){
       try{
          //output file location
          FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir")+"/data/WaterUsageLogs.ser");
@@ -136,15 +133,13 @@ public abstract class DataStorage implements Serializable {
          ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
          objOut.writeObject(waterUsageLogs);
          objOut.close();
-         return true;
       } catch (IOException e){
          e.printStackTrace();
          System.out.println("Failed to serialize WaterUsageLogs");
-         return false;
       }
    }
 
-   public static boolean saveDistributionAreas(){
+   public static void saveDistributionAreas(){
       try{
          //output file location
          FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir")+"/data/DistributionAreas.ser");
@@ -152,69 +147,94 @@ public abstract class DataStorage implements Serializable {
          ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
          objOut.writeObject(distributionAreas);
          objOut.close();
-         return true;
       } catch (IOException e){
          e.printStackTrace();
          System.out.println("Failed to serialize DistributionAreas");
-         return false;
       }
    }
 
+   //Saves the ArrayList so it can be accessed again by any new Schedule object on the next run
+   public static void saveSchedule(Schedule schedule){
+      try {
+         File file  = new File(System.getProperty("user.dir")+
+                 "/data/users/"+currentUser.getUsername()+"/Schedule_"+currentUser.getUsername()+"_"+
+                 schedule.getMonth()+"_"+schedule.getYear()+".ser");
+         file.getParentFile().mkdirs();
+         FileOutputStream fileOutputStream = new FileOutputStream(file);
+         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+         objectOutputStream.writeObject(schedule);
+         objectOutputStream.close();
+         fileOutputStream.close();
+      } catch (IOException e) {
+         e.printStackTrace();
+         System.out.println("Failed to serialize Schedule");
+      }
+   }
 
-   public static boolean loadUsers(){
+   public static void loadUsers(){
       try {
          FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir")+"/data/users.ser");
          ObjectInputStream in = new ObjectInputStream(fileIn);
          users = (HashMap<String, User>) in.readObject();
          in.close();
          fileIn.close();
-         return true;
       } catch (IOException e) {
          e.printStackTrace();
          System.out.println("Failed to load users");
-         return false;
       } catch (ClassNotFoundException e) {
          System.out.println("Class HashMap<String,User> users not found");
          e.printStackTrace();
-         return false;
       }
    }
 
-   public static boolean loadWaterUsageLogs(){
+   public static void loadWaterUsageLogs(){
       try {
          FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir")+"/data/WaterUsageLogs.ser");
          ObjectInputStream in = new ObjectInputStream(fileIn);
          waterUsageLogs = (ArrayList<LogUsage>) in.readObject();
          in.close();
          fileIn.close();
-         return true;
       } catch (IOException e) {
          e.printStackTrace();
          System.out.println("Failed to load WaterUsageLogs");
-         return false;
       } catch (ClassNotFoundException e) {
          System.out.println("Class ArrayList<LogUsage> waterUsageLogs not found");
          e.printStackTrace();
-         return false;
       }
    }
 
-   public static boolean loadDistributionAreas(){
+   public static void loadDistributionAreas(){
       try {
          FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir")+"/data/DistributionAreas.ser");
          ObjectInputStream in = new ObjectInputStream(fileIn);
          distributionAreas = (ArrayList<String>) in.readObject();
          in.close();
          fileIn.close();
-         return true;
       } catch (IOException e) {
          e.printStackTrace();
          System.out.println("Failed to load DistributionAreas");
-         return false;
       } catch (ClassNotFoundException e) {
          System.out.println("Class ArrayList<String> distributionAreas not found");
          e.printStackTrace();
-         return false;
+      }
+   }
+
+   public static void loadSchedule(Schedule schedule, int month, int year){
+      try{
+         schedule = new Schedule();
+         FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir")+
+                 "/data/users/"+currentUser.getUsername()+"/Schedule_"+currentUser.getUsername()+"_"+month+"_"+year+".ser");
+         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+         schedule = (Schedule) objectInputStream.readObject();
+         objectInputStream.close();
+         fileInputStream.close();
+      }
+      //if this schedule hasn't been made before
+      catch(FileNotFoundException e){
+         e.printStackTrace();
+         System.out.println("Failed to load Schedule");
+      } catch (IOException | ClassNotFoundException e) {
+         e.printStackTrace();
       }
    }
 

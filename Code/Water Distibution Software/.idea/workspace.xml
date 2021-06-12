@@ -122,15 +122,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -160,6 +158,7 @@
       <workItem from="1623233090362" duration="12125000" />
       <workItem from="1623310414356" duration="597000" />
       <workItem from="1623405051288" duration="8471000" />
+      <workItem from="1623480793927" duration="17940000" />
     </task>
     <servers />
   </component>
@@ -169,22 +168,25 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/Schedule/ViewSchedule.java</url>
-          <line>88</line>
-          <properties class="WaterDistibution.Scenes.DashboardView.View.Schedule.ViewSchedule">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="8" />
+          <line>111</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="WaterDistibution.ScheduleStorage.Schedule" memberName="tasks" />
+      </pinned-members>
+    </pin-to-top-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="grid.getChildren()" language="JAVA" />
         <watch expression="SceneManager.getDashboardViewLogWaterUsage().getCmbArea()" language="JAVA" />
         <watch expression="DataStorage.getDistributionAreas()" language="JAVA" />
         <watch expression="DataStorage.getWaterUsageLogs()" language="JAVA" />
+        <watch expression="schedule" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

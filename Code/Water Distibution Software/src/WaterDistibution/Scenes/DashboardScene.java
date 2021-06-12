@@ -11,10 +11,12 @@
 package WaterDistibution.Scenes;
 
 import WaterDistibution.Controllers.DashBoardController;
+import WaterDistibution.DataStorage;
 import WaterDistibution.SceneManager;
 import WaterDistibution.ThemeConfig;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 
 public class DashboardScene extends Pane {
@@ -158,6 +160,8 @@ public class DashboardScene extends Pane {
       primaryBox.setLeft(vBoxSidePanel);
 
       primaryBox.setCenter(paneDashboardView);
+
+      hBoxHeader.getChildren().add(new Label("Welcome, " + DataStorage.getCurrentUser().getFirstName()));
 
       vBoxSidePanel.getChildren().add(btnOverview);
       vBoxSidePanel.getChildren().add(btnSchedule);

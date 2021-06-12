@@ -1,7 +1,12 @@
 package WaterDistibution.Scenes.DashboardView.Controller;
 
 import WaterDistibution.SceneManager;
+import WaterDistibution.Scenes.DashboardView.View.Schedule.DialogAddTask;
+import WaterDistibution.ScheduleStorage.Task;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Dialog;
+
+import java.util.Optional;
 
 public class ViewScheduleController {
    public static void btnPrevMonthClicked(javafx.event.ActionEvent event){
@@ -14,5 +19,16 @@ public class ViewScheduleController {
       SceneManager.getDashboardSchedule().incrementMonth();
       SceneManager.getDashboardSchedule().update();
       System.out.println("Schedule: btnNextMonthClicked");
+   }
+
+   public static void btnAddTaskClicked(ActionEvent event) {
+      DialogAddTask addTask = new DialogAddTask("Add Task");
+      Optional<Task> result = addTask.showAndWait();
+      if (result.isPresent()){
+         SceneManager.getDashboardSchedule().getSchedule().addTask(result.get());
+         System.out.println("Added task successfully");
+         SceneManager.getDashboardSchedule().update();
+      }
+      System.out.println("Schedule: btnAddTaskClicked");
    }
 }

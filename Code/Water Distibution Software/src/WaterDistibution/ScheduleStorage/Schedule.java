@@ -15,9 +15,9 @@ package WaterDistibution.ScheduleStorage;
 import java.io.*;
 import java.util.ArrayList;
 
-public class Schedule {
+public class Schedule implements Serializable{
 
-    ArrayList<Task> schedule;
+    ArrayList<Task> tasks;
 
     private String username;
     private int month;
@@ -29,59 +29,46 @@ public class Schedule {
         this.username=username;
         this.month=month;
         this.year=year;
-        try{
-            FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir")+
-                    "/data/schedule_"+username+"_"+month+"_"+year+".ser");
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            schedule= (ArrayList) objectInputStream.readObject();
-            objectInputStream.close();
-            fileInputStream.close();
-        }
-        //if this schedule hasn't been made before
-        catch(FileNotFoundException e){
-            schedule = new ArrayList<Task>();
-            //schedule.add(new Task(10,10,10,Task.JobType.REFILLRATE,false,false)); Debug add task
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        this.tasks = new ArrayList<>();
     }
 
-    //Saves the ArrayList so it can be accessed again by any new Schedule object on the next run
-    public void saveSchedule(){
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(System.getProperty("user.dir")+
-                    "/data/schedule_"+username+"_"+month+"_"+year+".ser");
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(schedule);
-            objectOutputStream.close();
-            fileOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public Schedule(){
+        this.username="";
+        this.month=1;
+        this.year=0000;
+        this.tasks = new ArrayList<>();
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public int getYear() {
+        return year;
     }
 
     //Add task functions
     public void addTask(int day, int hour, int minute, Task.JobType jobType, boolean isLogged, boolean isComplete){
-        schedule.add(new Task(day, hour, minute, jobType, isLogged, isComplete));
+        tasks.add(new Task(day, hour, minute, jobType, isLogged, isComplete));
     }
     public void addTask(int day, int hour, int minute, Task.JobType jobType){
-        schedule.add(new Task(day, hour, minute, jobType, false, false));
+        tasks.add(new Task(day, hour, minute, jobType, false, false));
     }
     public void addTask(Task task){
-        schedule.add(task);
+        tasks.add(task);
     }
 
     //Remove task functions
     public void removeTask(Task task){
-        schedule.remove(task);
+        tasks.remove(task);
     }
 
     //Gets a list of tasks corresponding in values to the ones passed in
     public ArrayList<Task> getTasks(int day, int hour){
         ArrayList<Task> tasksToReturn = new ArrayList<>();
-        for(int i=0;i<schedule.size();i++){
-            if(schedule.get(i).getDay()==day && (hour==-1 || schedule.get(i).getHour()==hour)){
-                tasksToReturn.add(schedule.get(i));
+        for(int i = 0; i< tasks.size(); i++){
+            if(tasks.get(i).getDay()==day && (hour==-1 || tasks.get(i).getHour()==hour)){
+                tasksToReturn.add(tasks.get(i));
             }
         }
         return tasksToReturn;
@@ -93,7 +80,7 @@ public class Schedule {
     public String toString(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("day\thour\tminute\tjobType\tisLogged\tisComplete\n");
-        schedule.forEach((n) -> stringBuilder.append(n.toString()));
+        tasks.forEach((n) -> stringBuilder.append(n.toString()));
         return(stringBuilder.toString());
     }
 

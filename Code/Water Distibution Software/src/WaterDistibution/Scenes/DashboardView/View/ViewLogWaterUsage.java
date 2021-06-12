@@ -12,7 +12,6 @@ package WaterDistibution.Scenes.DashboardView.View;
 
 import WaterDistibution.DataStorage;
 import WaterDistibution.Scenes.DashboardView.Controller.ViewLogWaterUsageController;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
