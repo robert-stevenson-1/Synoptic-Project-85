@@ -39,6 +39,20 @@ public class CreateUserLogin extends Pane{
     private TextField Address = new TextField();
     private Button butSubmit = new Button ("Submit");
 
+
+    public CreateUserLogin(){
+        setLayout();
+        setEvents();
+
+    }
+    private void setLayout(){
+        this.setPrefHeight(PREF_HEIGHT);
+        this.setPrefWidth(PREF_WIDTH);
+        this.setHeight(PREF_HEIGHT);
+        this.setWidth(PREF_WIDTH);
+
+    }
+
 }
 
 
