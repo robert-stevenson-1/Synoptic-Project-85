@@ -20,35 +20,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59195e56-9d6e-4f7d-8088-3f813d85b482" name="Default Changelist" comment="">
-<<<<<<< Updated upstream
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WaterDistibution/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterDistibution/Main.java" afterDir="false" />
-=======
       <change afterPath="$PROJECT_DIR$/src/WaterDistibution/Model/LogPressure.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/WaterDistibution/Model/LogRefill.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/Controller/ViewLogWaterPressureController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/Controller/ViewLogWaterRefillController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/Controller/ViewViewWaterPressureController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/Controller/ViewViewWaterRefillController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Controllers/DashBoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Controllers/DashBoardController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/DataStorage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/DataStorage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Model/LogPressure.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Model/LogPressure.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Model/LogRefill.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Model/LogRefill.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/SceneManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/SceneManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/Controller/ViewLogWaterPressureController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/Controller/ViewLogWaterPressureController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/Controller/ViewLogWaterRefillController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/Controller/ViewLogWaterRefillController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/Controller/ViewViewWaterPressureController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/Controller/ViewViewWaterPressureController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/Controller/ViewViewWaterRefillController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/Controller/ViewViewWaterRefillController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/View/ViewLogWaterPressure.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/View/ViewLogWaterPressure.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/View/ViewLogWaterRefill.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/View/ViewLogWaterRefill.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/View/ViewViewWaterPressure.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/View/ViewViewWaterPressure.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/View/ViewViewWaterRefill.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/View/ViewViewWaterRefill.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WaterDistibution/Controllers/DashBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterDistibution/Controllers/DashBoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WaterDistibution/DataStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterDistibution/DataStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WaterDistibution/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterDistibution/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WaterDistibution/SceneManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterDistibution/SceneManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/ViewLogWaterPressure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/ViewLogWaterPressure.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/ViewLogWaterRefill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/ViewLogWaterRefill.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/ViewViewWaterPressure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/ViewViewWaterPressure.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/ViewViewWaterRefill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/ViewViewWaterRefill.java" afterDir="false" />
->>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,27 +107,22 @@
     <property name="settings.editor.selected.configurable" value="inlay.hints.JAVA" />
   </component>
   <component name="RunManager" selected="Application.Main">
-<<<<<<< Updated upstream
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-=======
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
->>>>>>> Stashed changes
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-<<<<<<< Updated upstream
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
-=======
+      =======
       <option name="TEST_OBJECT" value="class" />
->>>>>>> Stashed changes
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true" />
     <configuration name="DataStorage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="WaterDistibution.DataStorage" />
       <module name="Water Distibution Software" />
@@ -180,13 +177,6 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-<<<<<<< Updated upstream
-  <component name="WindowStateProjectService">
-    <state x="0" y="15" key="SettingsEditor" timestamp="1623524898238">
-      <screen x="0" y="0" width="1470" height="864" />
-    </state>
-    <state x="0" y="15" key="SettingsEditor/0.0.1470.864@0.0.1470.864" timestamp="1623524898238" />
-=======
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -197,6 +187,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="533" y="140" key="#com.intellij.ide.util.MemberChooser" timestamp="1623529200161">
@@ -208,29 +199,29 @@
       <screen x="0" y="0" width="1462" height="864" />
     </state>
     <state x="444" y="144" key="#com.intellij.refactoring.move.moveMembers.MoveMembersDialog/0.0.1462.864@0.0.1462.864" timestamp="1623606165223" />
-    <state width="1418" height="74" key="GridCell.Tab.0.bottom" timestamp="1623608806145">
+    <state width="1418" height="74" key="GridCell.Tab.0.bottom" timestamp="1623611318468">
       <screen x="0" y="0" width="1462" height="864" />
     </state>
     <state width="1402" height="87" key="GridCell.Tab.0.bottom/0.0.1445.864@0.0.1445.864" timestamp="1623529284663" />
-    <state width="1418" height="74" key="GridCell.Tab.0.bottom/0.0.1462.864@0.0.1462.864" timestamp="1623608806145" />
+    <state width="1418" height="74" key="GridCell.Tab.0.bottom/0.0.1462.864@0.0.1462.864" timestamp="1623611318468" />
     <state width="1427" height="2" key="GridCell.Tab.0.bottom/0.0.1470.864@0.0.1470.864" timestamp="1623526249210" />
-    <state width="1418" height="74" key="GridCell.Tab.0.center" timestamp="1623608806145">
+    <state width="1418" height="74" key="GridCell.Tab.0.center" timestamp="1623611318467">
       <screen x="0" y="0" width="1462" height="864" />
     </state>
     <state width="1402" height="87" key="GridCell.Tab.0.center/0.0.1445.864@0.0.1445.864" timestamp="1623529284663" />
-    <state width="1418" height="74" key="GridCell.Tab.0.center/0.0.1462.864@0.0.1462.864" timestamp="1623608806145" />
+    <state width="1418" height="74" key="GridCell.Tab.0.center/0.0.1462.864@0.0.1462.864" timestamp="1623611318467" />
     <state width="1427" height="2" key="GridCell.Tab.0.center/0.0.1470.864@0.0.1470.864" timestamp="1623526249210" />
-    <state width="1418" height="74" key="GridCell.Tab.0.left" timestamp="1623608806145">
+    <state width="1418" height="74" key="GridCell.Tab.0.left" timestamp="1623611318467">
       <screen x="0" y="0" width="1462" height="864" />
     </state>
     <state width="1402" height="87" key="GridCell.Tab.0.left/0.0.1445.864@0.0.1445.864" timestamp="1623529284663" />
-    <state width="1418" height="74" key="GridCell.Tab.0.left/0.0.1462.864@0.0.1462.864" timestamp="1623608806145" />
+    <state width="1418" height="74" key="GridCell.Tab.0.left/0.0.1462.864@0.0.1462.864" timestamp="1623611318467" />
     <state width="1427" height="2" key="GridCell.Tab.0.left/0.0.1470.864@0.0.1470.864" timestamp="1623526249210" />
-    <state width="1418" height="74" key="GridCell.Tab.0.right" timestamp="1623608806145">
+    <state width="1418" height="74" key="GridCell.Tab.0.right" timestamp="1623611318468">
       <screen x="0" y="0" width="1462" height="864" />
     </state>
     <state width="1402" height="87" key="GridCell.Tab.0.right/0.0.1445.864@0.0.1445.864" timestamp="1623529284663" />
-    <state width="1418" height="74" key="GridCell.Tab.0.right/0.0.1462.864@0.0.1462.864" timestamp="1623608806145" />
+    <state width="1418" height="74" key="GridCell.Tab.0.right/0.0.1462.864@0.0.1462.864" timestamp="1623611318468" />
     <state width="1427" height="2" key="GridCell.Tab.0.right/0.0.1470.864@0.0.1470.864" timestamp="1623526249210" />
     <state x="241" y="78" key="SettingsEditor" timestamp="1623605015772">
       <screen x="0" y="0" width="1462" height="864" />
@@ -240,7 +231,6 @@
       <screen x="0" y="0" width="1462" height="864" />
     </state>
     <state x="367" y="146" key="git4idea.branch.GitSmartOperationDialog/0.0.1462.864@0.0.1462.864" timestamp="1623607725430" />
->>>>>>> Stashed changes
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -255,6 +245,11 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="WaterDistibution.ScheduleStorage.Schedule" memberName="tasks" />
+      </pinned-members>
+    </pin-to-top-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="grid.getChildren()" language="JAVA" />
