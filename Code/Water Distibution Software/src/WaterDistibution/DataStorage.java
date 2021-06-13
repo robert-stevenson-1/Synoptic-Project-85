@@ -12,9 +12,7 @@ package WaterDistibution;
 
 import WaterDistibution.Exceptions.InvalidPasswordException;
 import WaterDistibution.Exceptions.NoSuchUsernameExists;
-import WaterDistibution.Model.LogPressure;
 import WaterDistibution.Model.LogUsage;
-import WaterDistibution.Model.LogRefill;
 import WaterDistibution.Model.User;
 
 import java.io.*;
@@ -38,12 +36,6 @@ public abstract class DataStorage implements Serializable {
    //Distribution areas
    private static ArrayList<String> distributionAreas = new ArrayList<>();
 
-   //water refill logs
-   private static ArrayList<LogRefill> waterRefillLogs = new ArrayList<>();
-
-   //water pressure
-   private static ArrayList<LogPressure> waterPressureLogs = new ArrayList<>();
-
    //-------------
    //---SETTERS---
    //-------------
@@ -56,13 +48,9 @@ public abstract class DataStorage implements Serializable {
       DataStorage.waterUsageLogs.add(waterUsageLog);
    }
 
-   public static void addWaterRefillLogs(LogRefill waterRefillLogs){DataStorage.waterRefillLogs.add(waterRefillLogs);}
-
    public static void addDistributionArea(String distributionArea) {
       DataStorage.distributionAreas.add(distributionArea);
    }
-
-   public static void addWaterPressureLogs(LogPressure waterPressureLogs){DataStorage.waterPressureLogs.add(waterPressureLogs);}
 
    //-------------
    //---GETTERS---
@@ -98,13 +86,6 @@ public abstract class DataStorage implements Serializable {
       return waterUsageLogs;
    }
 
-   //refill
-   public static ArrayList<LogRefill> getWaterRefillLogs(){ return waterRefillLogs;}
-
-   //get pressure
-   public static ArrayList<LogPressure> getWaterPressureLogs(){return waterPressureLogs;}
-
-
    //get the current logged in user
    public static User getCurrentUser() {
       return CurrentUser;
@@ -118,7 +99,6 @@ public abstract class DataStorage implements Serializable {
       saveUsers();
       saveWaterUsageLogs();
       saveDistributionAreas();
-      saveWaterRefillLogs();
    }
 
    public static void loadData(){
@@ -126,7 +106,6 @@ public abstract class DataStorage implements Serializable {
       loadUsers();
       loadWaterUsageLogs();
       loadDistributionAreas();
-      loadWaterRefillLogs();
    }
 
    /**
@@ -165,39 +144,7 @@ public abstract class DataStorage implements Serializable {
       }
    }
 
-<<<<<<< Updated upstream
    public static boolean saveDistributionAreas(){
-=======
-   //save water pressure logs
-   public static void saveWaterPressureLogs(){
-      try{
-         //output file location
-         FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir")+"/data/WaterPressureLogs.ser");
-         //write the user hashmap
-         ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
-         objOut.writeObject(waterPressureLogs);
-         objOut.close();
-      } catch (IOException e){
-         e.printStackTrace();
-         System.out.println("Failed to serialize WaterPressureLogs");
-      }
-   }
-
-   //save water refill logs
-   public static void saveWaterRefillLogs(){
-      try{
-         FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir")+"/data/WaterRefillLogs.ser");
-         ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
-         objOut.writeObject(waterRefillLogs);
-         objOut.close();
-      }catch (IOException e){
-         e.printStackTrace();
-         System.out.println("Failed to serialize WaterRefillLogs");
-      }
-   }
-
-   public static void saveDistributionAreas(){
->>>>>>> Stashed changes
       try{
          //output file location
          FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir")+"/data/DistributionAreas.ser");
@@ -252,44 +199,7 @@ public abstract class DataStorage implements Serializable {
       }
    }
 
-<<<<<<< Updated upstream
    public static boolean loadDistributionAreas(){
-=======
-   public static void loadWaterPressureLogs(){
-      try {
-         FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir")+"/data/WaterPressureLogs.ser");
-         ObjectInputStream in = new ObjectInputStream(fileIn);
-         waterPressureLogs = (ArrayList<LogPressure>) in.readObject();
-         in.close();
-         fileIn.close();
-      } catch (IOException e) {
-         e.printStackTrace();
-         System.out.println("Failed to load WaterPressureLogs");
-      } catch (ClassNotFoundException e) {
-         System.out.println("Class ArrayList<LogPressure> waterPressureLogs not found");
-         e.printStackTrace();
-      }
-   }
-
-   //load water refill logs
-   public static void loadWaterRefillLogs() {
-      try {
-         FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir") + "/data/WaterRefillLogs.ser");
-         ObjectInputStream in = new ObjectInputStream(fileIn);
-         waterRefillLogs = (ArrayList<LogRefill>) in.readObject();
-         in.close();
-         fileIn.close();
-      } catch (IOException e) {
-         e.printStackTrace();
-         System.out.println("Failed to load WaterRefillLogs");
-      } catch (ClassNotFoundException e) {
-         System.out.println("Class ArrayList<LogRefill> waterRefillLogs not found");
-         e.printStackTrace();
-      }
-   }
-
-   public static void loadDistributionAreas(){
->>>>>>> Stashed changes
       try {
          FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir")+"/data/DistributionAreas.ser");
          ObjectInputStream in = new ObjectInputStream(fileIn);
