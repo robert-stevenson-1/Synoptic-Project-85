@@ -119,14 +119,6 @@ public class ViewSchedule extends Pane implements Update {
       }
       //load the schedule for the user for the current month and year
       schedule.setTasks(DataStorage.loadScheduleTasks());
-      //if no schedule is loaded the create a blank schedule
-/*      if (schedule == null){
-         try {
-            schedule = new Schedule(DataStorage.getCurrentUser().getUsername(), LocalDate.now());
-         } catch (Exception e){
-            System.out.println(e);
-         }
-      }*/
       try {
          buildScheduleGrid();
       } catch (Exception e){
@@ -137,6 +129,10 @@ public class ViewSchedule extends Pane implements Update {
 
    public Schedule getSchedule() {
       return schedule;
+   }
+
+   public ArrayList<ScheduleTile> getTiles() {
+      return tiles;
    }
 
    public void incrementMonth(){

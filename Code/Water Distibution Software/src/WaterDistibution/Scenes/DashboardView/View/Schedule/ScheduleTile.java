@@ -81,6 +81,10 @@ public class ScheduleTile extends Pane {
 
    }
 
+   public ListView<TaskTile> getTaskList() {
+      return taskList;
+   }
+
    public void addTasks(ArrayList<Task> tasks){
       ObservableList<TaskTile> data = FXCollections.observableArrayList();
       for (Task t :
@@ -103,5 +107,13 @@ public class ScheduleTile extends Pane {
       DateFormat dateFormat = new SimpleDateFormat("EEEE", locale);
       date.setDate(intDay);
       return dateFormat.format(date);
+   }
+
+   @Override
+   public String toString() {
+      return "ScheduleTile{" +
+              "intDay=" + intDay +
+              ", taskList=" + taskList +
+              '}';
    }
 }

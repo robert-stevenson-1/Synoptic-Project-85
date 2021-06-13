@@ -15,6 +15,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Task implements Serializable {
+    static final long serialVersionUID = 101L;
     //User is not stored within class as that's within the schedule
     //Time information is stored as ints - the month and year is decided by which schedule item the task is in
     private LocalDate date;
@@ -50,9 +51,21 @@ public class Task implements Serializable {
     public void setJobType(JobType jobType){this.jobType = jobType;}
     public void setIsLogged(boolean isLogged){this.isLogged = isLogged;}
     public void setIsComplete(boolean isComplete){this.isComplete = isComplete;}
-
+/*
     public String toString(){
         return date+"\t"+hour+"\t"+minute+"\t"+jobType+"\t"+isLogged+"\t"+isComplete+"\n";
     }
+    */
 
+/*    @Override
+    public String toString() {
+        return "Task{" +
+                "date=" + date +
+                ", hour=" + hour +
+                ", minute=" + minute +
+                ", jobType=" + jobType +
+                ", isLogged=" + isLogged +
+                ", isComplete=" + isComplete +
+                '}';
+    }*/
 }
