@@ -53,6 +53,10 @@ public abstract class DataStorage implements Serializable {
       DataStorage.distributionAreas.add(distributionArea);
    }
 
+   public static void removeDistributionArea(String distributionArea) {
+      DataStorage.distributionAreas.remove(distributionArea);
+   }
+
    //-------------
    //---GETTERS---
    //-------------

@@ -13,7 +13,12 @@ package WaterDistibution.Scenes.DashboardView.Controller;
 import WaterDistibution.DataStorage;
 import WaterDistibution.Model.LogUsage;
 import WaterDistibution.SceneManager;
+import WaterDistibution.Scenes.DashboardView.View.DialogAddArea;
+import WaterDistibution.Scenes.DashboardView.View.DialogRemoveArea;
 import javafx.event.ActionEvent;
+
+import javax.xml.crypto.Data;
+import java.util.Optional;
 
 public class ViewLogWaterUsageController {
    public static void btnSubmitClicked(ActionEvent event) {
@@ -31,6 +36,28 @@ public class ViewLogWaterUsageController {
       );
 
       System.out.println("LogUsage: btnSubmitClicked");
+   }
+
+   public static void btnAddAreaClicked(ActionEvent event){
+      DialogAddArea addArea = new DialogAddArea("Add Distribution Area");
+      Optional<String> result = addArea.showAndWait();
+      if (result.isPresent()){
+         DataStorage.addDistributionArea(result.get());
+         System.out.println("Area removed successfully");
+         DataStorage.saveDistributionAreas();
+         SceneManager.getDashboardViewLogWaterUsage().update();
+      }
+   }
+
+   public static void btnRemoveAreaClicked(ActionEvent event){
+      DialogRemoveArea removeArea = new DialogRemoveArea("Remove Distribution Area");
+      Optional<String> result = removeArea.showAndWait();
+      if (result.isPresent()){
+         DataStorage.removeDistributionArea(result.get());
+         System.out.println("Area removed successfully");
+         DataStorage.saveDistributionAreas();
+         SceneManager.getDashboardViewLogWaterUsage().update();
+      }
    }
 
    public static String getLogName(){

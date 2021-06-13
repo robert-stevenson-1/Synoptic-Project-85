@@ -12,14 +12,18 @@ package WaterDistibution.Scenes.DashboardView.View;
 
 import WaterDistibution.DataStorage;
 import WaterDistibution.Scenes.DashboardView.Controller.ViewLogWaterUsageController;
+import WaterDistibution.Update;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
-public class ViewLogWaterUsage extends StackPane {
+public class ViewLogWaterUsage extends StackPane implements Update {
 
    private BorderPane primaryBox = new BorderPane();
+   private HBox hBoxHeader = new HBox();
+   private Button btnAddArea = new Button("Add Distribution Area");
+   private Button btnRemoveArea = new Button("Remove Distribution Area");
    private GridPane grid = new GridPane();
    private HBox hBoxNamePreviewLayout = new HBox();
    private Label lblNamePreview = new Label("Log Name:");
@@ -60,6 +64,9 @@ public class ViewLogWaterUsage extends StackPane {
       primaryBox.prefHeightProperty().bind(this.heightProperty());
       primaryBox.prefWidthProperty().bind(this.widthProperty());
       BorderPane.setAlignment(primaryBox, Pos.CENTER);
+
+      //setup the header
+      hBoxHeader.setAlignment(Pos.CENTER);
 
       //setup name preview
       GridPane.setFillHeight(hBoxNamePreviewLayout, true);
@@ -118,7 +125,11 @@ public class ViewLogWaterUsage extends StackPane {
 
       //add the UI components to the primary container
       // box of the view
+      primaryBox.setTop(hBoxHeader);
       primaryBox.setCenter(grid);
+
+      hBoxHeader.getChildren().add(btnAddArea);
+      hBoxHeader.getChildren().add(btnRemoveArea);
 
       hBoxNamePreviewLayout.getChildren().add(lblNamePreview);
       hBoxNamePreviewLayout.getChildren().add(txtLogNamePreview);
@@ -152,6 +163,8 @@ public class ViewLogWaterUsage extends StackPane {
 
    private void setupEvents() {
       btnSubmit.setOnAction(ViewLogWaterUsageController::btnSubmitClicked);
+      btnAddArea.setOnAction(ViewLogWaterUsageController::btnAddAreaClicked);
+      btnRemoveArea.setOnAction(ViewLogWaterUsageController::btnRemoveAreaClicked);
    }
 
    public ComboBox getCmbArea() {
@@ -172,5 +185,11 @@ public class ViewLogWaterUsage extends StackPane {
 
    public TextField getTxtUsage() {
       return txtUsage;
+   }
+
+   @Override
+   public void update() {
+      cmbArea.getItems().clear();
+      cmbArea.getItems().addAll(DataStorage.getDistributionAreas());
    }
 }

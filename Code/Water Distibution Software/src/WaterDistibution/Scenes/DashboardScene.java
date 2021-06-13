@@ -14,12 +14,13 @@ import WaterDistibution.Controllers.DashBoardController;
 import WaterDistibution.DataStorage;
 import WaterDistibution.SceneManager;
 import WaterDistibution.ThemeConfig;
+import WaterDistibution.Update;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 
-public class DashboardScene extends Pane {
+public class DashboardScene extends Pane implements Update {
 
    private static final double PREF_WIDTH = 1280;
    private static final double PREF_HEIGHT = 720;
@@ -30,6 +31,7 @@ public class DashboardScene extends Pane {
    private static final int SIDEBAR_MAX_WIDTH = 200;
 
    private BorderPane primaryBox = new BorderPane();
+   private Label lblWelcome = new Label("Welcome, " + DataStorage.getCurrentUser().getFirstName());
    private Button btnLogout = new Button("Logout");
    private Button btnOverview = new Button("Overview");
    private Button btnSchedule = new Button("Schedule");
@@ -161,7 +163,7 @@ public class DashboardScene extends Pane {
 
       primaryBox.setCenter(paneDashboardView);
 
-      hBoxHeader.getChildren().add(new Label("Welcome, " + DataStorage.getCurrentUser().getFirstName()));
+      hBoxHeader.getChildren().add(lblWelcome);
 
       vBoxSidePanel.getChildren().add(btnOverview);
       vBoxSidePanel.getChildren().add(btnSchedule);
@@ -190,5 +192,10 @@ public class DashboardScene extends Pane {
       view.prefHeightProperty().bind(paneDashboardView.heightProperty());
       view.prefWidthProperty().bind(paneDashboardView.widthProperty());
       paneDashboardView.getChildren().add(view);
+   }
+
+   @Override
+   public void update() {
+      lblWelcome.setText("Welcome, " + DataStorage.getCurrentUser().getName());
    }
 }
