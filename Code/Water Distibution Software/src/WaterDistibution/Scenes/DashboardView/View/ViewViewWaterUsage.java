@@ -40,7 +40,7 @@ public class ViewViewWaterUsage extends Pane implements Update {
    private CategoryAxis xAxis = new CategoryAxis();
    private NumberAxis yAxis = new NumberAxis();
    private LineChart<String, Number> graph = new LineChart<>(xAxis, yAxis);
-   private XYChart.Series series  = new XYChart.Series<String, Number>();
+   private ArrayList<XYChart.Series> seriesArrayList = new ArrayList<>();
 
    private int intMonth = LocalDate.now().getMonthValue();
    private String strMonth = Month.of(intMonth).toString();
@@ -116,8 +116,18 @@ public class ViewViewWaterUsage extends Pane implements Update {
       //reset graph
       graph.getData().clear();
       //reset graph data series
-      series.getData().clear();
-      series.setName("Example Series");
+      seriesArrayList.clear();
+/*      for (XYChart.Series s :
+              seriesArrayList) {
+         s.getData().clear();
+      }*/
+      //create a series for every distribution area
+      for (String a :
+              DataStorage.getDistributionAreas()) {
+         XYChart.Series series = new XYChart.Series();
+         series.setName(a);
+         seriesArrayList.add(series);
+      }
 
       data.sort(Comparator.comparing(LogUsage::getDate));
       for (LogUsage l: data) {
@@ -125,10 +135,19 @@ public class ViewViewWaterUsage extends Pane implements Update {
                  "String Month value: "+Month.valueOf(month).getValue());
          //only load logs for the month selected to view
          if (l.getDate().getMonth().getValue() == Month.valueOf(month).getValue()){
-            //add the log to the graph series
-            series.getData().add(new XYChart.Data<>(l.getDate().toString(), l.getWaterUsaged()));
+            //add the log to the graph series for that area
+            for (XYChart.Series s :
+                    seriesArrayList) {
+               if (s.getName().equals(l.getDistributionArea())){
+                  s.getData().add(new XYChart.Data<>(l.getDate().toString(), l.getWaterUsaged()));
+               }
+            }
          }
       }
-      graph.getData().add(series);
+      //add the series to the chart
+      for (XYChart.Series s:
+               seriesArrayList) {
+         graph.getData().add(s);
+      }
    }
 }
