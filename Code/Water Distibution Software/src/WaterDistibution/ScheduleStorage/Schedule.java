@@ -13,6 +13,7 @@
 package WaterDistibution.ScheduleStorage;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Schedule implements Serializable{
@@ -20,39 +21,40 @@ public class Schedule implements Serializable{
     ArrayList<Task> tasks;
 
     private String username;
-    private int month;
-    private int year;
+    private LocalDate date;
 
     //Constructor attempts to find a serialised file with the correct username, month and year. If one is not available
     // it creates a new task list
-    public Schedule(String username, int month, int year){
+    public Schedule(String username, LocalDate date){
         this.username=username;
-        this.month=month;
-        this.year=year;
+        this.date = date;
         this.tasks = new ArrayList<>();
     }
 
     public Schedule(){
         this.username="";
-        this.month=1;
-        this.year=0000;
+        this.date = LocalDate.now();
         this.tasks = new ArrayList<>();
     }
 
+    public void setTasks(ArrayList<Task> tasks) {
+        this.tasks = tasks;
+    }
+
     public int getMonth() {
-        return month;
+        return date.getMonthValue();
     }
 
     public int getYear() {
-        return year;
+        return date.getYear();
     }
 
     //Add task functions
-    public void addTask(int day, int hour, int minute, Task.JobType jobType, boolean isLogged, boolean isComplete){
-        tasks.add(new Task(day, hour, minute, jobType, isLogged, isComplete));
+    public void addTask(LocalDate date, int hour, int minute, Task.JobType jobType, boolean isLogged, boolean isComplete){
+        tasks.add(new Task(date, hour, minute, jobType, isLogged, isComplete));
     }
-    public void addTask(int day, int hour, int minute, Task.JobType jobType){
-        tasks.add(new Task(day, hour, minute, jobType, false, false));
+    public void addTask(LocalDate date, int hour, int minute, Task.JobType jobType){
+        tasks.add(new Task(date, hour, minute, jobType, false, false));
     }
     public void addTask(Task task){
         tasks.add(task);
@@ -63,18 +65,19 @@ public class Schedule implements Serializable{
         tasks.remove(task);
     }
 
-    //Gets a list of tasks corresponding in values to the ones passed in
-    public ArrayList<Task> getTasks(int day, int hour){
+    public ArrayList<Task> getTasks() {
+        return tasks;
+    }
+
+    //Gets a list of tasks corresponding with the date passed in
+    public ArrayList<Task> getTasks(LocalDate date){
         ArrayList<Task> tasksToReturn = new ArrayList<>();
         for(int i = 0; i< tasks.size(); i++){
-            if(tasks.get(i).getDay()==day && (hour==-1 || tasks.get(i).getHour()==hour)){
+            if(tasks.get(i).getDate().isEqual(date)){
                 tasksToReturn.add(tasks.get(i));
             }
         }
         return tasksToReturn;
-    }
-    public ArrayList<Task> getTasks(int day){
-        return getTasks(day,-1);
     }
 
     public String toString(){

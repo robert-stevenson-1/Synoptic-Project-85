@@ -85,7 +85,7 @@ public class ScheduleTile extends Pane {
       ObservableList<TaskTile> data = FXCollections.observableArrayList();
       for (Task t :
               tasks) {
-         if (t.getDay() == intDay){
+         if (t.getDate().getDayOfMonth() == intDay){
             data.add(new TaskTile(t));
          }
       }

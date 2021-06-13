@@ -173,6 +173,24 @@
           <line>26</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/Schedule/ViewSchedule.java</url>
+          <line>111</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/Schedule/ScheduleTile.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/WaterDistibution/ScheduleStorage/Schedule.java</url>
+          <line>72</line>
+          <properties class="WaterDistibution.ScheduleStorage.Schedule" method="getTasks">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -187,6 +205,7 @@
         <watch expression="DataStorage.getDistributionAreas()" language="JAVA" />
         <watch expression="DataStorage.getWaterUsageLogs()" language="JAVA" />
         <watch expression="schedule" language="JAVA" />
+        <watch expression="tasks.get(i).getDate()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

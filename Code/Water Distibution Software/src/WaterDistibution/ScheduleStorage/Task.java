@@ -12,11 +12,12 @@
 package WaterDistibution.ScheduleStorage;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class Task implements Serializable {
     //User is not stored within class as that's within the schedule
     //Time information is stored as ints - the month and year is decided by which schedule item the task is in
-    private int day;
+    private LocalDate date;
     private int hour;
     private int minute;
     //JobType is stored as an enum
@@ -26,8 +27,8 @@ public class Task implements Serializable {
     private boolean isLogged;
     private boolean isComplete;
 
-    public Task(int day, int hour, int minute, JobType jobType, boolean isLogged, boolean isComplete){
-        this.day=day;
+    public Task(LocalDate date, int hour, int minute, JobType jobType, boolean isLogged, boolean isComplete){
+        this.date=date;
         this.hour=hour;
         this.minute=minute;
         this.jobType=jobType;
@@ -36,13 +37,14 @@ public class Task implements Serializable {
     }
 
     //Accessor methods
-    public int getDay(){return day;}
+    public LocalDate getDate() {
+        return date;
+    }
     public int getHour(){return hour;}
     public int getMinute(){return minute;}
     public JobType getJobType(){return jobType;}
     public boolean getIsLogged(){return isLogged;}
     public boolean getIsComplete(){return isComplete;}
-    public void setDay(int day){this.day=day;}
     public void setHour(int hour){this.hour=hour;}
     public void setMinute(int minute){this.minute = minute;}
     public void setJobType(JobType jobType){this.jobType = jobType;}
@@ -50,7 +52,7 @@ public class Task implements Serializable {
     public void setIsComplete(boolean isComplete){this.isComplete = isComplete;}
 
     public String toString(){
-        return day+"\t"+hour+"\t"+minute+"\t"+jobType+"\t"+isLogged+"\t"+isComplete+"\n";
+        return date+"\t"+hour+"\t"+minute+"\t"+jobType+"\t"+isLogged+"\t"+isComplete+"\n";
     }
 
 }

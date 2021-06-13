@@ -76,7 +76,7 @@ public class DialogAddTask extends Dialog<Task> {
    private void setupEvents() {
       this.setResultConverter(buttonType -> {
          if (buttonType == btnSubmit) {
-            return new Task(datePicker.getValue().getDayOfMonth(),
+            return new Task(datePicker.getValue(),
                     Integer.parseInt(txtHour.getText()),
                     Integer.parseInt(txtMinute.getText()),
                     cmbTaskType.getValue(),

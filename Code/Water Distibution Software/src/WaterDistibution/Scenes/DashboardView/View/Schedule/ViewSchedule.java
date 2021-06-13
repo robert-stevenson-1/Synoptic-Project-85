@@ -41,7 +41,7 @@ public class ViewSchedule extends Pane implements Update {
    private BorderPane primaryBox = new BorderPane();
    private BorderPane header = new BorderPane();
    private GridPane grid = new GridPane();
-   private Label lblMonth = new Label("Month");
+   private Label lblDate = new Label("Month, Year");
    private HBox hBoxNavButtons = new HBox();
    private Button btnAddTask = new Button("Add Task");
    private Button btnPrevMonth = new Button("Previous Month");
@@ -76,7 +76,7 @@ public class ViewSchedule extends Pane implements Update {
       header.setPadding(new Insets(5));
 
       //setup the month label
-      lblMonth.setText(month.toString());
+      lblDate.setText(month.toString());
 
       //setup prevMonth button
       btnPrevMonth.setPadding(new Insets(15));
@@ -97,7 +97,7 @@ public class ViewSchedule extends Pane implements Update {
 
       header.setRight(hBoxNavButtons);
       header.setLeft(btnAddTask);
-      header.setCenter(lblMonth);
+      header.setCenter(lblDate);
 
    }
 
@@ -110,21 +110,23 @@ public class ViewSchedule extends Pane implements Update {
    @Override
    public void update() {
       System.out.println("Pre Update Schedule: " + schedule);
-      lblMonth.setText(month.toString());
+      lblDate.setText(month.toString() + ", " + intYear);
       //if there is no Schedule loaded, don't save a blank schedule that could overwrite a populated on
       if (schedule != null){
-         DataStorage.saveSchedule(schedule);
+         DataStorage.saveScheduleTasks(schedule.getTasks());
+      }else {
+         schedule = new Schedule(DataStorage.getCurrentUser().getUsername(), LocalDate.now());
       }
       //load the schedule for the user for the current month and year
-      schedule = DataStorage.loadSchedule(intMonth, intYear);
+      schedule.setTasks(DataStorage.loadScheduleTasks());
       //if no schedule is loaded the create a blank schedule
-      if (schedule == null){
+/*      if (schedule == null){
          try {
-            schedule = new Schedule(DataStorage.getCurrentUser().getUsername(), intMonth, intYear);
+            schedule = new Schedule(DataStorage.getCurrentUser().getUsername(), LocalDate.now());
          } catch (Exception e){
             System.out.println(e);
          }
-      }
+      }*/
       try {
          buildScheduleGrid();
       } catch (Exception e){
@@ -143,6 +145,7 @@ public class ViewSchedule extends Pane implements Update {
       //check to see if month is put out of bounds
       if (intMonth>12){
          intMonth = 1;
+         intYear++;
       }
       //get the schedule month value
       month = Month.of(intMonth);
@@ -154,15 +157,13 @@ public class ViewSchedule extends Pane implements Update {
       //check to see if month is put out of bounds
       if (intMonth<1){
          intMonth = 12;
+         intYear--;
       }
       //get the schedule month value
       month = Month.of(intMonth);
    }
 
    private void buildScheduleGrid(){
-      //TODO:adjust to build blank or load schedule when approriate.
-
-      //TODO:Save any changes to this Schedule before changes.
       //reset the schedules grid and tiles
       grid.getChildren().clear();
       tiles.clear();
@@ -177,7 +178,7 @@ public class ViewSchedule extends Pane implements Update {
          for (int i = 0; i < 7 && day <= month.length(LocalDate.now().isLeapYear()); i++) {
             //get the schedule data and display the tasks in the tile
             ScheduleTile tile = new ScheduleTile(day);
-            tile.addTasks(schedule.getTasks(day));
+            tile.addTasks(schedule.getTasks(LocalDate.of(intYear, month, day)));
             tiles.add(tile);
             grid.add(tile,i, row);
             day++;

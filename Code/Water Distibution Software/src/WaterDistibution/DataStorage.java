@@ -15,6 +15,7 @@ import WaterDistibution.Exceptions.NoSuchUsernameExists;
 import WaterDistibution.Model.LogUsage;
 import WaterDistibution.Model.User;
 import WaterDistibution.ScheduleStorage.Schedule;
+import WaterDistibution.ScheduleStorage.Task;
 
 import java.io.*;
 import java.security.MessageDigest;
@@ -154,20 +155,19 @@ public abstract class DataStorage implements Serializable {
    }
 
    //Saves the ArrayList so it can be accessed again by any new Schedule object on the next run
-   public static void saveSchedule(Schedule schedule){
+   public static void saveScheduleTasks(ArrayList<Task> tasks){
       try {
-         File file  = new File(System.getProperty("user.dir")+
-                 "/data/users/"+currentUser.getUsername()+"/Schedule_"+currentUser.getUsername()+"_"+
-                 schedule.getMonth()+"_"+schedule.getYear()+".ser");
+         File file = new File(System.getProperty("user.dir")+
+                 "/data/users/"+currentUser.getUsername()+"/Schedule_Tasks.ser");
          file.getParentFile().mkdirs();
          FileOutputStream fileOutputStream = new FileOutputStream(file);
          ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-         objectOutputStream.writeObject(schedule);
+         objectOutputStream.writeObject(tasks);
          objectOutputStream.close();
          fileOutputStream.close();
       } catch (IOException e) {
          e.printStackTrace();
-         System.out.println("Failed to serialize Schedule");
+         System.out.println("Failed to serialize Schedule tasks");
       }
    }
 
@@ -219,25 +219,25 @@ public abstract class DataStorage implements Serializable {
       }
    }
 
-   public static Schedule loadSchedule(int month, int year){
+   public static ArrayList<Task> loadScheduleTasks(){
       try{
-         Schedule schedule;
+         ArrayList<Task> tasks;
          FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir")+
-                 "/data/users/"+currentUser.getUsername()+"/Schedule_"+currentUser.getUsername()+"_"+month+"_"+year+".ser");
+                 "/data/users/"+currentUser.getUsername()+"/Schedule_Tasks.ser");
          ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-         schedule = (Schedule) objectInputStream.readObject();
+         tasks = (ArrayList<Task>) objectInputStream.readObject();
          objectInputStream.close();
          fileInputStream.close();
-         return schedule;
+         return tasks;
       }
       //if this schedule hasn't been made before
       catch(FileNotFoundException e){
          e.printStackTrace();
-         System.out.println("Failed to load Schedule");
+         System.out.println("Failed to load Schedule Tasks");
       } catch (IOException | ClassNotFoundException e) {
          e.printStackTrace();
       }
-      return null;
+      return new ArrayList<>();
    }
 
    /**
