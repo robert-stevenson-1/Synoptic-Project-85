@@ -11,6 +11,14 @@
 
 package WaterDistibution.Controllers;
 
+import WaterDistibution.SceneManager;
+import javafx.event.ActionEvent;
+
+import javax.swing.*;
+
 public class CreateAccountController {
+    public static void btnBackClicked(ActionEvent event){
+        SceneManager.switchScene(SceneManager.getLoginScene());
+    }
 
 }
