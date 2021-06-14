@@ -57,6 +57,7 @@ public class CreateUserLogin extends Pane {
 
     private void setEvents() {
        btnBack.setOnAction(CreateAccountController::btnBackClicked);
+       btnCreateAccount.setOnAction(LoginController::btnCreateAccountClicked);
     }
 
 
@@ -140,6 +141,16 @@ public class CreateUserLogin extends Pane {
         //setting up the text field for address
         Address.setAlignment(Pos.CENTER);
         Address.setFont(Font.font(16));
+
+        //setup the Create Account button
+        btnCreateAccount.setAlignment(Pos.CENTER);
+        btnCreateAccount.setMinSize(100,60);
+        btnCreateAccount.setStyle(ThemeConfig.BUTTON_THEME + ThemeConfig.BORDER_COLOUR);
+
+        //setup the Login button
+        btnBack.setAlignment(Pos.CENTER);
+        btnBack.setMinSize(100,60);
+        btnBack.setStyle(ThemeConfig.BUTTON_THEME + ThemeConfig.BORDER_COLOUR);
 
     }
 }
