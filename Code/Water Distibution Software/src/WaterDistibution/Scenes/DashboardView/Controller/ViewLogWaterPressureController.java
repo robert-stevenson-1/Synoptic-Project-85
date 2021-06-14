@@ -2,7 +2,6 @@ package WaterDistibution.Scenes.DashboardView.Controller;
 
 import WaterDistibution.DataStorage;
 import WaterDistibution.Model.LogPressure;
-import WaterDistibution.Model.LogUsage;
 import WaterDistibution.SceneManager;
 import javafx.event.ActionEvent;
 
@@ -14,7 +13,7 @@ public class ViewLogWaterPressureController {
 
         DataStorage.addWaterPressureLogs(new LogPressure(
                 getLogName(),
-                SceneManager.getDashboardViewLogWaterPressure().getCmbArea().toString(),
+                SceneManager.getDashboardViewLogWaterPressure().getCmbArea().getValue().toString(),
                 SceneManager.getDashboardViewLogWaterPressure().getDatePickerLogDate().getValue(),
                 Integer.parseInt(SceneManager.getDashboardViewLogWaterPressure().getTxtTimeHour().getText()),
                 Integer.parseInt(SceneManager.getDashboardViewLogWaterPressure().getTxtTimeHour().getText()),

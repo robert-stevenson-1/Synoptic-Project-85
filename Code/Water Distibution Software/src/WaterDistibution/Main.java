@@ -11,14 +11,13 @@
 
 package WaterDistibution;
 
-import WaterDistibution.Scenes.LoginScene;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 public class Main extends Application {
-//test
+
     @Override
     public void start(Stage stage) throws Exception {
 

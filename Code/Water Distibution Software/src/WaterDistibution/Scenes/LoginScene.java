@@ -39,6 +39,8 @@ public class LoginScene extends Pane {
    private TextField txtUsername = new TextField();
    private TextField txtPassword = new TextField();
    private Button btnLogin = new Button("Login");
+   private Button btnCreateAccount = new Button("Create Account");
+
 
    public LoginScene() {
       setupLayout();
@@ -104,6 +106,11 @@ public class LoginScene extends Pane {
       btnLogin.setMinSize(100,60);
       btnLogin.setStyle(ThemeConfig.BUTTON_THEME + ThemeConfig.BORDER_COLOUR);
 
+      //setup the Create Account button
+      btnCreateAccount.setAlignment(Pos.CENTER);
+      btnCreateAccount.setMinSize(100,60);
+      btnCreateAccount.setStyle(ThemeConfig.BUTTON_THEME + ThemeConfig.BORDER_COLOUR);
+
       //setup the HBox that will serve as the button bar on the window
       hBoxBtnBar.setAlignment(Pos.TOP_CENTER);
       hBoxBtnBar.setPadding(new Insets(15,0,10,0));
@@ -119,6 +126,7 @@ public class LoginScene extends Pane {
 
       primaryBox.getChildren().add(hBoxBtnBar);
       hBoxBtnBar.getChildren().add(btnLogin);
+      hBoxBtnBar.getChildren().add(btnCreateAccount);
 
    }
 
@@ -126,7 +134,8 @@ public class LoginScene extends Pane {
    private void setupEvents() {
       //assign a click event to button for login
       btnLogin.setOnAction(LoginController::btnLoginClicked);
-
+      //assigning a click event to button for create account
+      btnCreateAccount.setOnAction(LoginController::btnCreateAccountClicked);
    }
 
    public String getUsernameValue(){

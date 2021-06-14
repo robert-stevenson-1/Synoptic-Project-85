@@ -2,7 +2,6 @@
  * Class: DashboardController
  * Author: Robert Stevenson
  * Contributing Author(s):
- * Ipek Meral
  *
  * Date Created: 06/06/2021
  *
@@ -13,6 +12,7 @@
 
 package WaterDistibution.Controllers;
 
+import WaterDistibution.DataStorage;
 import WaterDistibution.SceneManager;
 import javafx.event.ActionEvent;
 
@@ -20,7 +20,7 @@ public class DashBoardController {
    public static void btnLogoutClicked(ActionEvent event) {
       System.out.println("btnLogout clicked!");
       SceneManager.switchScene(SceneManager.getLoginScene());
-      //TODO: User is not logged out in RAM
+      DataStorage.logoutUser();
    }
    public static void btnScheduleClicked(ActionEvent event) {
       System.out.println("btnSchedule clicked!");
@@ -31,8 +31,6 @@ public class DashBoardController {
       System.out.println("btnLogUsage clicked!");
       SceneManager.switchDashboardView(SceneManager.getDashboardViewLogWaterUsage());
    }
-
-
 
    public static void btnViewUsageClicked(ActionEvent event) {
       System.out.println("btnViewUsage clicked!");
@@ -63,8 +61,4 @@ public class DashBoardController {
       System.out.println("btnViewPressure clicked!");
       SceneManager.switchDashboardView(SceneManager.getDashboardViewViewWaterPressure());
    }
-
-
-
-
 }

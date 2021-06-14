@@ -19,21 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="59195e56-9d6e-4f7d-8088-3f813d85b482" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/DataStorage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/DataStorage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Model/LogRefill.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Model/LogRefill.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/Controller/ViewLogWaterRefillController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/Controller/ViewLogWaterRefillController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/Controller/ViewViewWaterRefillController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/Controller/ViewViewWaterRefillController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/View/ViewLogWaterRefill.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/View/ViewLogWaterRefill.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/View/ViewViewWaterRefill.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Water Distibution Software/WaterDistibution/Scenes/DashboardView/View/ViewViewWaterRefill.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WaterDistibution/DataStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterDistibution/DataStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WaterDistibution/Model/LogRefill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterDistibution/Model/LogRefill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/Controller/ViewLogWaterRefillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/Controller/ViewLogWaterRefillController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/Controller/ViewViewWaterRefillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/Controller/ViewViewWaterRefillController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/ViewLogWaterRefill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/ViewLogWaterRefill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/ViewViewWaterRefill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/ViewViewWaterRefill.java" afterDir="false" />
-    </list>
+    <list default="true" id="59195e56-9d6e-4f7d-8088-3f813d85b482" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -264,5 +250,8 @@
         <watch expression="DataStorage.getWaterUsageLogs()" language="JAVA" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Water_Distibution_Software$Main.ic" NAME="Main Coverage Results" MODIFIED="1623670865274" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

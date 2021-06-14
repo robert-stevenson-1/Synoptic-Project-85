@@ -10,7 +10,9 @@
  */
 package WaterDistibution.Scenes.DashboardView.View.Schedule;
 
+import WaterDistibution.DataStorage;
 import WaterDistibution.Scenes.DashboardView.Controller.ViewScheduleController;
+import WaterDistibution.Model.Schedule;
 import WaterDistibution.Update;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -31,14 +33,17 @@ public class ViewSchedule extends Pane implements Update {
    private static final double GRID_Y_GAP = 10;
 
    private int intMonth = LocalDate.now().getMonthValue();
+   private int intYear = LocalDate.now().getYear();
    private Month month = Month.of(intMonth);
+   private Schedule schedule;
    private ArrayList<ScheduleTile> tiles = new ArrayList<>();
 
    private BorderPane primaryBox = new BorderPane();
    private BorderPane header = new BorderPane();
    private GridPane grid = new GridPane();
-   private Label lblMonth = new Label("Month");
+   private Label lblDate = new Label("Month, Year");
    private HBox hBoxNavButtons = new HBox();
+   private Button btnAddTask = new Button("Add Task");
    private Button btnPrevMonth = new Button("Previous Month");
    private Button btnNextMonth = new Button("Next Month");
 
@@ -65,13 +70,13 @@ public class ViewSchedule extends Pane implements Update {
       grid.setAlignment(Pos.CENTER);
       grid.setVgap(GRID_X_GAP);
       grid.setHgap(GRID_Y_GAP);
-      buildScheduleGrid();
+      //buildScheduleGrid();
 
       //setup header
       header.setPadding(new Insets(5));
 
       //setup the month label
-      lblMonth.setText(month.toString());
+      lblDate.setText(month.toString());
 
       //setup prevMonth button
       btnPrevMonth.setPadding(new Insets(15));
@@ -91,19 +96,43 @@ public class ViewSchedule extends Pane implements Update {
       hBoxNavButtons.getChildren().add(btnNextMonth);
 
       header.setRight(hBoxNavButtons);
-      header.setCenter(lblMonth);
+      header.setLeft(btnAddTask);
+      header.setCenter(lblDate);
 
    }
 
    private void setupEvents() {
+      btnAddTask.setOnAction(ViewScheduleController::btnAddTaskClicked);
       btnNextMonth.setOnAction(ViewScheduleController::btnNextMonthClicked);
       btnPrevMonth.setOnAction(ViewScheduleController::btnPrevMonthClicked);
    }
 
    @Override
    public void update() {
-      lblMonth.setText(month.toString());
-      buildScheduleGrid();
+      System.out.println("Pre Update Schedule: " + schedule);
+      lblDate.setText(month.toString() + ", " + intYear);
+      //if there is no Schedule loaded, don't save a blank schedule that could overwrite a populated on
+      if (schedule != null){
+         DataStorage.saveScheduleTasks(schedule.getTasks());
+      }else {
+         schedule = new Schedule(DataStorage.getCurrentUser().getUsername(), LocalDate.now());
+      }
+      //load the schedule for the user for the current month and year
+      schedule.setTasks(DataStorage.loadScheduleTasks());
+      try {
+         buildScheduleGrid();
+      } catch (Exception e){
+         e.printStackTrace();
+      }
+      System.out.println("Post Update Schedule: " + schedule);
+   }
+
+   public Schedule getSchedule() {
+      return schedule;
+   }
+
+   public ArrayList<ScheduleTile> getTiles() {
+      return tiles;
    }
 
    public void incrementMonth(){
@@ -112,6 +141,7 @@ public class ViewSchedule extends Pane implements Update {
       //check to see if month is put out of bounds
       if (intMonth>12){
          intMonth = 1;
+         intYear++;
       }
       //get the schedule month value
       month = Month.of(intMonth);
@@ -123,15 +153,13 @@ public class ViewSchedule extends Pane implements Update {
       //check to see if month is put out of bounds
       if (intMonth<1){
          intMonth = 12;
+         intYear--;
       }
       //get the schedule month value
       month = Month.of(intMonth);
    }
 
    private void buildScheduleGrid(){
-      //TODO:adjust to build blank or load schedule when approriate.
-
-      //TODO:Save any changes to this Schedule before changes.
       //reset the schedules grid and tiles
       grid.getChildren().clear();
       tiles.clear();
@@ -140,22 +168,15 @@ public class ViewSchedule extends Pane implements Update {
       int day = 1;
       int row = 0;
 
-/*      grid.add(new ScheduleTile(1),0,0);
-      grid.add(new ScheduleTile(2),0,1);
-      grid.add(new ScheduleTile(3),1,0);
-      grid.add(new ScheduleTile(4),1,1);*/
-
       //loop for however many days are in the current month
       while (day <= month.length(LocalDate.now().isLeapYear())){
          //every 7 days (a week) is one row
          for (int i = 0; i < 7 && day <= month.length(LocalDate.now().isLeapYear()); i++) {
             //get the schedule data and display the tasks in the tile
-
-            //random example data:
             ScheduleTile tile = new ScheduleTile(day);
+            tile.addTasks(schedule.getTasks(LocalDate.of(intYear, month, day)));
             tiles.add(tile);
             grid.add(tile,i, row);
-
             day++;
          }
          row++;

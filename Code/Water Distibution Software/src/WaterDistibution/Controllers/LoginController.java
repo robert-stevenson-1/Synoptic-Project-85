@@ -23,10 +23,17 @@ public class LoginController {
       //use the scene manager to change the scene of the program
       if (validateInput() || true) { //by pass login
          if (attemptLogin() || true) { //by pass login
+            System.out.println("User: " + DataStorage.getCurrentUser().getUsername());
             SceneManager.switchScene(SceneManager.getDashboardScene());
          }
       }
    }
+
+   public static void btnCreateAccountClicked (ActionEvent event) {
+      System.out.println("btnCreateAccount clicked!");
+      SceneManager.switchScene(SceneManager.getCreateAccountScene());
+
+      }
    private static boolean validateInput(){
 
       //password regex

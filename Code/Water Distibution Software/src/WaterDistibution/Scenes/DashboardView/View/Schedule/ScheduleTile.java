@@ -10,6 +10,7 @@
  */
 package WaterDistibution.Scenes.DashboardView.View.Schedule;
 
+import WaterDistibution.Model.Task;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
@@ -19,10 +20,7 @@ import javafx.scene.layout.Pane;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Random;
+import java.util.*;
 
 public class ScheduleTile extends Pane {
    private static final double MIN_WIDTH = 100;
@@ -38,7 +36,7 @@ public class ScheduleTile extends Pane {
    private BorderPane header = new BorderPane();
    private Label lblIntDay = new Label();
    private Label lblStrDay = new Label();
-   private ListView<String> taskList = new ListView<>();
+   private ListView<TaskTile> taskList = new ListView<>();
 
 
    public ScheduleTile(int intDay) {
@@ -65,7 +63,7 @@ public class ScheduleTile extends Pane {
 
 
       //setup the task list display
-      makeTaskList();
+      //makeTaskList();
 
       //setup label intDay
       setDay(intDay);
@@ -83,14 +81,18 @@ public class ScheduleTile extends Pane {
 
    }
 
-   private void makeTaskList() {
-      ObservableList<String> data = FXCollections.observableArrayList();
+   public ListView<TaskTile> getTaskList() {
+      return taskList;
+   }
 
-      Random rng = new Random(Calendar.getInstance().getTimeInMillis());
-      for (int i = 0; i < rng.nextInt(8); i++) {
-         data.add("Task Example " + i + 1);
+   public void addTasks(ArrayList<Task> tasks){
+      ObservableList<TaskTile> data = FXCollections.observableArrayList();
+      for (Task t :
+              tasks) {
+         if (t.getDate().getDayOfMonth() == intDay){
+            data.add(new TaskTile(t));
+         }
       }
-
       taskList.setItems(data);
    }
 
@@ -105,5 +107,13 @@ public class ScheduleTile extends Pane {
       DateFormat dateFormat = new SimpleDateFormat("EEEE", locale);
       date.setDate(intDay);
       return dateFormat.format(date);
+   }
+
+   @Override
+   public String toString() {
+      return "ScheduleTile{" +
+              "intDay=" + intDay +
+              ", taskList=" + taskList +
+              '}';
    }
 }
