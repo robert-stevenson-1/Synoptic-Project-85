@@ -1,5 +1,6 @@
 package WaterDistibution.Scenes.DashboardView.View;
 
+import WaterDistibution.Scenes.DashboardView.Controller.ViewLogWaterPressureController;
 import WaterDistibution.Scenes.DashboardView.Controller.ViewLogWaterUsageController;
 import WaterDistibution.Update;
 import javafx.geometry.Insets;
@@ -8,6 +9,13 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
 public class ViewLogWaterPressure extends StackPane implements Update {
+
+
+
+    private ComboBox cmbArea = new ComboBox();
+    private HBox hBoxAreaLayout = new HBox();
+    private Label lblArea = new Label("Pressure Area:");
+    private TextField txtArea = new TextField();
 
     private BorderPane primaryBox = new BorderPane();
     private GridPane grid = new GridPane();
@@ -62,6 +70,10 @@ public class ViewLogWaterPressure extends StackPane implements Update {
         GridPane.setFillHeight(hBoxPressureLayout, true);
         hBoxPressureLayout.setAlignment(Pos.CENTER);
 
+        //setup area
+        GridPane.setFillHeight(lblArea,true);
+        lblArea.setAlignment(Pos.CENTER);
+
         //setup the grid used to UI component alignment and positioning
         //set grid line visible (debugging only)
         ColumnConstraints cc = new ColumnConstraints();
@@ -112,6 +124,9 @@ public class ViewLogWaterPressure extends StackPane implements Update {
         hBoxPressureLayout.getChildren().add(txtPressure);
         hBoxPressureLayout.getChildren().add(lblPressureUnit);
 
+        hBoxAreaLayout.getChildren().add(lblArea);
+        hBoxAreaLayout.getChildren().add(txtArea);
+
         hBoxSubmitLayout.getChildren().add(btnSubmit);
 
         grid.add(hBoxNamePreviewLayout,0,0);
@@ -119,13 +134,18 @@ public class ViewLogWaterPressure extends StackPane implements Update {
         grid.add(hBoxTimeLayout,1,0);
         grid.add(hBoxPressureLayout,1,1);
         grid.add(hBoxSubmitLayout,1,3);
+        grid.add(hBoxAreaLayout,0,3);
 
     }
 
     private void setupEvents() {
-        btnSubmit.setOnAction(ViewLogWaterUsageController::btnSubmitClicked);
+        btnSubmit.setOnAction(ViewLogWaterPressureController::btnSubmitClicked);
     }
 
+
+    public TextField getCmbArea() {
+        return txtArea;
+    }
 
     public DatePicker getDatePickerLogDate() {
         return datePickerLogDate;
@@ -140,7 +160,7 @@ public class ViewLogWaterPressure extends StackPane implements Update {
     }
 
     public TextField getTxtPressure() {
-        return getTxtPressure();
+        return txtPressure;
     }
 
 

@@ -39,7 +39,7 @@ public class ViewViewWaterPressure extends Pane implements Update {
         private int intMonth = LocalDate.now().getMonthValue();
         private String strMonth = Month.of(intMonth).toString();
 
-        public void ViewViewWaterPressure() {
+        public  ViewViewWaterPressure() {
             setupLayout();
             setupEvents();
         }
@@ -80,7 +80,7 @@ public class ViewViewWaterPressure extends Pane implements Update {
 
         @Override
         public void update() {
-            graph.setTitle("Water usage, " + strMonth);
+            graph.setTitle("Water Pressure, " + strMonth);
             loadGraphData(DataStorage.getWaterPressureLogs(), strMonth);
         }
 

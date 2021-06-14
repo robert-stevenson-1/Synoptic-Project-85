@@ -20,6 +20,7 @@ import javafx.scene.layout.*;
 
 public class ViewLogWaterUsage extends StackPane {
 
+
    private BorderPane primaryBox = new BorderPane();
    private GridPane grid = new GridPane();
    private HBox hBoxNamePreviewLayout = new HBox();

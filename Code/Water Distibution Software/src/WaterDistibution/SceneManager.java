@@ -94,5 +94,8 @@ public abstract class SceneManager {
    public static void switchDashboardView(Pane view){
       DASHBOARD_SCENE.getViewport().getChildren().clear();
       DASHBOARD_SCENE.setViewportView(view);
+      if (view instanceof Update){
+         ((Update) view).update();
+      }
    }
 }
