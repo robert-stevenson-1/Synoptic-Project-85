@@ -25,10 +25,12 @@ public class ViewLogWaterRefill extends Pane implements Update {
 
     private BorderPane primaryBox = new BorderPane();
     private GridPane grid = new GridPane();
+    private HBox hBoxAreaLayout = new HBox();
+    private Label lblArea = new Label("Distributed Area:");
+    private ComboBox cmbArea = new ComboBox();
     private HBox hBoxNamePreviewLayout = new HBox();
     private Label lblNamePreview = new Label("Log Name:");
     private TextField txtLogNamePreview = new TextField();
-    private ComboBox cmbArea = new ComboBox();
     private HBox hBoxDateLayout = new HBox();
     private Label lblDate = new Label("Date:");
     private DatePicker datePickerLogDate = new DatePicker();
@@ -133,6 +135,10 @@ public class ViewLogWaterRefill extends Pane implements Update {
         hBoxRefillLayout.getChildren().add(txtRefill);
         hBoxRefillLayout.getChildren().add(lblRefillUnit);
 
+        hBoxAreaLayout.getChildren().add(lblArea);
+        hBoxAreaLayout.getChildren().add(cmbArea);
+
+
         hBoxSubmitLayout.getChildren().add(btnSubmit);
 
         grid.add(hBoxNamePreviewLayout,0,0);
@@ -140,6 +146,7 @@ public class ViewLogWaterRefill extends Pane implements Update {
         grid.add(hBoxTimeLayout,1,0);
         grid.add(hBoxRefillLayout,1,1);
         grid.add(hBoxSubmitLayout,1,3);
+        grid.add(hBoxAreaLayout,0,3);
     }
 
     private void setupEvents() {
@@ -158,6 +165,10 @@ public class ViewLogWaterRefill extends Pane implements Update {
     public TextField getTxtTimeMinute() {
         return txtTimeMinute;
     }
+
+    public ComboBox getCmbArea(){ return cmbArea;}
+
+    public TextField getTxtRefill(){ return txtRefill;}
 /*
     public TextField getTxtRefill() {
         return getTxtRefill();
@@ -166,6 +177,7 @@ public class ViewLogWaterRefill extends Pane implements Update {
 
     @Override
     public void update() {
-
+        cmbArea.getItems().clear();
+        cmbArea.getItems().addAll(DataStorage.getDistributionAreas());
     }
 }
