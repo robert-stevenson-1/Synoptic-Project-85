@@ -147,10 +147,19 @@ public class CreateUserLogin extends Pane {
         btnCreateAccount.setMinSize(100,60);
         btnCreateAccount.setStyle(ThemeConfig.BUTTON_THEME + ThemeConfig.BORDER_COLOUR);
 
-        //setup the Login button
+        //setup the Back button
         btnBack.setAlignment(Pos.CENTER);
         btnBack.setMinSize(100,60);
         btnBack.setStyle(ThemeConfig.BUTTON_THEME + ThemeConfig.BORDER_COLOUR);
+
+        //setup the HBox that will serve as the button bar on the window
+        hBoxBtnBar.setAlignment(Pos.TOP_CENTER);
+        hBoxBtnBar.setPadding(new Insets(15,0,10,0));
+
+        primaryBox.getChildren().add(lblTitle);
+        primaryBox.getChildren().add(grid);
+
+
 
     }
 }
