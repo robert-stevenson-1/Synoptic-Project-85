@@ -1,13 +1,12 @@
 package WaterDistibution.Scenes.DashboardView.View.Schedule;
 
-import WaterDistibution.ScheduleStorage.Task;
+import WaterDistibution.Model.Task;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
-import javafx.util.Callback;
 
 public class DialogAddTask extends Dialog<Task> {
 

@@ -2,9 +2,8 @@ package WaterDistibution.Scenes.DashboardView.Controller;
 
 import WaterDistibution.SceneManager;
 import WaterDistibution.Scenes.DashboardView.View.Schedule.DialogAddTask;
-import WaterDistibution.ScheduleStorage.Task;
+import WaterDistibution.Model.Task;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Dialog;
 
 import java.util.Optional;
 

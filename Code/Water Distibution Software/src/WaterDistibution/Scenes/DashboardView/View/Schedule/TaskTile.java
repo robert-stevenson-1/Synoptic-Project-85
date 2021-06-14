@@ -1,8 +1,7 @@
 package WaterDistibution.Scenes.DashboardView.View.Schedule;
 
 import WaterDistibution.SceneManager;
-import WaterDistibution.ScheduleStorage.Schedule;
-import WaterDistibution.ScheduleStorage.Task;
+import WaterDistibution.Model.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -10,9 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-
-import javax.swing.plaf.basic.BasicButtonUI;
-import java.util.ArrayList;
 
 public class TaskTile extends Pane {
 
