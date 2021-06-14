@@ -9,6 +9,7 @@ package WaterDistibution;
  */
 
 import WaterDistibution.Controllers.DashBoardController;
+import WaterDistibution.Controllers.LoginController;
 import WaterDistibution.SceneManager;
 import WaterDistibution.ThemeConfig;
 import javafx.geometry.Pos;
@@ -17,7 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 
-public class CreateUserLogin extends Pane{
+public class CreateUserLogin extends Pane {
     private static final double PREF_WIDTH = 640;
     private static final double PREF_HEIGHT = 480;
 
@@ -26,7 +27,7 @@ public class CreateUserLogin extends Pane{
     private GridPane grid = new GridPane();
     private Label lblTitle = new Label("Water Distribution: Create Account");
     private Label lblFirstName = new Label("First Name");
-    private Label lblLastName = new Label ("Last Name");
+    private Label lblLastName = new Label("Last Name");
     private Label lblDOB = new Label("Date of Birth");
     private Label lblGender = new Label("Gender");
     private Label lblEmail = new Label("Email Address");
@@ -37,27 +38,36 @@ public class CreateUserLogin extends Pane{
     private TextField Gender = new TextField();
     private TextField Email = new TextField();
     private TextField Address = new TextField();
-    private Button butSubmit = new Button ("Submit");
-    private Button butCreateAccount = new Button("Create Account");
+    private Button btnCreateAccount = new Button("Create Account");
 
 
-
-    public CreateUserLogin(){
+    public CreateUserLogin() {
         setLayout();
         setEvents();
 
     }
 
     private void setEvents() {
+        btnCreateAccount.setOnAction(LoginController::btnCreateAccountClicked);
     }
 
-    private void setLayout(){
+
+
+
+    private void setLayout() {
         this.setPrefHeight(PREF_HEIGHT);
         this.setPrefWidth(PREF_WIDTH);
         this.setHeight(PREF_HEIGHT);
         this.setWidth(PREF_WIDTH);
 
+        primaryBox.prefWidthProperty().bind(this.heightProperty());
+        primaryBox.prefHeightProperty().bind(this.widthProperty());
+
+        this.getChildren().add(primaryBox);
+
+        grid.prefWidthProperty().bind(primaryBox.widthProperty());
+
+
 
     }
-
 }

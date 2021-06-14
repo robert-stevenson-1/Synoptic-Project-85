@@ -29,6 +29,7 @@ public abstract class SceneManager {
    private static final ViewLogWaterUsage DASHBOARD_VIEW_LOG_WATER_USAGE = new ViewLogWaterUsage();
 
    private static final LoginScene LOGIN_SCENE = new LoginScene();
+   private static CreateUserLogin CREATE_USER_LOGIN_SCENE = new CreateUserLogin();
    private static final DashboardScene DASHBOARD_SCENE = new DashboardScene();
 
    //current scene that is being stored (default is the login scene)
@@ -60,6 +61,10 @@ public abstract class SceneManager {
 
    public static ViewSchedule getDashboardSchedule() {
       return DASHBOARD_SCHEDULE;
+   }
+
+   public static CreateUserLogin getCreateUserLogin() {
+      return CREATE_USER_LOGIN_SCENE;
    }
 
    public static void switchScene(Parent scene){

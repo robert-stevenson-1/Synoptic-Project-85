@@ -40,6 +40,7 @@ public class LoginScene extends Pane {
    private TextField txtPassword = new TextField();
    private Button btnLogin = new Button("Login");
 
+
    public LoginScene() {
       setupLayout();
       setupEvents();
@@ -126,6 +127,9 @@ public class LoginScene extends Pane {
    private void setupEvents() {
       //assign a click event to button for login
       btnLogin.setOnAction(LoginController::btnLoginClicked);
+      //assigning a click event to button for create account
+
+
 
    }
 
