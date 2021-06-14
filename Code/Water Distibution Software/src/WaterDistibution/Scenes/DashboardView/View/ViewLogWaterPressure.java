@@ -10,8 +10,6 @@ import javafx.scene.layout.*;
 
 public class ViewLogWaterPressure extends StackPane implements Update {
 
-
-
     private ComboBox cmbArea = new ComboBox();
     private HBox hBoxAreaLayout = new HBox();
     private Label lblArea = new Label("Pressure Area:");

@@ -65,8 +65,7 @@ public abstract class DataStorage implements Serializable {
    //-------------
    //---GETTERS---
    //-------------
-
-
+   
    public static ArrayList<String> getDistributionAreas() {
       return distributionAreas;
    }
