@@ -1,5 +1,13 @@
 package WaterDistibution.Scenes.DashboardView.View;
 
-public class ViewViewWaterRefill {
+import WaterDistibution.Update;
+import javafx.scene.layout.Pane;
 
+public class ViewViewWaterRefill extends Pane implements Update {
+
+
+    @Override
+    public void update() {
+
+    }
 }

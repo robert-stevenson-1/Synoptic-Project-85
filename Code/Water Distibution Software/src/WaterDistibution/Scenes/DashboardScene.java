@@ -2,6 +2,7 @@
  * Class: DashboardScene
  * Author: Robert Stevenson
  * Contributing Author(s):
+ * Ipek Meral
  *
  * Date Created: 06/06/2021
  *
@@ -182,6 +183,11 @@ public class DashboardScene extends Pane implements Update {
       btnLogUsage.setOnAction(DashBoardController::btnLogUsageClicked);
       btnViewUsage.setOnAction(DashBoardController::btnViewUsageClicked);
       btnLogout.setOnAction(DashBoardController::btnLogoutClicked);
+      btnViewRefill.setOnAction(DashBoardController::btnViewRefillClicked);
+      btnLogRefill.setOnAction(DashBoardController::btnLogRefillClicked);
+      btnLogPressure.setOnAction(DashBoardController::btnLogPressureClicked);
+      btnViewPressure.setOnAction(DashBoardController::btnViewPressureClicked);
+
    }
 
    public Pane getViewport() {
