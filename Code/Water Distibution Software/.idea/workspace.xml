@@ -122,15 +122,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -160,6 +158,7 @@
       <workItem from="1623233090362" duration="12125000" />
       <workItem from="1623310414356" duration="597000" />
       <workItem from="1623405051288" duration="8471000" />
+      <workItem from="1623652773287" duration="7760000" />
     </task>
     <servers />
   </component>
@@ -171,7 +170,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/Schedule/ViewSchedule.java</url>
-          <line>88</line>
+          <line>83</line>
           <properties class="WaterDistibution.Scenes.DashboardView.View.Schedule.ViewSchedule">
             <option name="EMULATED" value="true" />
           </properties>

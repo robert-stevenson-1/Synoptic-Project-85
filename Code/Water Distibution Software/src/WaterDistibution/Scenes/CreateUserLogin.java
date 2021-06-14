@@ -9,9 +9,6 @@ package WaterDistibution.Scenes;
  */
 
 import WaterDistibution.Controllers.CreateAccountController;
-import WaterDistibution.Controllers.DashBoardController;
-import WaterDistibution.Controllers.LoginController;
-import WaterDistibution.SceneManager;
 import WaterDistibution.ThemeConfig;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -20,30 +17,31 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
 public class CreateUserLogin extends Pane {
-    private static final double PREF_WIDTH = 640;
-    private static final double PREF_HEIGHT = 480;
+    private static final double MIN_WIDTH = 1024;
+    private static final double MIN_HEIGHT = 576;
+    private static final double PREF_WIDTH = 1280;
+    private static final double PREF_HEIGHT = 720;
+    private static final double MAX_WIDTH = 1280;
+    private static final double MAX_HEIGHT = 720;
 
-    private VBox primaryBox = new VBox();
+    private BorderPane primaryBox = new BorderPane();
     private HBox hBoxBtnBar = new HBox();
     private GridPane grid = new GridPane();
     private Label lblTitle = new Label("Water Distribution: Create Account");
-    private Label lblFirstName = new Label("First Name");
-    private Label lblLastName = new Label("Last Name");
-    private Label lblDOB = new Label("Date of Birth");
-    private Label lblGender = new Label("Gender");
-    private Label lblEmail = new Label("Email Address");
-    private Label lblAddress = new Label("Address");
+    private Label lblUsername = new Label("Username:");
+    private Label lblFirstName = new Label("First Name:");
+    private Label lblLastName = new Label("Last Name:");
+    private Label lblPassword = new Label("Password:");
+    private Label lblpasswordConfirmation = new Label("Confirm Password");
+    private TextField username = new TextField();
     private TextField firstName = new TextField();
     private TextField lastName = new TextField();
-    private TextField DOB = new TextField();
-    private TextField Gender = new TextField();
-    private TextField Email = new TextField();
-    private TextField Address = new TextField();
-    private Button btnCreateAccount = new Button("Create Account");
+    private TextField password = new TextField();
+    private TextField passwordConfirmation = new TextField();
+    private Button btnSubmit = new Button("Submit");
     private Button btnBack = new Button("Back");
 
 
@@ -53,34 +51,24 @@ public class CreateUserLogin extends Pane {
 
     }
 
-
-
-    private void setEvents() {
-       btnBack.setOnAction(CreateAccountController::btnBackClicked);
-       btnCreateAccount.setOnAction(LoginController::btnCreateAccountClicked);
-    }
-
-
-
-
     private void setLayout() {
-        this.setPrefHeight(PREF_HEIGHT);
+        this.setMinWidth(MIN_WIDTH);
+        this.setMinHeight(MIN_HEIGHT);
         this.setPrefWidth(PREF_WIDTH);
-        this.setHeight(PREF_HEIGHT);
+        this.setPrefHeight(PREF_HEIGHT);
         this.setWidth(PREF_WIDTH);
-        this.getChildren().add(btnBack);
+        this.setHeight(PREF_WIDTH);
+        this.setMaxWidth(MAX_WIDTH);
+        this.setMaxHeight(MAX_HEIGHT);
 
-        primaryBox.prefWidthProperty().bind(this.heightProperty());
-        primaryBox.prefHeightProperty().bind(this.widthProperty());
+        primaryBox.prefWidthProperty().bind(this.widthProperty());
+        primaryBox.prefHeightProperty().bind(this.heightProperty());
 
         this.getChildren().add(primaryBox);
 
         grid.prefWidthProperty().bind(primaryBox.widthProperty());
 
-
-        primaryBox.setAlignment(Pos.CENTER);
         primaryBox.setStyle(ThemeConfig.PANEL_COLOUR_1);
-
 
         grid.setAlignment(Pos.CENTER);
         grid.setVgap(10);
@@ -102,21 +90,13 @@ public class CreateUserLogin extends Pane {
         lblLastName.setAlignment(Pos.CENTER);
         lblLastName.setFont(Font.font(16));
 
-        //setup the Date of birth label
-        lblDOB.setAlignment(Pos.CENTER);
-        lblDOB.setFont(Font.font(16));
-
-        //setup the Gender label
-        lblGender.setAlignment(Pos.CENTER);
-        lblGender.setFont(Font.font(16));
+        //setup the password label
+        lblPassword.setAlignment(Pos.CENTER);
+        lblPassword.setFont(Font.font(16));
 
         //setup the Email label
-        lblEmail.setAlignment(Pos.CENTER);
-        lblEmail.setFont(Font.font(16));
-
-        //setup the Address label
-        lblAddress.setAlignment(Pos.CENTER);
-        lblAddress.setFont(Font.font(16));
+        lblpasswordConfirmation.setAlignment(Pos.CENTER);
+        lblpasswordConfirmation.setFont(Font.font(16));
 
        //setting up the text field for first name
         firstName.setAlignment(Pos.CENTER);
@@ -126,40 +106,65 @@ public class CreateUserLogin extends Pane {
         lastName.setAlignment(Pos.CENTER);
         lastName.setFont(Font.font(16));
 
-        //setting up the text field for DOB
-        DOB.setAlignment(Pos.CENTER);
-        DOB.setFont(Font.font(16));
+        //setting up the text field for password
+        password.setAlignment(Pos.CENTER);
+        password.setFont(Font.font(16));
 
-        //setting up the text field for Gender
-        Gender.setAlignment(Pos.CENTER);
-        Gender.setFont(Font.font(16));
-
-        //setting up the text field for email
-        Email.setAlignment(Pos.CENTER);
-        Email.setFont(Font.font(16));
-
-        //setting up the text field for address
-        Address.setAlignment(Pos.CENTER);
-        Address.setFont(Font.font(16));
-
-        //setup the Create Account button
-        btnCreateAccount.setAlignment(Pos.CENTER);
-        btnCreateAccount.setMinSize(100,60);
-        btnCreateAccount.setStyle(ThemeConfig.BUTTON_THEME + ThemeConfig.BORDER_COLOUR);
+        //setting up the text field for passwordConfirmation
+        passwordConfirmation.setAlignment(Pos.CENTER);
+        passwordConfirmation.setFont(Font.font(16));
 
         //setup the Back button
         btnBack.setAlignment(Pos.CENTER);
         btnBack.setMinSize(100,60);
         btnBack.setStyle(ThemeConfig.BUTTON_THEME + ThemeConfig.BORDER_COLOUR);
 
+        //setup the Back button
+        btnSubmit.setAlignment(Pos.CENTER);
+        btnSubmit.setMinSize(100,60);
+        btnSubmit.setStyle(ThemeConfig.BUTTON_THEME + ThemeConfig.BORDER_COLOUR);
+
         //setup the HBox that will serve as the button bar on the window
         hBoxBtnBar.setAlignment(Pos.TOP_CENTER);
         hBoxBtnBar.setPadding(new Insets(15,0,10,0));
 
-        primaryBox.getChildren().add(lblTitle);
-        primaryBox.getChildren().add(grid);
+        grid.add(lblFirstName,0,0);
+        grid.add(firstName,1,0);
+        grid.add(lblLastName,2,0);
+        grid.add(lastName,3,0);
+        grid.add(lblUsername,0,1);
+        grid.add(username,1,1);
+        grid.add(lblPassword,0,2);
+        grid.add(password,1,2);
+        grid.add(lblpasswordConfirmation,2,2);
+        grid.add(passwordConfirmation,3,2);
 
+        hBoxBtnBar.getChildren().add(btnBack);
+        hBoxBtnBar.getChildren().add(btnSubmit);
 
+        primaryBox.setTop(lblTitle);
+        primaryBox.setCenter(grid);
+        primaryBox.setBottom(hBoxBtnBar);
+    }
 
+    private void setEvents() {
+        btnSubmit.setOnAction(CreateAccountController::btnSubmitClicked);
+        btnBack.setOnAction(CreateAccountController::btnBackClicked);
+    }
+
+    public String getUsername() {
+        return username.getText();
+    }
+
+    public String getFirstName() {
+        return firstName.getText();
+    }
+
+    public String getLastName() {
+        return lastName.getText();
+    }
+
+    public String getPassword() {
+        return password.getText();
     }
 }

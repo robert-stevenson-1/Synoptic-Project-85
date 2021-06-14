@@ -36,7 +36,7 @@ public class User implements Serializable {
       lastName = "";
    }
 
-   public User(String username, String password) {
+   public User(String username, String rawPassword) {
       this.username = username;
       try {
          this.salt = DataStorage.getSalt();
@@ -45,10 +45,10 @@ public class User implements Serializable {
       } catch (NoSuchProviderException e) {
          e.printStackTrace();
       }
-      this.password = DataStorage.hashPassword(password,salt);
+      this.password = DataStorage.hashPassword(rawPassword,salt);
    }
 
-   public User(String username, String password, String firstName, String lastName) {
+   public User(String username, String rawPassword, String firstName, String lastName) {
       this.username = username;
       try {
          this.salt = DataStorage.getSalt();
@@ -57,7 +57,7 @@ public class User implements Serializable {
       } catch (NoSuchProviderException e) {
          e.printStackTrace();
       }
-      this.password = DataStorage.hashPassword(password, salt);
+      this.password = DataStorage.hashPassword(rawPassword, salt);
       this.firstName = firstName;
       this.lastName = lastName;
    }

@@ -22,7 +22,6 @@ import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Hashtable;
 
 public abstract class DataStorage implements Serializable {
 
@@ -52,6 +51,10 @@ public abstract class DataStorage implements Serializable {
       DataStorage.distributionAreas.add(distributionArea);
    }
 
+   public static void addUser(User user){
+      users.put(user.getUsername(), user);
+   }
+
    //-------------
    //---GETTERS---
    //-------------
@@ -61,14 +64,14 @@ public abstract class DataStorage implements Serializable {
       return distributionAreas;
    }
 
-   public static boolean userExists(String username){
+   public static boolean usernameExist(String username){
       return users.containsKey(username);
    }
 
    //gets a user that is saved in the system
    public static User getUser(String username, String password) throws NoSuchUsernameExists, InvalidPasswordException {
       //check if a user with that username exists
-      if (userExists(username)){
+      if (usernameExist(username)){
          //user found, check to see if the password entered is correct
          User user = users.get(username);
          if(user.getPassword().equals(hashPassword(password, user.getSalt()))){
