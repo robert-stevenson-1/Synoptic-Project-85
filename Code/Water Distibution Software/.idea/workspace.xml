@@ -122,19 +122,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.DataStorage" />
@@ -202,10 +189,6 @@
         <watch expression="SceneManager.getDashboardViewLogWaterUsage().getCmbArea()" language="JAVA" />
         <watch expression="DataStorage.getDistributionAreas()" language="JAVA" />
         <watch expression="DataStorage.getWaterUsageLogs()" language="JAVA" />
-        <watch expression="schedule" language="JAVA" />
-        <watch expression="tasks.get(i).getDate()" language="JAVA" />
-        <watch expression="SceneManager.getDashboardSchedule().getSchedule().getTasks()" language="JAVA" />
-        <watch expression="SceneManager.getDashboardSchedule().getSchedule().getTasks()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
