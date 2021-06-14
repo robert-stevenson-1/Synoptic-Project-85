@@ -117,6 +117,13 @@ public class CreateUserLogin extends Pane {
         lblAddress.setAlignment(Pos.CENTER);
         lblAddress.setFont(Font.font(16));
 
+       //setting up the text field for first name
+        firstName.setAlignment(Pos.CENTER);
+        firstName.setFont(Font.font(16));
+
+        //setting up the text field for last name
+        lastName.setAlignment(Pos.CENTER);
+        lastName.setFont(Font.font(16));
 
 
     }
