@@ -1,5 +1,6 @@
 package WaterDistibution.Scenes.DashboardView.View;
 
+import WaterDistibution.DataStorage;
 import WaterDistibution.Scenes.DashboardView.Controller.ViewLogWaterPressureController;
 import WaterDistibution.Update;
 import javafx.geometry.Insets;
@@ -9,16 +10,18 @@ import javafx.scene.layout.*;
 
 public class ViewLogWaterPressure extends StackPane implements Update {
 
-    private ComboBox cmbArea = new ComboBox();
-    private HBox hBoxAreaLayout = new HBox();
-    private Label lblArea = new Label("Pressure Area:");
-    private TextField txtArea = new TextField();
 
     private BorderPane primaryBox = new BorderPane();
+    private HBox hBoxHeader = new HBox();
+    private Button btnAddArea = new Button("Add Distribution Area");
+    private Button btnRemoveArea = new Button("Remove Distribution Area");
     private GridPane grid = new GridPane();
     private HBox hBoxNamePreviewLayout = new HBox();
     private Label lblNamePreview = new Label("Log Name:");
     private TextField txtLogNamePreview = new TextField();
+    private ComboBox cmbArea = new ComboBox();
+    private HBox hBoxAreaLayout = new HBox();
+    private Label lblArea = new Label("Pressure Area:");
     private HBox hBoxDateLayout = new HBox();
     private Label lblDate = new Label("Date:");
     private DatePicker datePickerLogDate = new DatePicker();
@@ -42,7 +45,6 @@ public class ViewLogWaterPressure extends StackPane implements Update {
 
         this.getChildren().add(primaryBox);
 
-
         //setup the primary containing box
         primaryBox.prefHeightProperty().bind(this.heightProperty());
         primaryBox.prefWidthProperty().bind(this.widthProperty());
@@ -54,6 +56,10 @@ public class ViewLogWaterPressure extends StackPane implements Update {
         txtLogNamePreview.setEditable(false);
         txtLogNamePreview.minWidthProperty().bind(hBoxNamePreviewLayout.prefWidthProperty());
         txtLogNamePreview.minHeightProperty().bind(hBoxNamePreviewLayout.prefHeightProperty());
+
+        //setup Area selection
+        GridPane.setFillHeight(hBoxAreaLayout, true);
+        hBoxAreaLayout.setAlignment(Pos.CENTER);
 
         //setup Date
         GridPane.setFillHeight(hBoxDateLayout, true);
@@ -103,7 +109,11 @@ public class ViewLogWaterPressure extends StackPane implements Update {
         hBoxSubmitLayout.setPadding(new Insets(15));
         hBoxSubmitLayout.setAlignment(Pos.CENTER);
 
+
         primaryBox.setCenter(grid);
+
+        hBoxHeader.getChildren().add(btnAddArea);
+        hBoxHeader.getChildren().add(btnRemoveArea);
 
         hBoxNamePreviewLayout.getChildren().add(lblNamePreview);
         hBoxNamePreviewLayout.getChildren().add(txtLogNamePreview);
@@ -122,16 +132,16 @@ public class ViewLogWaterPressure extends StackPane implements Update {
         hBoxPressureLayout.getChildren().add(lblPressureUnit);
 
         hBoxAreaLayout.getChildren().add(lblArea);
-        hBoxAreaLayout.getChildren().add(txtArea);
+        hBoxAreaLayout.getChildren().add(cmbArea);
 
         hBoxSubmitLayout.getChildren().add(btnSubmit);
 
         grid.add(hBoxNamePreviewLayout,0,0);
+        grid.add(hBoxAreaLayout,1,0);
         grid.add(hBoxDateLayout,0,1);
-        grid.add(hBoxTimeLayout,1,0);
-        grid.add(hBoxPressureLayout,1,1);
+        grid.add(hBoxTimeLayout,1,1);
+        grid.add(hBoxPressureLayout,0,2);
         grid.add(hBoxSubmitLayout,1,3);
-        grid.add(hBoxAreaLayout,0,3);
 
     }
 
@@ -140,8 +150,8 @@ public class ViewLogWaterPressure extends StackPane implements Update {
     }
 
 
-    public TextField getCmbArea() {
-        return txtArea;
+    public ComboBox getCmbArea() {
+        return cmbArea;
     }
 
     public DatePicker getDatePickerLogDate() {
@@ -163,6 +173,7 @@ public class ViewLogWaterPressure extends StackPane implements Update {
 
     @Override
     public void update() {
-
+        cmbArea.getItems().clear();
+        cmbArea.getItems().addAll(DataStorage.getDistributionAreas());
     }
 }

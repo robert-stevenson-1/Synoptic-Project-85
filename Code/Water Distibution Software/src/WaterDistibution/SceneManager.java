@@ -10,6 +10,8 @@
  */
 package WaterDistibution;
 
+import WaterDistibution.Scenes.CreateAccountScene;
+import WaterDistibution.Scenes.CreateUserLogin;
 import WaterDistibution.Scenes.DashboardScene;
 import WaterDistibution.Scenes.DashboardView.View.*;
 import WaterDistibution.Scenes.DashboardView.View.Schedule.ViewSchedule;
@@ -32,6 +34,7 @@ public abstract class SceneManager {
 
    private static final LoginScene LOGIN_SCENE = new LoginScene();
    private static final DashboardScene DASHBOARD_SCENE = new DashboardScene();
+   private static final CreateUserLogin CREATE_ACCOUNT_SCENE = new CreateUserLogin();
 
    //current scene that is being stored (default is the login scene)
    private static Scene currentScene = new Scene(LOGIN_SCENE);
@@ -75,6 +78,10 @@ public abstract class SceneManager {
    }
 
    public static ViewViewWaterPressure getDashboardViewViewWaterPressure(){ return DASHBOARD_VIEW_VIEW_WATER_PRESSURE;}
+
+   public static CreateUserLogin getCreateAccountScene() {
+      return CREATE_ACCOUNT_SCENE;
+   }
 
    public static void switchScene(Parent scene){
       currentScene.setRoot(scene);

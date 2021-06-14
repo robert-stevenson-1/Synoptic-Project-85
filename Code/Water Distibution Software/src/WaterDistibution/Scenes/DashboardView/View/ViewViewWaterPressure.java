@@ -2,7 +2,7 @@ package WaterDistibution.Scenes.DashboardView.View;
 
 import WaterDistibution.DataStorage;
 import WaterDistibution.Model.LogPressure;
-import WaterDistibution.Scenes.DashboardView.Controller.ViewLogWaterPressureController;
+import WaterDistibution.Model.LogUsage;
 import WaterDistibution.Scenes.DashboardView.Controller.ViewViewWaterPressureController;
 import WaterDistibution.Update;
 import javafx.geometry.Insets;
@@ -24,7 +24,6 @@ import java.util.Comparator;
 public class ViewViewWaterPressure extends Pane implements Update {
 
         private BorderPane primaryBox = new BorderPane();
-        private GridPane grid = new GridPane();
 
         private BorderPane header = new BorderPane();
         private HBox hBoxNavButtons = new HBox();
@@ -34,7 +33,7 @@ public class ViewViewWaterPressure extends Pane implements Update {
         private CategoryAxis xAxis = new CategoryAxis();
         private NumberAxis yAxis = new NumberAxis();
         private LineChart<String, Number> graph = new LineChart<>(xAxis, yAxis);
-        private XYChart.Series series  = new XYChart.Series<String, Number>();
+        private ArrayList<XYChart.Series> seriesArrayList = new ArrayList<>();
 
         private int intMonth = LocalDate.now().getMonthValue();
         private String strMonth = Month.of(intMonth).toString();
@@ -107,23 +106,38 @@ public class ViewViewWaterPressure extends Pane implements Update {
         }
 
         private void loadGraphData(ArrayList<LogPressure> data, String month){
-            //reset graph
-            graph.getData().clear();
-            //reset graph data series
-            series.getData().clear();
-            series.setName("Example Series");
+           //reset graph
+           graph.getData().clear();
+           //reset graph data series
+           seriesArrayList.clear();
+           //create a series for every distribution area
+           for (String a :
+                   DataStorage.getDistributionAreas()) {
+              XYChart.Series series = new XYChart.Series();
+              series.setName(a);
+              seriesArrayList.add(series);
+           }
 
-            data.sort(Comparator.comparing(LogPressure::getDate));
-            for (LogPressure l: data) {
-                System.out.println("Log month: " + l.getDate().getMonth().getValue() +
-                        "String Month value: "+Month.valueOf(month).getValue());
-                //only load logs for the month selected to view
-                if (l.getDate().getMonth().getValue() == Month.valueOf(month).getValue()){
-                    //add the log to the graph series
-                    series.getData().add(new XYChart.Data<>(l.getDate().toString(), l.getWaterPressure()));
-                }
-            }
-            graph.getData().add(series);
+           data.sort(Comparator.comparing(LogPressure::getDate));
+           for (LogPressure l: data) {
+              System.out.println("Log month: " + l.getDate().getMonth().getValue() +
+                      "String Month value: "+Month.valueOf(month).getValue());
+              //only load logs for the month selected to view
+              if (l.getDate().getMonth().getValue() == Month.valueOf(month).getValue()){
+                 //add the log to the graph series for that area
+                 for (XYChart.Series s :
+                         seriesArrayList) {
+                    if (s.getName().equals(l.getDistributionArea())){
+                       s.getData().add(new XYChart.Data<>(l.getDate().toString(), l.getWaterPressure()));
+                    }
+                 }
+              }
+           }
+           //add the series to the chart
+           for (XYChart.Series s:
+                   seriesArrayList) {
+              graph.getData().add(s);
+           }
         }
 
 }

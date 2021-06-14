@@ -53,12 +53,6 @@ public class ViewLogWaterUsage extends StackPane implements Update {
    private void setupLayout() {
       //set the parent primary Box that contains the components of the view
       this.getChildren().add(primaryBox);
-      //this.setPadding(new Insets(75));
-      /*      this.setPadding(new Insets(
-              (this.getHeight()*0.5),
-              (this.getWidth()*0.5),
-              (this.getWidth()*0.5),
-              (this.getHeight()*0.5)));*/
 
       //setup the primary containing box
       primaryBox.prefHeightProperty().bind(this.heightProperty());

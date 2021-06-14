@@ -12,6 +12,7 @@
 
 package WaterDistibution.Controllers;
 
+import WaterDistibution.DataStorage;
 import WaterDistibution.SceneManager;
 import javafx.event.ActionEvent;
 
@@ -19,7 +20,7 @@ public class DashBoardController {
    public static void btnLogoutClicked(ActionEvent event) {
       System.out.println("btnLogout clicked!");
       SceneManager.switchScene(SceneManager.getLoginScene());
-      //TODO: User is not logged out in RAM
+      DataStorage.logoutUser();
    }
    public static void btnScheduleClicked(ActionEvent event) {
       System.out.println("btnSchedule clicked!");

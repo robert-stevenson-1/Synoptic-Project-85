@@ -28,6 +28,12 @@ public class LoginController {
          }
       }
    }
+
+   public static void btnCreateAccountClicked (ActionEvent event) {
+      System.out.println("btnCreateAccount clicked!");
+      SceneManager.switchScene(SceneManager.getCreateAccountScene());
+
+      }
    private static boolean validateInput(){
 
       //password regex

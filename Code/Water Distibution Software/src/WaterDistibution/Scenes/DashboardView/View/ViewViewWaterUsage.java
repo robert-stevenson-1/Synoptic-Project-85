@@ -117,10 +117,6 @@ public class ViewViewWaterUsage extends Pane implements Update {
       graph.getData().clear();
       //reset graph data series
       seriesArrayList.clear();
-/*      for (XYChart.Series s :
-              seriesArrayList) {
-         s.getData().clear();
-      }*/
       //create a series for every distribution area
       for (String a :
               DataStorage.getDistributionAreas()) {
