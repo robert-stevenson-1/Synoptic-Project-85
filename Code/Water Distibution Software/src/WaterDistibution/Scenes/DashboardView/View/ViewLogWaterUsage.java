@@ -20,7 +20,6 @@ import javafx.scene.layout.*;
 
 public class ViewLogWaterUsage extends StackPane implements Update {
 
-
    private BorderPane primaryBox = new BorderPane();
    private HBox hBoxHeader = new HBox();
    private Button btnAddArea = new Button("Add Distribution Area");
