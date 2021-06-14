@@ -1,8 +1,5 @@
 package WaterDistibution.Scenes.DashboardView.View;
 
-import WaterDistibution.DataStorage;
-import WaterDistibution.ScheduleStorage.Task;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;

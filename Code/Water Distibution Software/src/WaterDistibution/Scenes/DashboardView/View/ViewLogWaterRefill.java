@@ -1,8 +1,7 @@
 /**
- * Class: ViewLogWaterUsage
- * Author: Robert Stevenson
+ * Class: ViewLogWaterRefill
+ * Author: Ipek Meral
  * Contributing Author(s):
- * Ipek Meral
  *
  * Date Created: 09/06/2021
  *
@@ -14,7 +13,6 @@ package WaterDistibution.Scenes.DashboardView.View;
 
 import WaterDistibution.DataStorage;
 import WaterDistibution.Scenes.DashboardView.Controller.ViewLogWaterRefillController;
-import WaterDistibution.Scenes.DashboardView.Controller.ViewLogWaterUsageController;
 import WaterDistibution.Update;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -24,10 +22,13 @@ import javafx.scene.layout.*;
 public class ViewLogWaterRefill extends Pane implements Update {
 
     private BorderPane primaryBox = new BorderPane();
+    //private HBox hBoxHeader = new HBox();
+    //private Button btnAddArea = new Button("Add Distribution Area");
+    //private Button btnRemoveArea = new Button("Remove Distribution Area");
     private GridPane grid = new GridPane();
-    private HBox hBoxAreaLayout = new HBox();
-    private Label lblArea = new Label("Distributed Area:");
-    private ComboBox cmbArea = new ComboBox();
+    //private HBox hBoxAreaLayout = new HBox();
+    //private Label lblArea = new Label("Distributed Area:");
+    //private ComboBox cmbArea = new ComboBox();
     private HBox hBoxNamePreviewLayout = new HBox();
     private Label lblNamePreview = new Label("Log Name:");
     private TextField txtLogNamePreview = new TextField();
@@ -63,6 +64,9 @@ public class ViewLogWaterRefill extends Pane implements Update {
         primaryBox.prefHeightProperty().bind(this.heightProperty());
         primaryBox.prefWidthProperty().bind(this.widthProperty());
         BorderPane.setAlignment(primaryBox, Pos.CENTER);
+
+        //setup the header
+        //hBoxHeader.setAlignment(Pos.CENTER);
 
         //setup name preview
         GridPane.setFillHeight(hBoxNamePreviewLayout, true);
@@ -117,7 +121,11 @@ public class ViewLogWaterRefill extends Pane implements Update {
 
         //add the UI components to the primary container
         // box of the view
+        //primaryBox.setTop(hBoxHeader);
         primaryBox.setCenter(grid);
+
+        //hBoxHeader.getChildren().add(btnAddArea);
+        //hBoxHeader.getChildren().add(btnRemoveArea);
 
         hBoxNamePreviewLayout.getChildren().add(lblNamePreview);
         hBoxNamePreviewLayout.getChildren().add(txtLogNamePreview);
@@ -135,8 +143,8 @@ public class ViewLogWaterRefill extends Pane implements Update {
         hBoxRefillLayout.getChildren().add(txtRefill);
         hBoxRefillLayout.getChildren().add(lblRefillUnit);
 
-        hBoxAreaLayout.getChildren().add(lblArea);
-        hBoxAreaLayout.getChildren().add(cmbArea);
+        //hBoxAreaLayout.getChildren().add(lblArea);
+        //hBoxAreaLayout.getChildren().add(cmbArea);
 
 
         hBoxSubmitLayout.getChildren().add(btnSubmit);
@@ -145,8 +153,8 @@ public class ViewLogWaterRefill extends Pane implements Update {
         grid.add(hBoxDateLayout,0,1);
         grid.add(hBoxTimeLayout,1,0);
         grid.add(hBoxRefillLayout,1,1);
-        grid.add(hBoxSubmitLayout,1,3);
-        grid.add(hBoxAreaLayout,0,3);
+        grid.add(hBoxSubmitLayout,1,2);
+        //grid.add(hBoxAreaLayout,0,3);
     }
 
     private void setupEvents() {
@@ -166,18 +174,13 @@ public class ViewLogWaterRefill extends Pane implements Update {
         return txtTimeMinute;
     }
 
-    public ComboBox getCmbArea(){ return cmbArea;}
+    //public ComboBox getCmbArea(){ return cmbArea;}
 
     public TextField getTxtRefill(){ return txtRefill;}
-/*
-    public TextField getTxtRefill() {
-        return getTxtRefill();
-    }*/
-
 
     @Override
     public void update() {
-        cmbArea.getItems().clear();
-        cmbArea.getItems().addAll(DataStorage.getDistributionAreas());
+        //cmbArea.getItems().clear();
+        //cmbArea.getItems().addAll(DataStorage.getDistributionAreas());
     }
 }

@@ -1,11 +1,18 @@
+/**
+ * Class: ViewViewWaterRefill
+ * Author: Ipek Meral
+ * Contributing Author(s):
+ *
+ * Date Created: 09/06/2021
+ *
+ * Description:
+ *
+ */
 package WaterDistibution.Scenes.DashboardView.View;
 
 import WaterDistibution.DataStorage;
-import WaterDistibution.Model.LogPressure;
 import WaterDistibution.Model.LogRefill;
-import WaterDistibution.Model.LogUsage;
 import WaterDistibution.Scenes.DashboardView.Controller.ViewViewWaterRefillController;
-import WaterDistibution.Scenes.DashboardView.Controller.ViewViewWaterUsageController;
 import WaterDistibution.Update;
 import javafx.geometry.Insets;
 import javafx.scene.chart.CategoryAxis;
@@ -108,7 +115,7 @@ public class ViewViewWaterRefill extends Pane implements Update {
             graph.getData().clear();
             //reset graph data series
             series.getData().clear();
-            series.setName("Example Series");
+            series.setName("Water Level");
 
             data.sort(Comparator.comparing(LogRefill::getDate));
             for (LogRefill l : data) {
@@ -123,11 +130,9 @@ public class ViewViewWaterRefill extends Pane implements Update {
             graph.getData().add(series);
         }
 
-
-
     @Override
     public void update() {
-        graph.setTitle("Water usage, " + strMonth);
+        graph.setTitle("Water Refill, " + strMonth);
         loadGraphData(DataStorage.getWaterRefillLogs(), strMonth);
     }
 }

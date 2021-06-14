@@ -17,8 +17,7 @@ import WaterDistibution.Model.LogPressure;
 import WaterDistibution.Model.LogRefill;
 import WaterDistibution.Model.LogUsage;
 import WaterDistibution.Model.User;
-import WaterDistibution.ScheduleStorage.Schedule;
-import WaterDistibution.ScheduleStorage.Task;
+import WaterDistibution.Model.Task;
 
 import java.io.*;
 import java.security.MessageDigest;

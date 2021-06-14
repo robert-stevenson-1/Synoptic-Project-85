@@ -17,7 +17,7 @@ public class ViewLogWaterRefillController {
                SceneManager.getDashboardViewLogWaterRefill().getDatePickerLogDate().getValue(),
                Integer.parseInt(SceneManager.getDashboardViewLogWaterRefill().getTxtTimeHour().getText()),
                Integer.parseInt(SceneManager.getDashboardViewLogWaterRefill().getTxtTimeHour().getText()),
-               SceneManager.getDashboardViewLogWaterRefill().getCmbArea().getValue().toString(),
+               //SceneManager.getDashboardViewLogWaterRefill().getCmbArea().getValue().toString(),
                Double.parseDouble(SceneManager.getDashboardViewLogWaterRefill().getTxtRefill().getText()))
         );
 

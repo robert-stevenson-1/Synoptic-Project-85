@@ -2,6 +2,7 @@
  * Class: ViewLogWaterUsageController
  * Author: Robert Stevenson
  * Contributing Author(s):
+ *    Louis Mayne
  *
  * Date Created: 10/06/2021
  *
@@ -18,7 +19,6 @@ import WaterDistibution.Scenes.DashboardView.View.DialogRemoveArea;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 
-import javax.xml.crypto.Data;
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -65,7 +65,6 @@ public class ViewLogWaterUsageController {
    }
 
    private static boolean validateInput(){
-      //String errorMsg = "";
       StringBuilder errorMsg = new StringBuilder();
 
       try{

@@ -10,7 +10,7 @@
  */
 package WaterDistibution.Scenes.DashboardView.View.Schedule;
 
-import WaterDistibution.ScheduleStorage.Task;
+import WaterDistibution.Model.Task;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;

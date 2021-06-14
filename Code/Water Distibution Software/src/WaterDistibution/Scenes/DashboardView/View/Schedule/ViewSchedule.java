@@ -12,7 +12,7 @@ package WaterDistibution.Scenes.DashboardView.View.Schedule;
 
 import WaterDistibution.DataStorage;
 import WaterDistibution.Scenes.DashboardView.Controller.ViewScheduleController;
-import WaterDistibution.ScheduleStorage.Schedule;
+import WaterDistibution.Model.Schedule;
 import WaterDistibution.Update;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
