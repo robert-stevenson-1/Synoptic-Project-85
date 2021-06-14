@@ -125,6 +125,21 @@ public class CreateUserLogin extends Pane {
         lastName.setAlignment(Pos.CENTER);
         lastName.setFont(Font.font(16));
 
+        //setting up the text field for DOB
+        DOB.setAlignment(Pos.CENTER);
+        DOB.setFont(Font.font(16));
+
+        //setting up the text field for Gender
+        Gender.setAlignment(Pos.CENTER);
+        Gender.setFont(Font.font(16));
+
+        //setting up the text field for email
+        Email.setAlignment(Pos.CENTER);
+        Email.setFont(Font.font(16));
+
+        //setting up the text field for address
+        Address.setAlignment(Pos.CENTER);
+        Address.setFont(Font.font(16));
 
     }
 }
