@@ -107,5 +107,6 @@ public abstract class SceneManager {
       if (view instanceof Update){
          ((Update) view).update();
       }
+      System.out.println(DASHBOARD_SCENE.getViewport());
    }
 }

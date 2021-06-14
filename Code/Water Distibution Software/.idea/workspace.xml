@@ -179,13 +179,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/Schedule/TaskTile.java</url>
-          <line>112</line>
+          <line>108</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardView/View/Schedule/TaskTile.java</url>
-          <line>87</line>
+          <line>83</line>
           <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/WaterDistibution/Controllers/DashBoardController.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -200,6 +205,7 @@
         <watch expression="SceneManager.getDashboardViewLogWaterUsage().getCmbArea()" language="JAVA" />
         <watch expression="DataStorage.getDistributionAreas()" language="JAVA" />
         <watch expression="DataStorage.getWaterUsageLogs()" language="JAVA" />
+        <watch expression="DASHBOARD_SCENE.getViewport()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

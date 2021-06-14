@@ -13,12 +13,13 @@ public class ViewLogWaterRefillController {
         //TODO: Input verification
 
        DataStorage.addWaterRefillLogs(new LogRefill(
-                getLogName(),
-                SceneManager.getDashboardViewLogWaterRefill().getDatePickerLogDate().getValue(),
-                Integer.parseInt(SceneManager.getDashboardViewLogWaterRefill().getTxtTimeHour().getText()),
-                Integer.parseInt(SceneManager.getDashboardViewLogWaterRefill().getTxtTimeHour().getText())
-                //Double.parseDouble(SceneManager.getDashboardViewLogWaterRefill().getTxtRefill().getText()))
-        ));
+               getLogName(),
+               SceneManager.getDashboardViewLogWaterRefill().getDatePickerLogDate().getValue(),
+               Integer.parseInt(SceneManager.getDashboardViewLogWaterRefill().getTxtTimeHour().getText()),
+               Integer.parseInt(SceneManager.getDashboardViewLogWaterRefill().getTxtTimeHour().getText()),
+               //SceneManager.getDashboardViewLogWaterRefill().getCmbArea().getValue().toString(),
+               Double.parseDouble(SceneManager.getDashboardViewLogWaterRefill().getTxtRefill().getText()))
+        );
 
         System.out.println("LogRefill: btnSubmitClicked");
     }
