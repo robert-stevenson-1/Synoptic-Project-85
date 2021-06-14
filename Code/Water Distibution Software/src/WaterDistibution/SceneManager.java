@@ -11,10 +11,8 @@
 package WaterDistibution;
 
 import WaterDistibution.Scenes.DashboardScene;
+import WaterDistibution.Scenes.DashboardView.View.*;
 import WaterDistibution.Scenes.DashboardView.View.Schedule.ViewSchedule;
-import WaterDistibution.Scenes.DashboardView.View.ViewLogWaterUsage;
-import WaterDistibution.Scenes.DashboardView.View.ViewOverview;
-import WaterDistibution.Scenes.DashboardView.View.ViewViewWaterUsage;
 import WaterDistibution.Scenes.LoginScene;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -27,6 +25,10 @@ public abstract class SceneManager {
    private static final ViewSchedule DASHBOARD_SCHEDULE = new ViewSchedule();
    private static final ViewViewWaterUsage DASHBOARD_VIEW_VIEW_WATER_USAGE = new ViewViewWaterUsage();
    private static final ViewLogWaterUsage DASHBOARD_VIEW_LOG_WATER_USAGE = new ViewLogWaterUsage();
+   private static final ViewViewWaterRefill DASHBOARD_VIEW_VIEW_WATER_REFILL= new ViewViewWaterRefill();
+   private static final ViewLogWaterRefill DASHBOARD_VIEW_LOG_WATER_REFILL = new ViewLogWaterRefill();
+   private static final ViewLogWaterPressure DASHBOARD_VIEW_LOG_WATER_PRESSURE = new ViewLogWaterPressure();
+   private static final ViewViewWaterPressure DASHBOARD_VIEW_VIEW_WATER_PRESSURE = new ViewViewWaterPressure();
 
    private static final LoginScene LOGIN_SCENE = new LoginScene();
    private static final DashboardScene DASHBOARD_SCENE = new DashboardScene();
@@ -61,6 +63,18 @@ public abstract class SceneManager {
    public static ViewSchedule getDashboardSchedule() {
       return DASHBOARD_SCHEDULE;
    }
+
+   public static ViewViewWaterRefill getDashboardViewViewWaterRefill() { return DASHBOARD_VIEW_VIEW_WATER_REFILL; }
+
+   public static ViewLogWaterRefill getDashboardViewLogWaterRefill() {
+      return DASHBOARD_VIEW_LOG_WATER_REFILL;
+   }
+
+   public static ViewLogWaterPressure getDashboardViewLogWaterPressure() {
+      return DASHBOARD_VIEW_LOG_WATER_PRESSURE;
+   }
+
+   public static ViewViewWaterPressure getDashboardViewViewWaterPressure(){ return DASHBOARD_VIEW_VIEW_WATER_PRESSURE;}
 
    public static void switchScene(Parent scene){
       currentScene.setRoot(scene);

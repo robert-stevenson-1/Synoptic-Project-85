@@ -1,9 +1,12 @@
 package WaterDistibution.Scenes.DashboardView.View;
 
-public class ViewLogWaterPressure {
+import WaterDistibution.Scenes.DashboardView.Controller.ViewLogWaterPressureController;
+import WaterDistibution.Update;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 
-<<<<<<< HEAD
-=======
 public class ViewLogWaterPressure extends StackPane implements Update {
 
     private ComboBox cmbArea = new ComboBox();
@@ -162,5 +165,4 @@ public class ViewLogWaterPressure extends StackPane implements Update {
     public void update() {
 
     }
->>>>>>> ipek
 }

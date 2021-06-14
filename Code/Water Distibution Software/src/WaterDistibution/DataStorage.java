@@ -12,6 +12,8 @@ package WaterDistibution;
 
 import WaterDistibution.Exceptions.InvalidPasswordException;
 import WaterDistibution.Exceptions.NoSuchUsernameExists;
+import WaterDistibution.Model.LogPressure;
+import WaterDistibution.Model.LogRefill;
 import WaterDistibution.Model.LogUsage;
 import WaterDistibution.Model.User;
 import WaterDistibution.ScheduleStorage.Schedule;
@@ -34,6 +36,12 @@ public abstract class DataStorage implements Serializable {
    //Water usage logs
    private static ArrayList<LogUsage> waterUsageLogs = new ArrayList<>();
 
+   //water refill logs
+   private static ArrayList<LogRefill> waterRefillLogs = new ArrayList<>();
+
+   //water pressure logs
+   private static ArrayList<LogPressure> waterPressureLogs = new ArrayList<>();
+
    //Distribution areas
    private static ArrayList<String> distributionAreas = new ArrayList<>();
 
@@ -48,6 +56,10 @@ public abstract class DataStorage implements Serializable {
    public static void addWaterUsageLogs(LogUsage waterUsageLog) {
       DataStorage.waterUsageLogs.add(waterUsageLog);
    }
+
+   public static void addWaterRefillLogs(LogRefill waterRefillLogs){DataStorage.waterRefillLogs.add(waterRefillLogs);}
+
+   public static void addWaterPressureLogs(LogPressure waterPressureLogs){DataStorage.waterPressureLogs.add(waterPressureLogs);}
 
    public static void addDistributionArea(String distributionArea) {
       DataStorage.distributionAreas.add(distributionArea);
@@ -90,6 +102,12 @@ public abstract class DataStorage implements Serializable {
    public static ArrayList<LogUsage> getWaterUsageLogs() {
       return waterUsageLogs;
    }
+
+   //refill
+   public static ArrayList<LogRefill> getWaterRefillLogs(){ return waterRefillLogs;}
+
+   //get pressure
+   public static ArrayList<LogPressure> getWaterPressureLogs(){return waterPressureLogs;}
 
    //get the current logged in user
    public static User getCurrentUser() {
