@@ -12,7 +12,7 @@ package WaterDistibution.Model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class LogRefill implements Serializable{
+public class LogLevel implements Serializable{
 
     //private String area = "";
     private String name = "";
@@ -21,11 +21,11 @@ public class LogRefill implements Serializable{
     private int timeMin = 00;
     private double waterLevel = 0.0; //Stored in ?
 
-    public LogRefill(String name,
-                     LocalDate date,
-                     int timeHour,
-                     int timeMin,
-                     double waterLevel) {
+    public LogLevel(String name,
+                    LocalDate date,
+                    int timeHour,
+                    int timeMin,
+                    double waterLevel) {
         this.name = name;
         this.date = date;
         this.timeHour = timeHour;
@@ -34,7 +34,7 @@ public class LogRefill implements Serializable{
     }
 
 
-    /*    public LogRefill(String name,
+    /*    public LogLevel(String name,
                      LocalDate date,
                      int timeHour,
                      int timeMin,

@@ -11,7 +11,7 @@
 package WaterDistibution.Scenes.DashboardView.View;
 
 import WaterDistibution.DataStorage;
-import WaterDistibution.Model.LogRefill;
+import WaterDistibution.Model.LogLevel;
 import WaterDistibution.Scenes.DashboardView.Controller.ViewViewWaterLevelController;
 import WaterDistibution.Update;
 import javafx.geometry.Insets;
@@ -65,12 +65,12 @@ public class ViewViewWaterLevel extends Pane implements Update {
 
             //setup the line chart (graph)
             graph.setAnimated(false);
-            graph.setTitle("Water Refill, " + strMonth);
+            graph.setTitle("Water Level, " + strMonth);
             graph.prefHeightProperty().bind(primaryBox.heightProperty());
             graph.prefWidthProperty().bind(primaryBox.widthProperty());
 
             //setup graph data
-            loadGraphData(DataStorage.getWaterRefillLogs(), strMonth);
+            loadGraphData(DataStorage.getWaterLevelLogs(), strMonth);
 
             //add the UI components to the view
             primaryBox.setTop(header);
@@ -110,15 +110,15 @@ public class ViewViewWaterLevel extends Pane implements Update {
             strMonth = Month.of(intMonth).toString();
         }
 
-        private void loadGraphData(ArrayList<LogRefill> data, String month) {
+        private void loadGraphData(ArrayList<LogLevel> data, String month) {
             //reset graph
             graph.getData().clear();
             //reset graph data series
             series.getData().clear();
             series.setName("Water Level");
 
-            data.sort(Comparator.comparing(LogRefill::getDate));
-            for (LogRefill l : data) {
+            data.sort(Comparator.comparing(LogLevel::getDate));
+            for (LogLevel l : data) {
                 System.out.println("Log month: " + l.getDate().getMonth().getValue() +
                         "String Month value: " + Month.valueOf(month).getValue());
                 //only load logs for the month selected to view
@@ -133,6 +133,6 @@ public class ViewViewWaterLevel extends Pane implements Update {
     @Override
     public void update() {
         graph.setTitle("Water Refill, " + strMonth);
-        loadGraphData(DataStorage.getWaterRefillLogs(), strMonth);
+        loadGraphData(DataStorage.getWaterLevelLogs(), strMonth);
     }
 }

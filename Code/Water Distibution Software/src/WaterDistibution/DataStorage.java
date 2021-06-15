@@ -13,11 +13,8 @@ package WaterDistibution;
 import WaterDistibution.Exceptions.InvalidPasswordException;
 import WaterDistibution.Exceptions.NoSuchUsernameExists;
 
-import WaterDistibution.Model.LogPressure;
-import WaterDistibution.Model.LogRefill;
-import WaterDistibution.Model.LogUsage;
-import WaterDistibution.Model.User;
-import WaterDistibution.Model.Task;
+import WaterDistibution.Model.*;
+import WaterDistibution.Model.LogLevel;
 
 import java.io.*;
 import java.security.MessageDigest;
@@ -37,7 +34,7 @@ public abstract class DataStorage implements Serializable {
    private static ArrayList<LogUsage> waterUsageLogs = new ArrayList<>();
 
    //water refill logs
-   private static ArrayList<LogRefill> waterRefillLogs = new ArrayList<>();
+   private static ArrayList<LogLevel> waterLevelLogs = new ArrayList<>();
 
    //water pressure logs
    private static ArrayList<LogPressure> waterPressureLogs = new ArrayList<>();
@@ -57,7 +54,7 @@ public abstract class DataStorage implements Serializable {
       DataStorage.waterUsageLogs.add(waterUsageLog);
    }
 
-   public static void addWaterRefillLogs(LogRefill waterRefillLogs){DataStorage.waterRefillLogs.add(waterRefillLogs);}
+   public static void addWaterRefillLogs(LogLevel waterRefillLogs){DataStorage.waterLevelLogs.add(waterRefillLogs);}
 
    public static void addWaterPressureLogs(LogPressure waterPressureLogs){DataStorage.waterPressureLogs.add(waterPressureLogs);}
 
@@ -108,7 +105,7 @@ public abstract class DataStorage implements Serializable {
    }
 
    //refill
-   public static ArrayList<LogRefill> getWaterRefillLogs(){ return waterRefillLogs;}
+   public static ArrayList<LogLevel> getWaterLevelLogs(){ return waterLevelLogs;}
 
    //get pressure
    public static ArrayList<LogPressure> getWaterPressureLogs(){return waterPressureLogs;}
@@ -187,7 +184,7 @@ public abstract class DataStorage implements Serializable {
       try{
          FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir")+"/data/WaterRefillLogs.ser");
          ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
-         objOut.writeObject(waterRefillLogs);
+         objOut.writeObject(waterLevelLogs);
          objOut.close();
       }catch (IOException e){
          e.printStackTrace();
@@ -278,14 +275,14 @@ public abstract class DataStorage implements Serializable {
       try {
          FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir") + "/data/WaterRefillLogs.ser");
          ObjectInputStream in = new ObjectInputStream(fileIn);
-         waterRefillLogs = (ArrayList<LogRefill>) in.readObject();
+         waterLevelLogs = (ArrayList<LogLevel>) in.readObject();
          in.close();
          fileIn.close();
       } catch (IOException e) {
          e.printStackTrace();
          System.out.println("Failed to load WaterRefillLogs");
       } catch (ClassNotFoundException e) {
-         System.out.println("Class ArrayList<LogRefill> waterRefillLogs not found");
+         System.out.println("Class ArrayList<LogLevel> waterRefillLogs not found");
          e.printStackTrace();
       }
    }

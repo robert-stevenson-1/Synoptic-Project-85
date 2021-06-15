@@ -1,7 +1,7 @@
 package WaterDistibution.Scenes.DashboardView.Controller;
 
 import WaterDistibution.DataStorage;
-import WaterDistibution.Model.LogRefill;
+import WaterDistibution.Model.LogLevel;
 import WaterDistibution.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
@@ -15,7 +15,7 @@ public class ViewLogWaterLevelController {
         //TODO: Input verification
 
        if (validateInput()) {
-          DataStorage.addWaterRefillLogs(new LogRefill(
+          DataStorage.addWaterRefillLogs(new LogLevel(
                   getLogName(),
                   SceneManager.getDashboardViewLogWaterLevel().getDatePickerLogDate().getValue(),
                   Integer.parseInt(SceneManager.getDashboardViewLogWaterLevel().getTxtTimeHour().getText()),
