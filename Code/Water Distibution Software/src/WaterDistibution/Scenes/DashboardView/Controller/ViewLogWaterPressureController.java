@@ -14,14 +14,16 @@ public class ViewLogWaterPressureController {
         //TODO: Input validation
         //TODO: Input verification
 
-        DataStorage.addWaterPressureLogs(new LogPressure(
-                getLogName(),
-                SceneManager.getDashboardViewLogWaterPressure().getCmbArea().getValue().toString(),
-                SceneManager.getDashboardViewLogWaterPressure().getDatePickerLogDate().getValue(),
-                Integer.parseInt(SceneManager.getDashboardViewLogWaterPressure().getTxtTimeHour().getText()),
-                Integer.parseInt(SceneManager.getDashboardViewLogWaterPressure().getTxtTimeHour().getText()),
-                Double.parseDouble(SceneManager.getDashboardViewLogWaterPressure().getTxtPressure().getText()))
-        );
+        if (validateInput()) {
+            DataStorage.addWaterPressureLogs(new LogPressure(
+                    getLogName(),
+                    SceneManager.getDashboardViewLogWaterPressure().getCmbArea().getValue().toString(),
+                    SceneManager.getDashboardViewLogWaterPressure().getDatePickerLogDate().getValue(),
+                    Integer.parseInt(SceneManager.getDashboardViewLogWaterPressure().getTxtTimeHour().getText()),
+                    Integer.parseInt(SceneManager.getDashboardViewLogWaterPressure().getTxtTimeHour().getText()),
+                    Double.parseDouble(SceneManager.getDashboardViewLogWaterPressure().getTxtPressure().getText()))
+            );
+        }
 
         System.out.println("LogUsage: btnSubmitClicked");
     }

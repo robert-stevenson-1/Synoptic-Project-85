@@ -14,14 +14,16 @@ public class ViewLogWaterLevelController {
         //TODO: Input validation
         //TODO: Input verification
 
-       DataStorage.addWaterRefillLogs(new LogRefill(
-               getLogName(),
-               SceneManager.getDashboardViewLogWaterLevel().getDatePickerLogDate().getValue(),
-               Integer.parseInt(SceneManager.getDashboardViewLogWaterLevel().getTxtTimeHour().getText()),
-               Integer.parseInt(SceneManager.getDashboardViewLogWaterLevel().getTxtTimeHour().getText()),
-               //SceneManager.getDashboardViewLogWaterRefill().getCmbArea().getValue().toString(),
-               Double.parseDouble(SceneManager.getDashboardViewLogWaterLevel().getTxtRefill().getText()))
-        );
+       if (validateInput()) {
+          DataStorage.addWaterRefillLogs(new LogRefill(
+                  getLogName(),
+                  SceneManager.getDashboardViewLogWaterLevel().getDatePickerLogDate().getValue(),
+                  Integer.parseInt(SceneManager.getDashboardViewLogWaterLevel().getTxtTimeHour().getText()),
+                  Integer.parseInt(SceneManager.getDashboardViewLogWaterLevel().getTxtTimeHour().getText()),
+                  //SceneManager.getDashboardViewLogWaterRefill().getCmbArea().getValue().toString(),
+                  Double.parseDouble(SceneManager.getDashboardViewLogWaterLevel().getTxtRefill().getText()))
+          );
+       }
 
         System.out.println("LogWaterLevel: btnSubmitClicked");
     }
