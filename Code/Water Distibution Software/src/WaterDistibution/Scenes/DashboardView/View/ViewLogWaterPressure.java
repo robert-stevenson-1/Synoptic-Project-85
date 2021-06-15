@@ -2,6 +2,7 @@ package WaterDistibution.Scenes.DashboardView.View;
 
 import WaterDistibution.DataStorage;
 import WaterDistibution.Scenes.DashboardView.Controller.ViewLogWaterPressureController;
+import WaterDistibution.Scenes.DashboardView.Controller.ViewLogWaterUsageController;
 import WaterDistibution.Update;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -50,12 +51,15 @@ public class ViewLogWaterPressure extends StackPane implements Update {
         primaryBox.prefWidthProperty().bind(this.widthProperty());
         BorderPane.setAlignment(primaryBox, Pos.CENTER);
 
+        hBoxHeader.setAlignment(Pos.CENTER);
+
         //setup name preview
         GridPane.setFillHeight(hBoxNamePreviewLayout, true);
         hBoxNamePreviewLayout.setAlignment(Pos.CENTER);
         txtLogNamePreview.setEditable(false);
-        txtLogNamePreview.minWidthProperty().bind(hBoxNamePreviewLayout.prefWidthProperty());
-        txtLogNamePreview.minHeightProperty().bind(hBoxNamePreviewLayout.prefHeightProperty());
+        txtLogNamePreview.setMinWidth(300);
+        txtLogNamePreview.prefWidthProperty().bind(hBoxNamePreviewLayout.prefWidthProperty());
+        txtLogNamePreview.prefHeightProperty().bind(hBoxNamePreviewLayout.prefHeightProperty());
 
         //setup Area selection
         GridPane.setFillHeight(hBoxAreaLayout, true);
@@ -109,7 +113,7 @@ public class ViewLogWaterPressure extends StackPane implements Update {
         hBoxSubmitLayout.setPadding(new Insets(15));
         hBoxSubmitLayout.setAlignment(Pos.CENTER);
 
-
+        primaryBox.setTop(hBoxHeader);
         primaryBox.setCenter(grid);
 
         hBoxHeader.getChildren().add(btnAddArea);
@@ -147,7 +151,12 @@ public class ViewLogWaterPressure extends StackPane implements Update {
 
     private void setupEvents() {
         btnSubmit.setOnAction(ViewLogWaterPressureController::btnSubmitClicked);
-    }
+        btnAddArea.setOnAction(ViewLogWaterPressureController::btnAddAreaClicked);
+        btnRemoveArea.setOnAction(ViewLogWaterPressureController::btnRemoveAreaClicked);
+        txtTimeHour.textProperty().addListener(ViewLogWaterPressureController::changedLogNameUpdate);
+        txtTimeMinute.textProperty().addListener(ViewLogWaterPressureController::changedLogNameUpdate);
+        cmbArea.valueProperty().addListener(ViewLogWaterPressureController::changedLogNameUpdate);
+        datePickerLogDate.valueProperty().addListener(ViewLogWaterPressureController::changedLogNameUpdate);}
 
 
     public ComboBox getCmbArea() {
@@ -175,5 +184,9 @@ public class ViewLogWaterPressure extends StackPane implements Update {
     public void update() {
         cmbArea.getItems().clear();
         cmbArea.getItems().addAll(DataStorage.getDistributionAreas());
+    }
+
+    public void setLogName(String logName) {
+        txtLogNamePreview.setText(logName);
     }
 }

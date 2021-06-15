@@ -43,6 +43,7 @@ public class ViewViewWaterUsage extends Pane implements Update {
    private ArrayList<XYChart.Series> seriesArrayList = new ArrayList<>();
 
    private int intMonth = LocalDate.now().getMonthValue();
+   private int intYear = LocalDate.now().getYear();
    private String strMonth = Month.of(intMonth).toString();
 
    public ViewViewWaterUsage() {
@@ -86,7 +87,7 @@ public class ViewViewWaterUsage extends Pane implements Update {
 
    @Override
    public void update() {
-      graph.setTitle("Water usage, " + strMonth);
+      graph.setTitle("Water usage, " + strMonth + ", " + intYear);
       loadGraphData(DataStorage.getWaterUsageLogs(), strMonth);
    }
 
@@ -96,6 +97,7 @@ public class ViewViewWaterUsage extends Pane implements Update {
       //check to see if month is put out of bounds
       if (intMonth>12){
          intMonth = 1;
+         intYear++;
       }
       //get month string value
       strMonth = Month.of(intMonth).toString();
@@ -107,6 +109,7 @@ public class ViewViewWaterUsage extends Pane implements Update {
       //check to see if month is put out of bounds
       if (intMonth<1){
          intMonth = 12;
+         intYear--;
       }
       //get month string value
       strMonth = Month.of(intMonth).toString();
@@ -130,7 +133,8 @@ public class ViewViewWaterUsage extends Pane implements Update {
          System.out.println("Log month: " + l.getDate().getMonth().getValue() +
                  "String Month value: "+Month.valueOf(month).getValue());
          //only load logs for the month selected to view
-         if (l.getDate().getMonth().getValue() == Month.valueOf(month).getValue()){
+         if (l.getDate().getMonth().getValue() == Month.valueOf(month).getValue()
+                 && (l.getDate().getYear() == intYear)){
             //add the log to the graph series for that area
             for (XYChart.Series s :
                     seriesArrayList) {

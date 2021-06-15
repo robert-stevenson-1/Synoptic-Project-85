@@ -3,16 +3,16 @@ package WaterDistibution.Scenes.DashboardView.Controller;
 import WaterDistibution.DataStorage;
 import WaterDistibution.Model.LogLevel;
 import WaterDistibution.SceneManager;
+import javafx.beans.Observable;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 
+import javax.swing.event.ChangeListener;
 import java.time.LocalDate;
 
 public class ViewLogWaterLevelController {
-    public static void btnSubmitClicked(ActionEvent event) {
-
-        //TODO: Input validation
-        //TODO: Input verification
+    public static void btnSubmitClicked(ActionEvent event){
 
        if (validateInput()) {
           DataStorage.addWaterRefillLogs(new LogLevel(
@@ -26,6 +26,10 @@ public class ViewLogWaterLevelController {
        }
 
         System.out.println("LogWaterLevel: btnSubmitClicked");
+    }
+
+    public static void changedLogNameUpdate(ObservableValue observable, Object oldValue, Object newValue){
+       SceneManager.getDashboardViewLogWaterLevel().setLogName(getLogName());
     }
 
    private static boolean validateInput(){
@@ -74,4 +78,5 @@ public class ViewLogWaterLevelController {
       //TextField waterLevel = SceneManager.getDashboardViewLogWaterRefill().getTxtRefill();
       return  "Water_Level_" + date + "_" + timeHr + "_" + timeMin;
    }
+
 }

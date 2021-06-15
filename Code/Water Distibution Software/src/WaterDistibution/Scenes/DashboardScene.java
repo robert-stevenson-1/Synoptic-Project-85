@@ -38,7 +38,7 @@ public class DashboardScene extends Pane implements Update {
    private Button btnLogLevel = new Button("Log water level");
    private Button btnLogUsage = new Button("Log water usage");
    private Button btnLogPressure = new Button("Log water pressure");
-   private Button btnViewRefill = new Button("View refill rate");
+   private Button btnViewRefill = new Button("View Water Level");
    private Button btnViewUsage = new Button("View water usage");
    private Button btnViewPressure = new Button("View water pressure");
    private HBox hBoxHeader = new HBox();

@@ -3,16 +3,17 @@ package WaterDistibution.Scenes.DashboardView.Controller;
 import WaterDistibution.DataStorage;
 import WaterDistibution.Model.LogPressure;
 import WaterDistibution.SceneManager;
+import WaterDistibution.Scenes.DashboardView.View.DialogAddArea;
+import WaterDistibution.Scenes.DashboardView.View.DialogRemoveArea;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 public class ViewLogWaterPressureController {
     public static void btnSubmitClicked(ActionEvent event) {
-
-        //TODO: Input validation
-        //TODO: Input verification
 
         if (validateInput()) {
             DataStorage.addWaterPressureLogs(new LogPressure(
@@ -26,6 +27,37 @@ public class ViewLogWaterPressureController {
         }
 
         System.out.println("LogUsage: btnSubmitClicked");
+    }
+
+    public static void btnAddAreaClicked(ActionEvent event){
+        DialogAddArea addArea = new DialogAddArea("Add Distribution Area");
+        Optional<String> result = addArea.showAndWait();
+        if (result.isPresent()){
+            DataStorage.addDistributionArea(result.get());
+            System.out.println("Area removed successfully");
+            DataStorage.saveDistributionAreas();
+            SceneManager.getDashboardViewLogWaterUsage().update();
+        }
+    }
+
+    public static void btnRemoveAreaClicked(ActionEvent event){
+        DialogRemoveArea removeArea = new DialogRemoveArea("Remove Distribution Area");
+        Optional<String> result = removeArea.showAndWait();
+        if (result.isPresent()){
+            DataStorage.removeDistributionArea(result.get());
+            System.out.println("Area removed successfully");
+            DataStorage.saveDistributionAreas();
+            SceneManager.getDashboardViewLogWaterUsage().update();
+        }
+    }
+
+    public static void changedLogNameUpdate(ObservableValue observable, Object oldValue, Object newValue){
+        try {
+            SceneManager.getDashboardViewLogWaterPressure().setLogName(getLogName());
+            System.out.println("Log Name updated");
+        } catch (Exception e){
+            System.out.println(e);
+        }
     }
 
     private static boolean validateInput(){
@@ -73,13 +105,12 @@ public class ViewLogWaterPressureController {
     }
 
     public static String getLogName(){
-        String area = SceneManager.getDashboardViewLogWaterPressure().getCmbArea().toString();
+        String area = SceneManager.getDashboardViewLogWaterPressure().getCmbArea().getValue().toString();
         String timeHr = SceneManager.getDashboardViewLogWaterPressure().getTxtTimeHour().getText();
         String timeMin = SceneManager.getDashboardViewLogWaterPressure().getTxtTimeMinute().getText();
         String date = SceneManager.getDashboardViewLogWaterPressure().getDatePickerLogDate().getValue().toString();
-        return area + "_Water_Pressure_" + date + "_" + timeHr + "_" + timeMin;
+        return "Water_Pressure_" + area + "_" + date + "_" + timeHr + "_" + timeMin;
     }
-
 }
 
 

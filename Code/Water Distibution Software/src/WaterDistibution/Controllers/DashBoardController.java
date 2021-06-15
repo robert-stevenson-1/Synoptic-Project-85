@@ -19,6 +19,7 @@ import javafx.event.ActionEvent;
 public class DashBoardController {
    public static void btnLogoutClicked(ActionEvent event) {
       System.out.println("btnLogout clicked!");
+      DataStorage.saveData();
       SceneManager.switchScene(SceneManager.getLoginScene());
       DataStorage.logoutUser();
    }

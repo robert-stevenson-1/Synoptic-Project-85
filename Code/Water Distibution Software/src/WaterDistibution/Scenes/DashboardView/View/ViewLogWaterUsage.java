@@ -11,6 +11,7 @@
 package WaterDistibution.Scenes.DashboardView.View;
 
 import WaterDistibution.DataStorage;
+import WaterDistibution.Scenes.DashboardView.Controller.ViewLogWaterLevelController;
 import WaterDistibution.Scenes.DashboardView.Controller.ViewLogWaterUsageController;
 import WaterDistibution.Update;
 import javafx.geometry.Insets;
@@ -65,9 +66,10 @@ public class ViewLogWaterUsage extends StackPane implements Update {
       //setup name preview
       GridPane.setFillHeight(hBoxNamePreviewLayout, true);
       hBoxNamePreviewLayout.setAlignment(Pos.CENTER);
+      txtLogNamePreview.setMinWidth(300);
       txtLogNamePreview.setEditable(false);
-      txtLogNamePreview.minWidthProperty().bind(hBoxNamePreviewLayout.prefWidthProperty());
-      txtLogNamePreview.minHeightProperty().bind(hBoxNamePreviewLayout.prefHeightProperty());
+      txtLogNamePreview.prefWidthProperty().bind(hBoxNamePreviewLayout.prefWidthProperty());
+      txtLogNamePreview.prefHeightProperty().bind(hBoxNamePreviewLayout.prefHeightProperty());
 
       //setup Area selection
       GridPane.setFillHeight(hBoxAreaLayout, true);
@@ -159,6 +161,10 @@ public class ViewLogWaterUsage extends StackPane implements Update {
       btnSubmit.setOnAction(ViewLogWaterUsageController::btnSubmitClicked);
       btnAddArea.setOnAction(ViewLogWaterUsageController::btnAddAreaClicked);
       btnRemoveArea.setOnAction(ViewLogWaterUsageController::btnRemoveAreaClicked);
+      txtTimeHour.textProperty().addListener(ViewLogWaterUsageController::changedLogNameUpdate);
+      txtTimeMinute.textProperty().addListener(ViewLogWaterUsageController::changedLogNameUpdate);
+      cmbArea.valueProperty().addListener(ViewLogWaterUsageController::changedLogNameUpdate);
+      datePickerLogDate.valueProperty().addListener(ViewLogWaterUsageController::changedLogNameUpdate);
    }
 
    public ComboBox getCmbArea() {
@@ -185,5 +191,9 @@ public class ViewLogWaterUsage extends StackPane implements Update {
    public void update() {
       cmbArea.getItems().clear();
       cmbArea.getItems().addAll(DataStorage.getDistributionAreas());
+   }
+
+   public void setLogName(String logName) {
+      txtLogNamePreview.setText(logName);
    }
 }

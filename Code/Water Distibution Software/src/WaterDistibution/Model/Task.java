@@ -23,7 +23,7 @@ public class Task implements Serializable {
     private int minute;
     //JobType is stored as an enum
     private JobType jobType;
-    public static enum JobType{REFILLRATE,WATERUSAGE,WATERPRESSURE}
+    public static enum JobType{WATER_LEVEL, WATER_USAGE, WATER_PRESSURE, DISTRIBUTE_WATER}
     //Status of the task
     private boolean isLogged;
     private boolean isComplete;

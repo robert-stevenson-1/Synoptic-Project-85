@@ -16,6 +16,7 @@ import WaterDistibution.Model.LogUsage;
 import WaterDistibution.SceneManager;
 import WaterDistibution.Scenes.DashboardView.View.DialogAddArea;
 import WaterDistibution.Scenes.DashboardView.View.DialogRemoveArea;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 
@@ -24,9 +25,6 @@ import java.util.Optional;
 
 public class ViewLogWaterUsageController {
    public static void btnSubmitClicked(ActionEvent event) {
-
-      //TODO: Input validation
-      //TODO: Input verification
 
       if (validateInput()){
          DataStorage.addWaterUsageLogs(new LogUsage(
@@ -61,6 +59,15 @@ public class ViewLogWaterUsageController {
          System.out.println("Area removed successfully");
          DataStorage.saveDistributionAreas();
          SceneManager.getDashboardViewLogWaterUsage().update();
+      }
+   }
+
+   public static void changedLogNameUpdate(ObservableValue observable, Object oldValue, Object newValue){
+      try {
+         SceneManager.getDashboardViewLogWaterUsage().setLogName(getLogName());
+         System.out.println("Log Name updated");
+      } catch (Exception e){
+         System.out.println(e);
       }
    }
 
@@ -113,7 +120,7 @@ public class ViewLogWaterUsageController {
       String timeHr = SceneManager.getDashboardViewLogWaterUsage().getTxtTimeHour().getText();
       String timeMin = SceneManager.getDashboardViewLogWaterUsage().getTxtTimeMinute().getText();
       String date = SceneManager.getDashboardViewLogWaterUsage().getDatePickerLogDate().getValue().toString();
-      return area + "_Water_Usage_" + date + "_" + timeHr + "_" + timeMin;
+      return "Water_Usage_" + area + "_" + date + "_" + timeHr + "_" + timeMin;
    }
 
 }

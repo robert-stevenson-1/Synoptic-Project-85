@@ -52,12 +52,6 @@ public class ViewLogWaterLevel extends Pane implements Update {
     private void setupLayout() {
         //set the parent primary Box that contains the components of the view
         this.getChildren().add(primaryBox);
-        //this.setPadding(new Insets(75));
-      /*      this.setPadding(new Insets(
-              (this.getHeight()*0.5),
-              (this.getWidth()*0.5),
-              (this.getWidth()*0.5),
-              (this.getHeight()*0.5)));*/
 
         //setup the primary containing box
         primaryBox.prefHeightProperty().bind(this.heightProperty());
@@ -70,9 +64,10 @@ public class ViewLogWaterLevel extends Pane implements Update {
         //setup name preview
         GridPane.setFillHeight(hBoxNamePreviewLayout, true);
         hBoxNamePreviewLayout.setAlignment(Pos.CENTER);
+        txtLogNamePreview.setMinWidth(300);
         txtLogNamePreview.setEditable(false);
-        txtLogNamePreview.minWidthProperty().bind(hBoxNamePreviewLayout.prefWidthProperty());
-        txtLogNamePreview.minHeightProperty().bind(hBoxNamePreviewLayout.prefHeightProperty());
+        txtLogNamePreview.prefWidthProperty().bind(hBoxNamePreviewLayout.prefWidthProperty());
+        txtLogNamePreview.prefHeightProperty().bind(hBoxNamePreviewLayout.prefHeightProperty());
 
         //setup Date
         GridPane.setFillHeight(hBoxDateLayout, true);
@@ -158,6 +153,9 @@ public class ViewLogWaterLevel extends Pane implements Update {
 
     private void setupEvents() {
         btnSubmit.setOnAction(ViewLogWaterLevelController::btnSubmitClicked);
+        txtTimeHour.textProperty().addListener(ViewLogWaterLevelController::changedLogNameUpdate);
+        txtTimeMinute.textProperty().addListener(ViewLogWaterLevelController::changedLogNameUpdate);
+        datePickerLogDate.valueProperty().addListener(ViewLogWaterLevelController::changedLogNameUpdate);
     }
 
 
@@ -182,4 +180,8 @@ public class ViewLogWaterLevel extends Pane implements Update {
         //cmbArea.getItems().clear();
         //cmbArea.getItems().addAll(DataStorage.getDistributionAreas());
     }
+
+   public void setLogName(String logName) {
+        txtLogNamePreview.setText(logName);
+   }
 }
