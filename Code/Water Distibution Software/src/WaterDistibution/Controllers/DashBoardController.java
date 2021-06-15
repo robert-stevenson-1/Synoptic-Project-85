@@ -42,14 +42,14 @@ public class DashBoardController {
       SceneManager.switchDashboardView(SceneManager.getDashboardOverview());
    }
 
-   public static void btnViewRefillClicked(ActionEvent event) {
-      System.out.println("btnViewRefill clicked!");
-      SceneManager.switchDashboardView(SceneManager.getDashboardViewViewWaterRefill());
+   public static void btnViewLevelClicked(ActionEvent event) {
+      System.out.println("btnViewLevel clicked!");
+      SceneManager.switchDashboardView(SceneManager.getDashboardViewViewWaterLevel());
    }
 
-   public static void btnLogRefillClicked(ActionEvent event) {
-      System.out.println("btnLogRefill clicked!");
-      SceneManager.switchDashboardView(SceneManager.getDashboardViewLogWaterRefill());
+   public static void btnLogLevelClicked(ActionEvent event) {
+      System.out.println("btnLogLevel clicked!");
+      SceneManager.switchDashboardView(SceneManager.getDashboardViewLogWaterLevel());
    }
 
    public static void btnLogPressureClicked(ActionEvent event) {

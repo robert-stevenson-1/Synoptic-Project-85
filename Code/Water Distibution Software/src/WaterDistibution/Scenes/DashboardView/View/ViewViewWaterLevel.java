@@ -1,5 +1,5 @@
 /**
- * Class: ViewViewWaterRefill
+ * Class: ViewViewWaterLevel
  * Author: Ipek Meral
  * Contributing Author(s):
  *
@@ -12,7 +12,7 @@ package WaterDistibution.Scenes.DashboardView.View;
 
 import WaterDistibution.DataStorage;
 import WaterDistibution.Model.LogRefill;
-import WaterDistibution.Scenes.DashboardView.Controller.ViewViewWaterRefillController;
+import WaterDistibution.Scenes.DashboardView.Controller.ViewViewWaterLevelController;
 import WaterDistibution.Update;
 import javafx.geometry.Insets;
 import javafx.scene.chart.CategoryAxis;
@@ -30,7 +30,7 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class ViewViewWaterRefill extends Pane implements Update {
+public class ViewViewWaterLevel extends Pane implements Update {
 
         private BorderPane primaryBox = new BorderPane();
         private GridPane grid = new GridPane();
@@ -48,7 +48,7 @@ public class ViewViewWaterRefill extends Pane implements Update {
         private int intMonth = LocalDate.now().getMonthValue();
         private String strMonth = Month.of(intMonth).toString();
 
-        public ViewViewWaterRefill() {
+        public ViewViewWaterLevel() {
             setupLayout();
             setupEvents();
         }
@@ -83,8 +83,8 @@ public class ViewViewWaterRefill extends Pane implements Update {
         }
 
         private void setupEvents() {
-            btnPrevMonth.setOnAction(ViewViewWaterRefillController::btnPrevMonthClicked);
-            btnNextMonth.setOnAction(ViewViewWaterRefillController::btnNextMonthClicked);
+            btnPrevMonth.setOnAction(ViewViewWaterLevelController::btnPrevMonthClicked);
+            btnNextMonth.setOnAction(ViewViewWaterLevelController::btnNextMonthClicked);
         }
 
 
