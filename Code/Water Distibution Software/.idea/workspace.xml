@@ -122,13 +122,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -160,6 +162,7 @@
       <workItem from="1623405051288" duration="8471000" />
       <workItem from="1623480793927" duration="17940000" />
       <workItem from="1623577513797" duration="3080000" />
+      <workItem from="1623745271011" duration="4340000" />
     </task>
     <servers />
   </component>
@@ -188,9 +191,9 @@
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/WaterDistibution/Controllers/DashBoardController.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="26" />
+          <url>file://$PROJECT_DIR$/src/WaterDistibution/Scenes/DashboardScene.java</url>
+          <line>202</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

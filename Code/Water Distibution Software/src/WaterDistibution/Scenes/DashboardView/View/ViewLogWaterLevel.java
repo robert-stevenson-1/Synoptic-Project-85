@@ -1,5 +1,5 @@
 /**
- * Class: ViewLogWaterRefill
+ * Class: ViewLogWaterLevel
  * Author: Ipek Meral
  * Contributing Author(s):
  *
@@ -11,15 +11,14 @@
 
 package WaterDistibution.Scenes.DashboardView.View;
 
-import WaterDistibution.DataStorage;
-import WaterDistibution.Scenes.DashboardView.Controller.ViewLogWaterRefillController;
+import WaterDistibution.Scenes.DashboardView.Controller.ViewLogWaterLevelController;
 import WaterDistibution.Update;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
-public class ViewLogWaterRefill extends Pane implements Update {
+public class ViewLogWaterLevel extends Pane implements Update {
 
     private BorderPane primaryBox = new BorderPane();
     //private HBox hBoxHeader = new HBox();
@@ -46,7 +45,7 @@ public class ViewLogWaterRefill extends Pane implements Update {
     private HBox hBoxSubmitLayout = new HBox();
     private Button btnSubmit = new Button("Submit Water Refill Log");
 
-    public ViewLogWaterRefill(){
+    public ViewLogWaterLevel(){
         setupLayout();
         setupEvents();
     }
@@ -158,7 +157,7 @@ public class ViewLogWaterRefill extends Pane implements Update {
     }
 
     private void setupEvents() {
-        btnSubmit.setOnAction(ViewLogWaterRefillController::btnSubmitClicked);
+        btnSubmit.setOnAction(ViewLogWaterLevelController::btnSubmitClicked);
     }
 
 

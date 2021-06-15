@@ -35,7 +35,7 @@ public class DashboardScene extends Pane implements Update {
    private Button btnLogout = new Button("Logout");
    private Button btnOverview = new Button("Overview");
    private Button btnSchedule = new Button("Schedule");
-   private Button btnLogRefill = new Button("Log refill rate");
+   private Button btnLogLevel = new Button("Log water level");
    private Button btnLogUsage = new Button("Log water usage");
    private Button btnLogPressure = new Button("Log water pressure");
    private Button btnViewRefill = new Button("View refill rate");
@@ -106,11 +106,11 @@ public class DashboardScene extends Pane implements Update {
       btnSchedule.setWrapText(true);
 
       //setup log refill button
-      btnLogRefill.prefWidthProperty().bind(vBoxSidePanel.widthProperty());
-      btnLogRefill.setMaxHeight(SIDEBAR_BUTTON_MAX_HEIGHT);
-      btnLogRefill.setStyle(ThemeConfig.BUTTON_THEME +
+      btnLogLevel.prefWidthProperty().bind(vBoxSidePanel.widthProperty());
+      btnLogLevel.setMaxHeight(SIDEBAR_BUTTON_MAX_HEIGHT);
+      btnLogLevel.setStyle(ThemeConfig.BUTTON_THEME +
                             ThemeConfig.BORDER_COLOUR);
-      btnLogRefill.setWrapText(true);
+      btnLogLevel.setWrapText(true);
 
       //setup log water usage button
       btnLogUsage.prefWidthProperty().bind(vBoxSidePanel.widthProperty());
@@ -167,7 +167,7 @@ public class DashboardScene extends Pane implements Update {
 
       vBoxSidePanel.getChildren().add(btnOverview);
       vBoxSidePanel.getChildren().add(btnSchedule);
-      vBoxSidePanel.getChildren().add(btnLogRefill);
+      vBoxSidePanel.getChildren().add(btnLogLevel);
       vBoxSidePanel.getChildren().add(btnLogUsage);
       vBoxSidePanel.getChildren().add(btnLogPressure);
       vBoxSidePanel.getChildren().add(btnViewRefill);
@@ -182,8 +182,8 @@ public class DashboardScene extends Pane implements Update {
       btnLogUsage.setOnAction(DashBoardController::btnLogUsageClicked);
       btnViewUsage.setOnAction(DashBoardController::btnViewUsageClicked);
       btnLogout.setOnAction(DashBoardController::btnLogoutClicked);
-      btnViewRefill.setOnAction(DashBoardController::btnViewRefillClicked);
-      btnLogRefill.setOnAction(DashBoardController::btnLogRefillClicked);
+      btnViewRefill.setOnAction(DashBoardController::btnViewLevelClicked);
+      btnLogLevel.setOnAction(DashBoardController::btnLogLevelClicked);
       btnLogPressure.setOnAction(DashBoardController::btnLogPressureClicked);
       btnViewPressure.setOnAction(DashBoardController::btnViewPressureClicked);
    }

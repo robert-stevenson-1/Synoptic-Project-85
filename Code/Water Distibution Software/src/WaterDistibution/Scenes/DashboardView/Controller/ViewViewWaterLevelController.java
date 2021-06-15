@@ -3,16 +3,16 @@ package WaterDistibution.Scenes.DashboardView.Controller;
 import WaterDistibution.SceneManager;
 import javafx.event.ActionEvent;
 
-public class ViewViewWaterRefillController {
+public class ViewViewWaterLevelController {
     public static void btnPrevMonthClicked(javafx.event.ActionEvent event){
-        SceneManager.getDashboardViewViewWaterRefill().decrementMonth();
-        SceneManager.getDashboardViewViewWaterRefill().update();
+        SceneManager.getDashboardViewViewWaterLevel().decrementMonth();
+        SceneManager.getDashboardViewViewWaterLevel().update();
         System.out.println("ViewLevel: btnPrevMonthClicked");
     }
 
     public static void btnNextMonthClicked(ActionEvent event){
-        SceneManager.getDashboardViewViewWaterRefill().incrementMonth();
-        SceneManager.getDashboardViewViewWaterRefill().update();
+        SceneManager.getDashboardViewViewWaterLevel().incrementMonth();
+        SceneManager.getDashboardViewViewWaterLevel().update();
         System.out.println("ViewLevel: btnNextMonthClicked");
     }
 

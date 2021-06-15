@@ -10,7 +10,6 @@
  */
 package WaterDistibution;
 
-import WaterDistibution.Scenes.CreateAccountScene;
 import WaterDistibution.Scenes.CreateUserLogin;
 import WaterDistibution.Scenes.DashboardScene;
 import WaterDistibution.Scenes.DashboardView.View.*;
@@ -27,8 +26,8 @@ public abstract class SceneManager {
    private static final ViewSchedule DASHBOARD_SCHEDULE = new ViewSchedule();
    private static final ViewViewWaterUsage DASHBOARD_VIEW_VIEW_WATER_USAGE = new ViewViewWaterUsage();
    private static final ViewLogWaterUsage DASHBOARD_VIEW_LOG_WATER_USAGE = new ViewLogWaterUsage();
-   private static final ViewViewWaterRefill DASHBOARD_VIEW_VIEW_WATER_REFILL= new ViewViewWaterRefill();
-   private static final ViewLogWaterRefill DASHBOARD_VIEW_LOG_WATER_REFILL = new ViewLogWaterRefill();
+   private static final ViewViewWaterLevel DASHBOARD_VIEW_VIEW_WATER_LEVEL = new ViewViewWaterLevel();
+   private static final ViewLogWaterLevel DASHBOARD_VIEW_LOG_WATER_LEVEL = new ViewLogWaterLevel();
    private static final ViewLogWaterPressure DASHBOARD_VIEW_LOG_WATER_PRESSURE = new ViewLogWaterPressure();
    private static final ViewViewWaterPressure DASHBOARD_VIEW_VIEW_WATER_PRESSURE = new ViewViewWaterPressure();
 
@@ -67,10 +66,10 @@ public abstract class SceneManager {
       return DASHBOARD_SCHEDULE;
    }
 
-   public static ViewViewWaterRefill getDashboardViewViewWaterRefill() { return DASHBOARD_VIEW_VIEW_WATER_REFILL; }
+   public static ViewViewWaterLevel getDashboardViewViewWaterLevel() { return DASHBOARD_VIEW_VIEW_WATER_LEVEL; }
 
-   public static ViewLogWaterRefill getDashboardViewLogWaterRefill() {
-      return DASHBOARD_VIEW_LOG_WATER_REFILL;
+   public static ViewLogWaterLevel getDashboardViewLogWaterLevel() {
+      return DASHBOARD_VIEW_LOG_WATER_LEVEL;
    }
 
    public static ViewLogWaterPressure getDashboardViewLogWaterPressure() {
@@ -94,8 +93,8 @@ public abstract class SceneManager {
       currentScene.getWindow().sizeToScene();
       currentScene.getWindow().centerOnScreen();
 
-      if (currentScene instanceof Update){
-         ((Update) currentScene).update();
+      if (scene instanceof Update){
+         ((Update) scene).update();
       }
 
       System.out.println(currentScene.getWidth()  + " " + currentScene.getHeight());
