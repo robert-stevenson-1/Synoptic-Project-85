@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Synoptic-Project-85:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Synoptic_Project_85_jar</output-path>
+    <root id="archive" name="Synoptic-Project-85.jar">
+      <element id="module-output" name="Synoptic-Project-85" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Code/Water Distibution Software/lib/javafx-sdk-15.0.1/lib/javafx.base.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Code/Water Distibution Software/lib/javafx-sdk-15.0.1/lib/javafx.web.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Code/Water Distibution Software/lib/javafx-sdk-15.0.1/lib/javafx.controls.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Code/Water Distibution Software/lib/javafx-sdk-15.0.1/lib/javafx.swing.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Code/Water Distibution Software/lib/javafx-sdk-15.0.1/lib/src.zip" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Code/Water Distibution Software/lib/javafx-sdk-15.0.1/lib/javafx.fxml.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Code/Water Distibution Software/lib/javafx-sdk-15.0.1/lib/javafx-swt.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Code/Water Distibution Software/lib/javafx-sdk-15.0.1/lib/javafx.graphics.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Code/Water Distibution Software/lib/javafx-sdk-15.0.1/lib/javafx.media.jar" path-in-jar="/" />
+      <element id="library" level="project" name="javafx-sdk-11.0" />
+    </root>
+  </artifact>
+</component>
