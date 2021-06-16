@@ -21,9 +21,16 @@ public class DialogAddArea extends Dialog<String> {
    }
 
    private void setupLayout() {
+      //setup dialog box size
+      this.getDialogPane().setMinWidth(220);
+
       //add the grid to dialog box
       this.getDialogPane().setContent(grid);
 
+      //setup area label
+      lblArea.setMinWidth(40);
+
+      //setup area textField
       txtArea.maxWidthProperty().bind(grid.widthProperty());
 
       //setup the grid
@@ -43,10 +50,30 @@ public class DialogAddArea extends Dialog<String> {
    private void setupEvents() {
       this.setResultConverter(buttonType -> {
          if (buttonType == btnSubmit) {
-            return txtArea.getText();
+            if (validInput()){
+               return txtArea.getText();
+            }
          }
          return null;
       });
    }
 
+   private boolean validInput(){
+      //Error message content
+      String errorMsg = "";
+
+      //presence check
+      if (txtArea.getText() == null || txtArea.getText().equals("")){
+         errorMsg+=("No Area entered\n");
+      }
+
+      //no errors in the submitted inputs
+      if (errorMsg.equals("")){
+         return true;
+      }
+
+      //there is an error in the inputs
+      new Alert(Alert.AlertType.ERROR, "FAILED TO ADD AREA\n\n"+errorMsg).show();
+      return false;
+   }
 }

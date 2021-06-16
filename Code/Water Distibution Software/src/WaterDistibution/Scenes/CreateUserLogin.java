@@ -8,7 +8,7 @@ package WaterDistibution.Scenes;
  * Description: This will allow the user to add details when they make a new user account
  */
 
-import WaterDistibution.Controllers.CreateAccountController;
+import WaterDistibution.Controllers.CreateUserLoginController;
 import WaterDistibution.ThemeConfig;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -82,6 +82,10 @@ public class CreateUserLogin extends Pane {
         lblTitle.setMinWidth(USE_PREF_SIZE);
         lblTitle.setWrapText(true);
 
+        //setup the Username label
+        lblUsername.setAlignment(Pos.CENTER);
+        lblUsername.setFont(Font.font(16));
+
         //setup the FirstName label
         lblFirstName.setAlignment(Pos.CENTER);
         lblFirstName.setFont(Font.font(16));
@@ -105,6 +109,10 @@ public class CreateUserLogin extends Pane {
         //setting up the text field for last name
         lastName.setAlignment(Pos.CENTER);
         lastName.setFont(Font.font(16));
+
+        //setting up the text field for Username
+        username.setAlignment(Pos.CENTER);
+        username.setFont(Font.font(16));
 
         //setting up the text field for password
         password.setAlignment(Pos.CENTER);
@@ -148,23 +156,27 @@ public class CreateUserLogin extends Pane {
     }
 
     private void setEvents() {
-        btnSubmit.setOnAction(CreateAccountController::btnSubmitClicked);
-        btnBack.setOnAction(CreateAccountController::btnBackClicked);
+        btnSubmit.setOnAction(CreateUserLoginController::btnSubmitClicked);
+        btnBack.setOnAction(CreateUserLoginController::btnBackClicked);
     }
 
-    public String getUsername() {
+    public String getUsernameValue() {
         return username.getText();
     }
 
-    public String getFirstName() {
+    public String getFirstNameValue() {
         return firstName.getText();
     }
 
-    public String getLastName() {
+    public String getLastNameValue() {
         return lastName.getText();
     }
 
-    public String getPassword() {
+    public String getPasswordValue() {
         return password.getText();
+    }
+
+    public String getPasswordConfirmationValue() {
+        return passwordConfirmation.getText();
     }
 }

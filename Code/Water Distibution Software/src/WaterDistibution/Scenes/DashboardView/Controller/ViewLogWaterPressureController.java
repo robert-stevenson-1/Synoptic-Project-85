@@ -79,19 +79,18 @@ public class ViewLogWaterPressureController {
         }
         try {
             Integer hour = Integer.parseInt(SceneManager.getDashboardViewLogWaterPressure().getTxtTimeHour().getText());
-            if (hour>23){errorMsg.append("Hour too large\n");}
-            else if (hour<0){errorMsg.append("Hour too small\n");}
+            if (hour>23){errorMsg.append("Hours must be less than 24\n");}
+            else if (hour<0){errorMsg.append("Hours must be 0 or more\n");}
         }
         catch(NumberFormatException e){errorMsg.append("Hour Not Entered or value isn't an integer\n");}
         try {
             Integer minute = Integer.parseInt(SceneManager.getDashboardViewLogWaterPressure().getTxtTimeMinute().getText());
-            if (minute>59){errorMsg.append("Minute too large\n");}
-            else if (minute<0){errorMsg.append("Minute too small\n");}
+            if (minute>59){errorMsg.append("Minutes must be less than 60\n");}
+            else if (minute<0){errorMsg.append("Minutes can't be negative\n");}
         }
         catch(NumberFormatException e){errorMsg.append("Minute Not Entered or value isn't an integer\n");}
         try {
             Double waterPressure = Double.parseDouble(SceneManager.getDashboardViewLogWaterPressure().getTxtPressure().getText());
-            if (waterPressure<0){errorMsg.append("Water pressure too small\n");}
         }
         catch(NumberFormatException e){errorMsg.append("Water pressure not entered\n");}
 

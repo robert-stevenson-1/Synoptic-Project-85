@@ -50,10 +50,30 @@ public class DialogRemoveArea extends Dialog<String> {
    private void setupEvents() {
       this.setResultConverter(buttonType -> {
          if (buttonType == btnSubmit) {
-            return cmbArea.getValue();
+            if (validInput()){
+               return cmbArea.getValue();
+            }
          }
          return null;
       });
    }
 
+   private boolean validInput(){
+      //Error message content
+      String errorMsg = "";
+
+      //presence check
+      if (cmbArea.getValue() == null){
+         errorMsg+=("No Area Selected\n");
+      }
+
+      //no errors in the submitted inputs
+      if (errorMsg.equals("")){
+         return true;
+      }
+
+      //there is an error in the inputs
+      new Alert(Alert.AlertType.ERROR, "FAILED TO REMOVE AREA\n\n"+errorMsg).show();
+      return false;
+   }
 }

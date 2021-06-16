@@ -1,6 +1,17 @@
+/**
+ * Class: DialogAddTask
+ * Author: Robert Stevenson
+ * Contributing Author(s):
+ *
+ * Date Created: 12/06/2021
+ *
+ * Description:
+ *
+ */
 package WaterDistibution.Scenes.DashboardView.View.Schedule;
 
 import WaterDistibution.Model.Task;
+import WaterDistibution.SceneManager;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.ColumnConstraints;
@@ -75,14 +86,62 @@ public class DialogAddTask extends Dialog<Task> {
    private void setupEvents() {
       this.setResultConverter(buttonType -> {
          if (buttonType == btnSubmit) {
-            return new Task(datePicker.getValue(),
-                    Integer.parseInt(txtHour.getText()),
-                    Integer.parseInt(txtMinute.getText()),
-                    cmbTaskType.getValue(),
-                    false,
-                    false);
+            if (validInput()){
+               return new Task(datePicker.getValue(),
+                       Integer.parseInt(txtHour.getText()),
+                       Integer.parseInt(txtMinute.getText()),
+                       cmbTaskType.getValue(),
+                       false,
+                       false);
+            }
          }
          return null;
       });
+   }
+
+   private boolean validInput(){
+      //Error message content
+      String errorMsg = "";
+
+      if (datePicker.getValue() == null){
+         errorMsg+="Date not entered\n";
+      }
+
+      if (cmbTaskType.getValue() == null){
+         errorMsg+="Task type not select\n";
+      }
+
+      try {
+         Integer hour = Integer.parseInt(txtHour.getText());
+         if (hour>23){
+            errorMsg+="Hours must be less than 24\n";
+         }else if (hour<0){
+            errorMsg+="Hours can't be negative\n";
+         }
+      }
+      catch(NumberFormatException e){
+         errorMsg+="Hour Not Entered or value isn't an integer\n";
+      }
+
+      try {
+         Integer minute = Integer.parseInt(txtMinute.getText());
+         if (minute>59){
+            errorMsg+="Minutes must be less than 60\n";
+         }
+         else if (minute<0){
+            errorMsg+="Minutes can't be negative\n";
+         }
+      } catch(NumberFormatException e){
+         errorMsg+="Minute Not Entered or value isn't an integer\n";
+      }
+
+      //no errors in the submitted inputs
+      if (errorMsg.equals("")){
+         return true;
+      }
+
+      //there is an error in the inputs
+      new Alert(Alert.AlertType.ERROR, "FAILED TO ADD TASK\n\n"+errorMsg).show();
+      return false;
    }
 }

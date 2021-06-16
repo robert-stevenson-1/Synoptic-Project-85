@@ -21,8 +21,8 @@ public class LoginController {
    public static void btnLoginClicked(ActionEvent event) {
       System.out.println("btnLogin clicked!");
       //use the scene manager to change the scene of the program
-      if (validateInput() || true) { //by pass login
-         if (attemptLogin() || true) { //by pass login
+      if (validateInput()) { //by pass login
+         if (attemptLogin()) { //by pass login
             SceneManager.switchScene(SceneManager.getDashboardScene());
             System.out.println("User: " + DataStorage.getCurrentUser().getUsername());
          }
@@ -31,7 +31,7 @@ public class LoginController {
 
    public static void btnCreateAccountClicked (ActionEvent event) {
       System.out.println("btnCreateAccount clicked!");
-      SceneManager.switchScene(SceneManager.getCreateAccountScene());
+      SceneManager.switchScene(SceneManager.getCreateUserLoginScene());
 
       }
    private static boolean validateInput(){
@@ -50,21 +50,21 @@ public class LoginController {
 
       //presence check
       if (usernameValue == null || usernameValue.equals("")){
-         errorMsg.concat("No Username entered\n");
+         errorMsg+=("No Username entered\n");
       }
 
       if (passwordValue == null || passwordValue.equals("")){
-         errorMsg.concat("No Password Entered\n");
+         errorMsg+=("No Password Entered\n");
       }
 
       //length check
       if (passwordValue.length() < 8){
-         errorMsg.concat("Password must be of length 8 or more\n");
+         errorMsg+=("Password must be of length 8 or more\n");
       }
 
       //check if the Password is regex compatible (no invalid characters)
       if (passwordValue.matches(passRegex)){
-         errorMsg.concat("Password must contain at least one Uppercase " +
+         errorMsg+=("Password must contain at least one Uppercase " +
                  "letter, one Lowercase letter, one Special Character, and one Number without" +
                  " any whitespaces\n");
       }

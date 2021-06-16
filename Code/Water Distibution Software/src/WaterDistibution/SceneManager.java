@@ -33,7 +33,7 @@ public abstract class SceneManager {
 
    private static final LoginScene LOGIN_SCENE = new LoginScene();
    private static final DashboardScene DASHBOARD_SCENE = new DashboardScene();
-   private static final CreateUserLogin CREATE_ACCOUNT_SCENE = new CreateUserLogin();
+   private static final CreateUserLogin CREATE_USER_LOGIN_SCENE = new CreateUserLogin();
 
    //current scene that is being stored (default is the login scene)
    private static Scene currentScene = new Scene(LOGIN_SCENE);
@@ -78,8 +78,8 @@ public abstract class SceneManager {
 
    public static ViewViewWaterPressure getDashboardViewViewWaterPressure(){ return DASHBOARD_VIEW_VIEW_WATER_PRESSURE;}
 
-   public static CreateUserLogin getCreateAccountScene() {
-      return CREATE_ACCOUNT_SCENE;
+   public static CreateUserLogin getCreateUserLoginScene() {
+      return CREATE_USER_LOGIN_SCENE;
    }
 
    public static void switchScene(Parent scene){
