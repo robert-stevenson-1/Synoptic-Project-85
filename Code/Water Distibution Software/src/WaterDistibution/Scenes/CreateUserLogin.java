@@ -30,7 +30,7 @@ public class CreateUserLogin extends Pane {
     private BorderPane primaryBox = new BorderPane();
     private HBox hBoxBtnBar = new HBox();
     private GridPane grid = new GridPane();
-    private Label lblTitle = new Label("Water Distribution: Create Account");
+    private Label lblTitle = new Label("Create Account");
     private Label lblUsername = new Label("Username:");
     private Label lblFirstName = new Label("First Name:");
     private Label lblLastName = new Label("Last Name:");
@@ -76,11 +76,13 @@ public class CreateUserLogin extends Pane {
         grid.setPadding(new Insets(20,0,0,0));
 
         //setup the title label
+        BorderPane.setAlignment(lblTitle, Pos.CENTER);
         lblTitle.setAlignment(Pos.CENTER);
         lblTitle.setFont(Font.font(24));
         lblTitle.setTextAlignment(TextAlignment.CENTER);
         lblTitle.setMinWidth(USE_PREF_SIZE);
         lblTitle.setWrapText(true);
+        lblTitle.setPadding(new Insets(25));
 
         //setup the Username label
         lblUsername.setAlignment(Pos.CENTER);

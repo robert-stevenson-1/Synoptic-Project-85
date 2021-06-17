@@ -108,7 +108,7 @@ public class DialogAddTask extends Dialog<Task> {
       }
 
       if (cmbTaskType.getValue() == null){
-         errorMsg+="Task type not select\n";
+         errorMsg+="Task type not selected\n";
       }
 
       try {
