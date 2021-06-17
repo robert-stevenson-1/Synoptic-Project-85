@@ -7,6 +7,8 @@
  * Description: JUNIT 5 Tests
  *
  * Progress:All Basic Tests Passed
+ * May need to include a method for rehashing the password
+ * as if it is setPassword is used the password can be matched to a string value
  */
 package WaterDistibution.Model.ModelTesting;
 import WaterDistibution.Model.User;
