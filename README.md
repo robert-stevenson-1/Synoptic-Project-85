@@ -1,4 +1,4 @@
-# 2nd Year Synoptic (Group) Project - Water Distribution Software
+# 2nd Year Synoptic (Group) Project - Water Distribution Software (Read Only Archive)
 
 A 2rd Year University Project where we where given the briefing for the Engineers Without Borders (EWB) digital challenge (2020-2021) to design and develop a software prototype to solve a problem over a few weeks.
 
